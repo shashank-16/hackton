@@ -36,7 +36,9 @@
             <div class="question-box"> 
                 <?php
                 require 'connective.php';
-                $query="SELECT *FROM optionsheet";
+                $where=1;
+
+                $query="SELECT * FROM optionsheet where question_no ='{$where}' ";
 
                 $result= mysqli_query($connection,$query) or die ("database cant load");
                 if(mysqli_num_rows($result)>0)
@@ -55,14 +57,17 @@
         <hr>
 
         <ul class="options">
-            <li><input type="radio" name="select"class="option-1" ><?php echo  $rowforjoin['option1']?></li>
-            <li><input type="radio" name="select"class="option-2><?php echo  $rowforjoin['option2']?></li>
-            <li><input type="radio" name="select"class="option-3><?php echo  $rowforjoin['option3']?></li>
-            <li><input type="radio" name="select"class="option-4><?php echo  $rowforjoin['option4']?></li>
+            <li><input type="radio" name="select"class="option-1"><?php echo  $rowforjoin['option1']?></li>
+            <li><input type="radio" name="select"class="option-2"><?php echo  $rowforjoin['option2']?></li>
+            <li><input type="radio" name="select"class="option-3"><?php echo  $rowforjoin['option3']?></li>
+            <li><input type="radio" name="select"class="option-4"><?php echo  $rowforjoin['option4']?></li>
+            
         </ul>
-        </div>
+        
         <?php }
         }?>
+        </div>
+       
 
         <div class="proter-region">
             <div class="video">
@@ -91,7 +96,7 @@
 
 
 
-    <script type="text/javascript">
+    <!-- <script type="text/javascript">
       document.onkeydown = function (e) {
         e.preventDefault();
       };
@@ -116,7 +121,7 @@
           e.preventDefault();
         }
       };
-    </script>
+    </script> -->
 
     <!-- <script type="text/javascript">
         if (document.layers) {
