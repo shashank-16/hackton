@@ -2,10 +2,11 @@ paste it in your workbench in mysql
 
 create database hackton;
 create table optionsheet (question_id varchar(1000), option1 varchar(1000),
-option2 varchar(1000),option3 varchar(1000), option4 varchar(1000));
+option2 varchar(1000),option3 varchar(1000), option4 varchar(1000),question_no autoincrement);
 
 create table test (question varchar(1000),answer varchar(1000));
 
 create table user_info(user_name varchar(1000),password varchar(1000));
+
 
 //insertion  of the databases want to make it yourself ;
