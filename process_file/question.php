@@ -37,7 +37,6 @@
                 <?php
                 require 'connective.php';
                 $where=1;
-
                 $query="SELECT * FROM optionsheet where question_no ='{$where}' ";
 
                 $result= mysqli_query($connection,$query) or die ("database cant load");
