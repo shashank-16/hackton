@@ -78,6 +78,7 @@
                     <div id="menu-outer">
                         <div class="table">
                             <ul id="horizontal-list">
+                                <!-- Question panel -->
                                 <li class="no">1</li>
                                 <li class="no">2</li>
                                 <li class="no">3</li>
@@ -142,7 +143,13 @@
                     // M button for next
                     if($key==77 || $key==109)
                     {
-                        $where++;
+                        $.ajax({
+                            url: "question_render.php",
+                            type: "POST",
+                            success: function(data){
+                                $(".content").html(data);
+                            }
+                        })
                         console.log("Next")
                     }
 
@@ -162,6 +169,28 @@
                     
                     // enter key do nothing
                 // } s
+
+                function getKeyCodeEvent(ev) {
+                var code = (document.all) ?
+                    event.keyCode : ev.which;
+    
+                var alt = (document.all) ?
+                    event.altKey :
+                    ev.modifiers & Event.ALT_MASK;
+    
+                if (document.all) {
+    
+                    // Example ALT+F4
+                    if (alt && code == 115) {
+                        try {
+                            // Your requirements
+                            console.log("close");
+                        } catch (e) {
+                        }
+                    }
+            }
+        }
+
 
             })
 
