@@ -31,39 +31,24 @@
                 <h1>Question Area</h1>
                 <hr>
                 <div class="question">
-                    <h2>1</h2>
+                    
+                    
+                    <h2 name="num" id='theinput'></h2>
+
                     <hr>
                     <div class="question-box">
-                        <?php
-                        include 'connective.php';
-                        $where = 1;
-                        $query = "SELECT * FROM optionsheet where question_no ='{$where}' ";
-
-                        $result = mysqli_query($connection, $query) or die("database cant load");
-                        if (mysqli_num_rows($result) > 0) {
-
-
-
-                            while ($rowforjoin = mysqli_fetch_assoc($result)) {
-
-
-                        ?>
-                                <p> <?php echo  $rowforjoin['question_id'] ?></p>
+                        
+                        
                     </div>
                 </div>
                 <hr>
 
                 <ul class="options">
-                    <!-- <input type="checkbox" name="" id=""> -->
-                    <li><input type="checkbox" id="opt-1" name="select" class="option-1"><?php echo  $rowforjoin['option1'] ?></li>
-                    <li><input type="checkbox" id="opt-2" name="select" class="option-1"><?php echo  $rowforjoin['option2'] ?></li>
-                    <li><input type="checkbox" id="opt-3" name="select" class="option-1"><?php echo  $rowforjoin['option3'] ?></li>
-                    <li><input type="checkbox" id="opt-4" name="select" class="option-1"><?php echo  $rowforjoin['option4'] ?></li>
-
+                    
+                    
                 </ul>
 
-        <?php }
-                        } ?>
+                
             </div>
 
 
@@ -93,7 +78,9 @@
         </div>
     </div>
 
-
+    <script>
+        where=1;
+    </script>
 
     <script>
         $(document).ready(function() {
@@ -143,21 +130,50 @@
                     // M button for next
                     if($key==77 || $key==109)
                     {
+                        where++;
                         $.ajax({
                             url: "question_render.php",
                             type: "POST",
+                            data:{ count: where},
                             success: function(data){
-                                $(".content").html(data);
+                                $(".question-box").html(data);
+                                // $(".options").html(data);
                             }
                         })
-                        console.log("Next")
+
+
+                        $.ajax({
+                            url: "render-2.php",
+                            type: "POST",
+                            data:{ count: where},
+                            success: function(data){
+                                $(".options").html(data);
+                            }
+                        })
                     }
 
                     //n button for previous
                     if($key==78 || $key==110)
                     {
-                        // $where++;
-                        console.log("previous")
+                        where--;
+                        $.ajax({
+                            url: "question_render.php",
+                            type: "POST",
+                            data:{ count: where},
+                            success: function(data){
+                                $(".question-box").html(data);
+                            }
+                        })
+
+
+                        $.ajax({
+                            url: "render-2.php",
+                            type: "POST",
+                            data:{ count: where},
+                            success: function(data){
+                                $(".options").html(data);
+                            }
+                        })
 
                     }
 
