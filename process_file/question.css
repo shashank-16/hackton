@@ -19,6 +19,9 @@ nav p{
     
 }
 
+.question-box ul li{
+    display: inline-block;
+}
 
 
 .proter-region

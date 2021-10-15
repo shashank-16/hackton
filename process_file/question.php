@@ -33,7 +33,7 @@
                 <div class="question">
                     
                     
-                    <h2 name="num" id='theinput'></h2>
+                    <h2><?php echo $count ?></h2>
 
                     <hr>
                     <div class="question-box">
@@ -100,7 +100,6 @@
                         $("#opt-2").removeAttr("checked", true);
                         $("#opt-3").removeAttr("checked", true);
                         $("#opt-4").removeAttr("checked", true);
-                        console.log("1");
 
                     } 
                     if ($key == 66 || $key == 98) {
@@ -108,14 +107,12 @@
                         $("#opt-2").attr("checked", true);
                         $("#opt-3").removeAttr("checked", true);
                         $("#opt-4").removeAttr("checked", true);
-                        console.log("2");
                     } 
                     if ($key == 67 || $key == 99) {
                         $("#opt-1").removeAttr("checked", true);
                         $("#opt-2").removeAttr("checked", true);
                         $("#opt-3").attr("checked", true);
                         $("#opt-4").removeAttr("checked", true);
-                        console.log("3");
                     } 
 
                     if($key==68 || $key == 100){
@@ -124,7 +121,6 @@
                         $("#opt-2").removeAttr("checked", true);
                         $("#opt-3").removeAttr("checked", true);
                         $("#opt-4").attr("checked", true);
-                        console.log("4");
                     }
                     
                     // M button for next
@@ -184,7 +180,7 @@
                    
                     
                     // enter key do nothing
-                // } s
+                // }
 
                 function getKeyCodeEvent(ev) {
                 var code = (document.all) ?
@@ -208,7 +204,7 @@
         }
 
 
-            })
+        })
 
         })
     </script>

@@ -13,10 +13,10 @@
 
         <ul class="options">
        
-       <li><input type="radio" id="opt-1" name="select" class="option-1"><?php echo  $rowforjoin['option1'] ?></li>
-       <li><input type="radio" id="opt-2" name="select" class="option-1"><?php echo  $rowforjoin['option2'] ?></li>
-       <li><input type="radio" id="opt-3" name="select" class="option-1"><?php echo  $rowforjoin['option3'] ?></li>
-       <li><input type="radio" id="opt-4" name="select" class="option-1"><?php echo  $rowforjoin['option4'] ?></li>
+       <li style="list-style: none;"><input type="radio" id="opt-1" name="select" class="option-1"><?php echo  $rowforjoin['option1'] ?></li>
+       <li style="list-style: none;"><input type="radio" id="opt-2" name="select" class="option-1"><?php echo  $rowforjoin['option2'] ?></li>
+       <li style="list-style: none;"><input type="radio" id="opt-3" name="select" class="option-1"><?php echo  $rowforjoin['option3'] ?></li>
+       <li style="list-style: none;"><input type="radio" id="opt-4" name="select" class="option-1"><?php echo  $rowforjoin['option4'] ?></li>
 
         </ul>
 
