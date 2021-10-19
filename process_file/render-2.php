@@ -1,5 +1,6 @@
 <?php
         include 'connective.php';
+        $count=1;
         $count=$_POST['count'];
         $query = "SELECT option1,option2,option3,option4 FROM optionsheet where question_no ='{$count}' ";
 
@@ -13,10 +14,10 @@
 
         <ul class="options">
        
-        <li style="list-style: none;"><label for="option1"><input type="radio" id="opt-1" name="select" class="option-1" value="1"><?php echo  $rowforjoin['option1'] ?></label></li>
-        <li style="list-style: none;"><label for="option1"><input type="radio" id="opt-2" name="select" class="option-1" value="2"><?php echo  $rowforjoin['option2'] ?></label></li>
-        <li style="list-style: none;"><label for="option1"><input type="radio" id="opt-3" name="select" class="option-1" value="3"><?php echo  $rowforjoin['option3'] ?></label></li>
-        <li style="list-style: none;"><label for="option1"><input type="radio" id="opt-4" name="select" class="option-1" value="4"><?php echo  $rowforjoin['option4'] ?></label></li>
+        <li style="list-style: none;"><label for="option1"><input type="radio" id="opt-1" name="select" class="option-1" value="<?php echo  $rowforjoin['option1'] ?>"><?php echo  $rowforjoin['option1'] ?></label></li>
+        <li style="list-style: none;"><label for="option1"><input type="radio" id="opt-2" name="select" class="option-1" value="<?php echo  $rowforjoin['option2'] ?>"><?php echo  $rowforjoin['option2'] ?></label></li>
+        <li style="list-style: none;"><label for="option1"><input type="radio" id="opt-3" name="select" class="option-1" value="<?php echo  $rowforjoin['option3'] ?>"><?php echo  $rowforjoin['option3'] ?></label></li>
+        <li style="list-style: none;"><label for="option1"><input type="radio" id="opt-4" name="select" class="option-1" value="<?php echo  $rowforjoin['option4'] ?>"><?php echo  $rowforjoin['option4'] ?></label></li>
 
         </ul>
 

@@ -45,96 +45,41 @@
     </form>
 
 
-    <button class="btn btn-lg btn-primary" id="click" onclick="go_full_screen()">Full screen</button>
+    <button class="btn btn-lg btn-primary" id="click">Full screen</button>
 
 
 
     <script>
-        
-        function go_full_screen(){
+        ///to disable full sreen comment this part
+        function requestFullScreen(element) {
+                // Supports most browsers and their versions.
+                var requestMethod = element.requestFullScreen || element.webkitRequestFullScreen || element.mozRequestFullScreen || element.msRequestFullScreen;
 
-            var e = new Event('keypress');
-            e.which = 122;
-        var elem = document.documentElement;
-        if (elem.requestFullscreen) {
-            elem.requestFullscreen();
-        } else if (elem.msRequestFullscreen) {
-            elem.msRequestFullscreen();
-        } else if (elem.mozRequestFullScreen) {
-            elem.mozRequestFullScreen();
-        } else if (elem.webkitRequestFullscreen) {
-            elem.webkitRequestFullscreen();
-        }
-        }
-
-        document.onkeydown = function (e) {
-
-            $(document).on("keydown",function(ev){
-                console.log(ev.keyCode);
-                if(ev.keyCode===27||ev.keyCode===122)
-                {
-                    e.preventDefault();     
+                if (requestMethod) { // Native full screen.
+                    requestMethod.call(element);
+                } else if (typeof window.ActiveXObject !== "undefined") { // Older IE.
+                    var wscript = new ActiveXObject("WScript.Sheel");
+                    if (wscript !== null) {
+                        wscript.SendKeys("{F11}");
+                    }
                 }
-            })
+            }
 
-               
-        }
+            var elem = document.body; // Make the body go full screen.
+            requestFullScreen(elem);
 
     </script>
 
     <script>
-        // window.onload = function(){
-        // document.getElementById('btn').click();
-        
-        // var scriptTag = document.createElement("script");
-        // scriptTag.src = "https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js";
-        // document.getElementsByTagName("head")[0].appendChild(scriptTag);
-        // }
-
-
-    //     function button(elem) {
-    //         // ## The below if statement seems to work better ## if ((document.fullScreenElement && document.fullScreenElement !== null) || (document.msfullscreenElement && document.msfullscreenElement !== null) || (!document.mozFullScreen && !document.webkitIsFullScreen)) {
-    //         if ((document.fullScreenElement !== undefined && document.fullScreenElement === null) || (document.msFullscreenElement !== undefined && document.msFullscreenElement === null) || (document.mozFullScreen !== undefined && !document.mozFullScreen) || (document.webkitIsFullScreen !== undefined && !document.webkitIsFullScreen)) {
-    //             if (elem.requestFullScreen) {
-    //                 elem.requestFullScreen();
-    //             } else if (elem.mozRequestFullScreen) {
-    //                 elem.mozRequestFullScreen();
-    //             } else if (elem.webkitRequestFullScreen) {
-    //                 elem.webkitRequestFullScreen(Element.ALLOW_KEYBOARD_INPUT);
-    //             } else if (elem.msRequestFullscreen) {
-    //                 elem.msRequestFullscreen();
-    //             }
-    //         } 
-    //         else 
-    //         {
-    //             if (document.cancelFullScreen) {
-    //                 document.cancelFullScreen();
-    //             } else if (document.mozCancelFullScreen) {
-    //                 document.mozCancelFullScreen();
-    //             } else if (document.webkitCancelFullScreen) {
-    //                 document.webkitCancelFullScreen();
-    //             } else if (document.msExitFullscreen) {
-    //                 document.msExitFullscreen();
-    //             }
-    //         }
-    //     }
-
-    //     $(document).on("keydown",function(ev){
-    //         console.log(ev.keyCode);
-    //         if(ev.keyCode===27||ev.keyCode===122) return false
-    //     })
-    // </script>
-
-    <script>
         $(document).ready(function(){  
-        $(document).keydown(function(event) {  
-            //event.ctrlKey = check ctrl key is press or not  
-            //event.which = check for F7  
-            // event.which =check for v key  
-            if (event.ctrlKey==true && (event.which == '118' || event.which == '86')) {  
+            $(document).keydown(function(event) {  
+                //event.ctrlKey = check ctrl key is press or not  
+                //event.which = check for F7  
+                // event.which = check for v key  
+                if (event.ctrlKey==true && (event.which == '118' || event.which == '86')) {  
 
-                event.preventDefault();  
-            }  
+                    event.preventDefault();  
+                }  
             });  
         });   
 
