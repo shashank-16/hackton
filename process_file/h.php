@@ -47,16 +47,26 @@
       </form>
 
 
-      <!-- <script>
-          $(document).ready(function(){
+      <script>
+          ///to disable full sreen comment this part
+        function requestFullScreen(element) {
+                // Supports most browsers and their versions.
+                var requestMethod = element.requestFullScreen || element.webkitRequestFullScreen || element.mozRequestFullScreen || element.msRequestFullScreen;
 
-            $('#sub').click(function(){
-            window.open("action","_blank","width=1536px,height=1080px");
-            // return false;
-            });
+                if (requestMethod) { // Native full screen.
+                    requestMethod.call(element);
+                } else if (typeof window.ActiveXObject !== "undefined") { // Older IE.
+                    var wscript = new ActiveXObject("WScript.Shell");
+                    if (wscript !== null) {
+                        wscript.SendKeys("{F11}");
+                    }
+                }
+            }
 
-        });
-      </script> -->
+            var elem = document.body; // Make the body go full screen.
+            requestFullScreen(elem);
+
+      </script>
   </div>
 </body>
 </html>

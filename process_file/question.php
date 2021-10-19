@@ -181,7 +181,7 @@
                     console.log("inside first");
                     
                     $("#opt-1").attr("checked", true);
-                    var var1 = document.querySelector('input[name="select"]:checked').value;
+                    var var1 = document.querySelector('input[name="select"]:checked').innerHTML;
                     console.log(var1);
                     // setCookie(var1);
                     $("#opt-2").removeAttr("checked", true);
