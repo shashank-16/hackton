@@ -28,27 +28,30 @@
         <hr>
         <div class="main">
             <div class="content col-8">
-                <h1>Question Area</h1>
-                <hr>
-                <div class="question">
-                    
-                    
-                    <h2><?php echo $count ?></h2>
-
+                <form action="" class="form-group">
+                    <h1>Question Area</h1>
                     <hr>
-                    <div class="question-box">
-                        
-                        
+                    <div class="question">
+
+
+                        <!-- <h2><?php echo $count ?></h2> -->
+
+                        <hr>
+                        <div class="question-box">
+
+
+                        </div>
                     </div>
-                </div>
-                <hr>
+                    <hr>
 
-                <ul class="options">
-                    
-                    
-                </ul>
+                    <ul class="options">
 
-                
+
+                    </ul>
+
+                    <!-- <button type="submit" name="submit" class="btn btn-primary btn-sm">Next</button> -->
+                </form>
+
             </div>
 
 
@@ -64,10 +67,10 @@
                         <div class="table">
                             <ul id="horizontal-list">
                                 <!-- Question panel -->
-                                <li class="no">1</li>
-                                <li class="no">2</li>
-                                <li class="no">3</li>
-                                <li class="no">4</li>
+                                <li id="q-1" class="no">1</li>
+                                <li id="q-2" class="no">2</li>
+                                <li id="q-3" class="no">3</li>
+                                <li id="q-3" class="no">4</li>
                             </ul>
                         </div>
                     </div>
@@ -78,139 +81,239 @@
         </div>
     </div>
 
+
+
+<!-- testingn -->
+
     <script>
-        where=1;
+        $(document).ready(function(){
+            $("#q-2").click(function(){
+
+
+                where=2;
+                    $.ajax({
+                        url: "question_render.php",
+                        type: "POST",
+                        data: {
+                            count: where
+                        },
+                        success: function(data) {
+                            $(".question-box").html(data);
+                            // $(".options").html(data);
+                        }
+                    })
+
+
+                    $.ajax({
+                        url: "render-2.php",
+                        type: "POST",
+                        data: {
+                            count: where
+                        },
+                        success: function(data) {
+                            $(".options").html(data);
+                        }
+                    })
+
+            })
+
+
+            $("#q-1").click(function(){
+
+
+                where=1;
+                    $.ajax({
+                        url: "question_render.php",
+                        type: "POST",
+                        data: {
+                            count: where
+                        },
+                        success: function(data) {
+                            $(".question-box").html(data);
+                            // $(".options").html(data);
+                        }
+                    })
+
+
+                    $.ajax({
+                        url: "render-2.php",
+                        type: "POST",
+                        data: {
+                            count: where
+                        },
+                        success: function(data) {
+                            $(".options").html(data);
+                        }
+                    })
+
+                })
+        })
+    </script>
+
+
+    <script>
+        where = 1;
     </script>
 
     <script>
-        $(document).ready(function() {
-            $(document).keypress(function(e) {
+        function setCookie(name) {
+            var expires = "";
+            document.cookie = name;
+        }
 
-                console.log("hello");
-                // var $key=0;
-                var $key = e.charCode || e.keyCode;
-                // if ($key == 65 || $key == 97 || $key == 66 || $key == 98 || $key == 67 || $key == 99 || $key == 68 || $key == 100) {
-                    // console.log("hello");
-                    // $(".option-1").attr("checked", true);
-                    // console.log("hello");
+        function getCookie() {
 
-
-                    if ($key == 65 || $key == 97) {
-                        $("#opt-1").attr("checked", true);
-                        $("#opt-2").removeAttr("checked", true);
-                        $("#opt-3").removeAttr("checked", true);
-                        $("#opt-4").removeAttr("checked", true);
-
-                    } 
-                    if ($key == 66 || $key == 98) {
-                        $("#opt-1").removeAttr("checked", true);
-                        $("#opt-2").attr("checked", true);
-                        $("#opt-3").removeAttr("checked", true);
-                        $("#opt-4").removeAttr("checked", true);
-                    } 
-                    if ($key == 67 || $key == 99) {
-                        $("#opt-1").removeAttr("checked", true);
-                        $("#opt-2").removeAttr("checked", true);
-                        $("#opt-3").attr("checked", true);
-                        $("#opt-4").removeAttr("checked", true);
-                    } 
-
-                    if($key==68 || $key == 100){
-                        
-                        $("#opt-1").removeAttr("checked", true);
-                        $("#opt-2").removeAttr("checked", true);
-                        $("#opt-3").removeAttr("checked", true);
-                        $("#opt-4").attr("checked", true);
-                    }
-                    
-                    // M button for next
-                    if($key==77 || $key==109)
-                    {
-                        where++;
-                        $.ajax({
-                            url: "question_render.php",
-                            type: "POST",
-                            data:{ count: where},
-                            success: function(data){
-                                $(".question-box").html(data);
-                                // $(".options").html(data);
-                            }
-                        })
-
-
-                        $.ajax({
-                            url: "render-2.php",
-                            type: "POST",
-                            data:{ count: where},
-                            success: function(data){
-                                $(".options").html(data);
-                            }
-                        })
-                    }
-
-                    //n button for previous
-                    if($key==78 || $key==110)
-                    {
-                        where--;
-                        $.ajax({
-                            url: "question_render.php",
-                            type: "POST",
-                            data:{ count: where},
-                            success: function(data){
-                                $(".question-box").html(data);
-                            }
-                        })
-
-
-                        $.ajax({
-                            url: "render-2.php",
-                            type: "POST",
-                            data:{ count: where},
-                            success: function(data){
-                                $(".options").html(data);
-                            }
-                        })
-
-                    }
-
-                    else {
-                        e.preventDefault();
-                    }  
-
-                   
-                    
-                    // enter key do nothing
-                // }
-
-                function getKeyCodeEvent(ev) {
-                var code = (document.all) ?
-                    event.keyCode : ev.which;
-    
-                var alt = (document.all) ?
-                    event.altKey :
-                    ev.modifiers & Event.ALT_MASK;
-    
-                if (document.all) {
-    
-                    // Example ALT+F4
-                    if (alt && code == 115) {
-                        try {
-                            // Your requirements
-                            console.log("close");
-                        } catch (e) {
-                        }
-                    }
+            var nameEQ = name;
+            var val=document.getElementById("opt-1").value;
+            console.log(val);
+            var ca = document.cookie;
+            if (ca == val) {
+                document.getElementById("opt-1").checked = select.checked;
             }
         }
 
 
-        })
+        $(document).ready(function() {
+            $(document).keypress(function(e) {
+
+                var $key = e.charCode || e.keyCode;
+
+
+                if ($key == 65 || $key == 97) {
+                    console.log("inside first");
+                    
+                    $("#opt-1").attr("checked", true);
+                    var var1 = document.querySelector('input[name="select"]:checked').value;
+                    console.log(var1);
+                    setCookie(var1);
+                    $("#opt-2").removeAttr("checked", true);
+                    $("#opt-3").removeAttr("checked", true);
+                    $("#opt-4").removeAttr("checked", true);
+                    console.log("option-a selected");
+                    var inner=document.getElementById("opt-1").innerHTML;
+                    console.log(inner);
+
+
+                }
+
+                if ($key == 66 || $key == 98) {
+                    $("#opt-1").removeAttr("checked", true);
+                    $("#opt-2").attr("checked", true);
+                    $("#opt-3").removeAttr("checked", true);
+                    $("#opt-4").removeAttr("checked", true);
+                    console.log("option-b selected");
+                }
+
+                if ($key == 67 || $key == 99) {
+                    $("#opt-1").removeAttr("checked", true);
+                    $("#opt-2").removeAttr("checked", true);
+                    $("#opt-3").attr("checked", true);
+                    $("#opt-4").removeAttr("checked", true);
+                    console.log("option-c selected");
+                }
+
+                if ($key == 68 || $key == 100) {
+
+                    $("#opt-1").removeAttr("checked", true);
+                    $("#opt-2").removeAttr("checked", true);
+                    $("#opt-3").removeAttr("checked", true);
+                    $("#opt-4").attr("checked", true);
+                    console.log("option-d selected");
+                }
+
+                // M button for next
+                if ($key == 77 || $key == 109) {
+
+
+
+                    where++;
+                    $.ajax({
+                        url: "question_render.php",
+                        type: "POST",
+                        data: {
+                            count: where
+                        },
+                        success: function(data) {
+                            $(".question-box").html(data);
+                            // $(".options").html(data);
+                        }
+                    })
+
+
+                    $.ajax({
+                        url: "render-2.php",
+                        type: "POST",
+                        data: {
+                            count: where
+                        },
+                        success: function(data) {
+                            $(".options").html(data);
+                        }
+                    })
+
+
+
+                }
+
+                //n button for previous
+                if ($key == 78 || $key == 110) {
+                    where--;
+                    $.ajax({
+                        url: "question_render.php",
+                        type: "POST",
+                        data: {
+                            count: where
+                        },
+                        success: function(data) {
+                            $(".question-box").html(data);
+                        }
+                    })
+
+
+                    $.ajax({
+                        url: "render-2.php",
+                        type: "POST",
+                        data: {
+                            count: where
+                        },
+                        success: function(data) {
+                            $(".options").html(data);
+                        }
+                    })
+
+                    getCookie();
+                } 
+                else {
+                    e.preventDefault();
+                }
+
+
+                function getKeyCodeEvent(ev) {
+                    var code = (document.all) ?
+                        event.keyCode : ev.which;
+
+                    var alt = (document.all) ?
+                        event.altKey :
+                        ev.modifiers & Event.ALT_MASK;
+
+                    if (document.all) {
+
+                        // Example ALT+F4
+                        if (alt && code == 115) {
+                            try {
+                                // Your requirements
+                                console.log("close");
+                            } catch (e) {}
+                        }
+                    }
+                }
+            })
 
         })
     </script>
 
 
-<!-- <script>
+    <!-- <script>
     $(document).ready(function(){
         $(document).keypress(function(e){
             var $key = e.charCode || e.keyCode;
@@ -224,7 +327,7 @@
     })
 </script> -->
 
-<!-- <script>
+    <!-- <script>
     document.onkeydown = function (e) {
         return false;
     }   

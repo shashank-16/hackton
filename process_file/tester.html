@@ -21,9 +21,109 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Font+Name">
 </head>
 <body>
-    <div>
-        shashank
-    </div>
+
+    <script>
+    document.onkeydown = function (t) {
+    if(t.which == 9){
+    return false;
+    }
+    }
+    </script>
+    </head>
+    <body>
+    <h1>Now press Tab Key and check it...</h1>
+
+    <input type="text">
+    <input type="text">
+    <input type="text">
+    <input type="text">
+    <input type="text">
+    <input type="text">
+    <input type="text">
+    
+    <input id="btn" class="btn" style="float:left; opacity: 0;"  type="button" value="Full screen mode" onclick="button(document.body)">
+    </form>
+
+
+    <button class="btn btn-lg btn-primary" id="click" onclick="go_full_screen()">Full screen</button>
+
+
+
+    <script>
+        
+        function go_full_screen(){
+
+            var e = new Event('keypress');
+            e.which = 122;
+        var elem = document.documentElement;
+        if (elem.requestFullscreen) {
+            elem.requestFullscreen();
+        } else if (elem.msRequestFullscreen) {
+            elem.msRequestFullscreen();
+        } else if (elem.mozRequestFullScreen) {
+            elem.mozRequestFullScreen();
+        } else if (elem.webkitRequestFullscreen) {
+            elem.webkitRequestFullscreen();
+        }
+        }
+
+        document.onkeydown = function (e) {
+
+            $(document).on("keydown",function(ev){
+                console.log(ev.keyCode);
+                if(ev.keyCode===27||ev.keyCode===122)
+                {
+                    e.preventDefault();     
+                }
+            })
+
+               
+        }
+
+    </script>
+
+    <script>
+        // window.onload = function(){
+        // document.getElementById('btn').click();
+        
+        // var scriptTag = document.createElement("script");
+        // scriptTag.src = "https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js";
+        // document.getElementsByTagName("head")[0].appendChild(scriptTag);
+        // }
+
+
+    //     function button(elem) {
+    //         // ## The below if statement seems to work better ## if ((document.fullScreenElement && document.fullScreenElement !== null) || (document.msfullscreenElement && document.msfullscreenElement !== null) || (!document.mozFullScreen && !document.webkitIsFullScreen)) {
+    //         if ((document.fullScreenElement !== undefined && document.fullScreenElement === null) || (document.msFullscreenElement !== undefined && document.msFullscreenElement === null) || (document.mozFullScreen !== undefined && !document.mozFullScreen) || (document.webkitIsFullScreen !== undefined && !document.webkitIsFullScreen)) {
+    //             if (elem.requestFullScreen) {
+    //                 elem.requestFullScreen();
+    //             } else if (elem.mozRequestFullScreen) {
+    //                 elem.mozRequestFullScreen();
+    //             } else if (elem.webkitRequestFullScreen) {
+    //                 elem.webkitRequestFullScreen(Element.ALLOW_KEYBOARD_INPUT);
+    //             } else if (elem.msRequestFullscreen) {
+    //                 elem.msRequestFullscreen();
+    //             }
+    //         } 
+    //         else 
+    //         {
+    //             if (document.cancelFullScreen) {
+    //                 document.cancelFullScreen();
+    //             } else if (document.mozCancelFullScreen) {
+    //                 document.mozCancelFullScreen();
+    //             } else if (document.webkitCancelFullScreen) {
+    //                 document.webkitCancelFullScreen();
+    //             } else if (document.msExitFullscreen) {
+    //                 document.msExitFullscreen();
+    //             }
+    //         }
+    //     }
+
+    //     $(document).on("keydown",function(ev){
+    //         console.log(ev.keyCode);
+    //         if(ev.keyCode===27||ev.keyCode===122) return false
+    //     })
+    // </script>
 
     <script>
         $(document).ready(function(){  
@@ -45,10 +145,25 @@
         if (event.keyCode == 123) {
         return false;
         }
+
+        if (event.keyCode == 433) {
+        return false;
+        }
+        if (event.keyCode == 27) {
+            event.preventDefault();
+        return false;
+        }
         // Prevent Ctrl+a = disable select all
         // Prevent Ctrl+u = disable view page source
         // Prevent Ctrl+s = disable save
         if (event.ctrlKey && (event.keyCode === 1 || event.keyCode === 83 || event.keyCode ===65 )) {
+        return false;
+        }
+        //Prevent Alt and Tab
+        else if(event.keyCode===18 || event.keyCode === 9 || event.keyCode ===18 && event.keyCode === 9){
+        return false;
+        }
+        else if(event.keyCode===27){
         return false;
         }
         // Prevent Ctrl+Shift+I = disabled debugger console using keys open
