@@ -19,6 +19,10 @@ nav p{
     
 }
 
+.question-box > p{
+    margin-left: 50px;
+}
+
 .question-box ul li{
     display: inline-block;
 }
