@@ -28,12 +28,10 @@
         <hr>
         <div class="main">
             <div class="content col-8">
-                <form action="" class="form-group">
+                <form action="correct_answer.php" method ="POST" class="form-group">
                     <h1>Question Area</h1>
                     <hr>
                     <div class="question">
-
-
                         <!-- <h2><?php echo $count ?></h2> -->
 
                         <hr>
@@ -46,10 +44,9 @@
 
                     <ul class="options">
 
-
                     </ul>
 
-                    <!-- <button type="submit" name="submit" class="btn btn-primary btn-sm">Next</button> -->
+                    <button type="submit" name="submit" class="btn btn-primary btn-sm">Next</button>
                 </form>
 
             </div>
@@ -156,21 +153,22 @@
     </script>
 
     <script>
-        function setCookie(name) {
-            var expires = "";
-            document.cookie = name;
-        }
 
-        function getCookie() {
+        // function setCookie(name) {
+        //     var expires = "";
+        //     document.cookie = name;
+        // }
 
-            var nameEQ = name;
-            var val=document.getElementById("opt-1").value;
-            console.log(val);
-            var ca = document.cookie;
-            if (ca == val) {
-                document.getElementById("opt-1").checked = select.checked;
-            }
-        }
+        // function getCookie() {
+
+        //     var nameEQ = name;
+        //     var val=document.getElementById("opt-1").value;
+        //     console.log(val);
+        //     var ca = document.cookie;
+        //     if (ca == val) {
+        //         document.getElementById("opt-1").checked = select.checked;
+        //     }
+        // }
 
 
         $(document).ready(function() {
@@ -185,14 +183,13 @@
                     $("#opt-1").attr("checked", true);
                     var var1 = document.querySelector('input[name="select"]:checked').value;
                     console.log(var1);
-                    setCookie(var1);
+                    // setCookie(var1);
                     $("#opt-2").removeAttr("checked", true);
                     $("#opt-3").removeAttr("checked", true);
                     $("#opt-4").removeAttr("checked", true);
                     console.log("option-a selected");
                     var inner=document.getElementById("opt-1").innerHTML;
                     console.log(inner);
-
 
                 }
 
@@ -281,7 +278,7 @@
                         }
                     })
 
-                    getCookie();
+                    // getCookie();
                 } 
                 else {
                     e.preventDefault();
