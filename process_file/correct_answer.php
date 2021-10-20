@@ -24,7 +24,7 @@ if(mysqli_num_rows($correct_query)>0)
     $score=$_SESSION["score"];
    
 
-    $correct_sql="INSERT INTO online_test(score) VALUES('{$score}')";
+    $correct_sql="UPDATE `online_test` SET `score`='{$score}' WHERE `Username_test`='{$_SESSION["username"]}'";
     $query = mysqli_query($connection,$correct_sql) or die("server fail to load the correct answer");
     mysqli_close($connection);
     // header("Location: question.php");

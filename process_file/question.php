@@ -47,7 +47,7 @@ session_start(); // session is god
 
                     </ul>
 
-                    <button type="submit" name="submit" class="btn btn-primary btn-sm">Next</button>
+                    
                 </form>
 
             </div>
