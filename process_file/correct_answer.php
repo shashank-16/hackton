@@ -1,22 +1,34 @@
+
+
 <?php
+session_start();
 
-$server_name = "localhost";
-$user_name= "root";
-$password="";
-$database_name="hackton";
+// echo($_SESSION["score"]);
+//data json -> process and databases 
+
+include 'connective.php';
+// use json or these method
+// header("location: correct_answer.php");
 
 
-if(isset($_POST['submit']))
+$answer=$_POST["answer"];
+$question=$_POST["question"]; 
+
+$sql=" SELECT *  FROM test where question='{$question}' AND answer='{$answer}'";
+$correct_query= mysqli_query($connection,$sql) or die("error");
+
+if(mysqli_num_rows($correct_query)>0)
 {
-$variable=$_POST["select"];
-// $correct_sql="" or die("answer ");
-// $correct_query=mysqli_connect($connection,$correct_query);
+    
+    $_SESSION["score"]+=1;
+    $score=$_SESSION["score"];
+   
 
-echo($variable);
+    $correct_sql="INSERT INTO online_test(score) VALUES('{$score}')";
+    $query = mysqli_query($connection,$correct_sql) or die("server fail to load the correct answer");
+    mysqli_close($connection);
+    // header("Location: question.php");
 }
-else 
-{
-    echo(0);
 
-}
+
 ?>

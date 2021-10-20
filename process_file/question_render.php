@@ -11,8 +11,11 @@
 
        while ($rowforjoin = mysqli_fetch_assoc($result)) {
     ?>
-        <p> <?php echo  $rowforjoin['question_id'] ?></p>
+        <textarea name ="question" id= "questions" cols="100" row="10"><?php echo  $rowforjoin['question_id'] ?></textarea> 
     
     <?php }
    }
    ?>
+
+
+<!---->

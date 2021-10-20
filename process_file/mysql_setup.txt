@@ -8,5 +8,6 @@ create table test (question varchar(1000),answer varchar(1000));
 
 create table user_info(user_name varchar(1000),password varchar(1000));
 
+create table online_test(Username_test varchar(1000),score int); // score wala the table
 
 //insertion  of the databases want to make it yourself ;

@@ -1,6 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php
+session_start(); // session is god
 
+?>
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -82,70 +83,6 @@
 
 <!-- testingn -->
 
-    <script>
-        $(document).ready(function(){
-            $("#q-2").click(function(){
-
-
-                where=2;
-                    $.ajax({
-                        url: "question_render.php",
-                        type: "POST",
-                        data: {
-                            count: where
-                        },
-                        success: function(data) {
-                            $(".question-box").html(data);
-                            // $(".options").html(data);
-                        }
-                    })
-
-
-                    $.ajax({
-                        url: "render-2.php",
-                        type: "POST",
-                        data: {
-                            count: where
-                        },
-                        success: function(data) {
-                            $(".options").html(data);
-                        }
-                    })
-
-            })
-
-
-            $("#q-1").click(function(){
-
-
-                where=1;
-                    $.ajax({
-                        url: "question_render.php",
-                        type: "POST",
-                        data: {
-                            count: where
-                        },
-                        success: function(data) {
-                            $(".question-box").html(data);
-                            // $(".options").html(data);
-                        }
-                    })
-
-
-                    $.ajax({
-                        url: "render-2.php",
-                        type: "POST",
-                        data: {
-                            count: where
-                        },
-                        success: function(data) {
-                            $(".options").html(data);
-                        }
-                    })
-
-                })
-        })
-    </script>
 
 
     <script>
@@ -180,41 +117,45 @@
                 if ($key == 65 || $key == 97) {
                     console.log("inside first");
                     
-                    $("#opt-1").attr("checked", true);
-                    var var1 = document.querySelector('input[name="select"]:checked').innerHTML;
-                    console.log(var1);
-                    // setCookie(var1);
-                    $("#opt-2").removeAttr("checked", true);
-                    $("#opt-3").removeAttr("checked", true);
-                    $("#opt-4").removeAttr("checked", true);
+                    document.getElementById("opt-1").checked = true;
+                    $op1=$('input[name="select"]:checked').val();
+                    console.log($op1);
+                    setCookie();
+                    document.getElementById("opt-2").checked = false;
+                    document.getElementById("opt-3").checked = false;
+                    document.getElementById("opt-4").checked = false;
                     console.log("option-a selected");
-                    var inner=document.getElementById("opt-1").innerHTML;
-                    console.log(inner);
 
                 }
 
                 if ($key == 66 || $key == 98) {
-                    $("#opt-1").removeAttr("checked", true);
-                    $("#opt-2").attr("checked", true);
-                    $("#opt-3").removeAttr("checked", true);
-                    $("#opt-4").removeAttr("checked", true);
+                    document.getElementById("opt-2").checked = true;
+                    document.getElementById("opt-1").checked = false;
+                    document.getElementById("opt-3").checked = false;
+                    document.getElementById("opt-4").checked = false;
+                    $op2=$('input[name="select"]:checked').val();
+                    console.log($op2);
                     console.log("option-b selected");
                 }
 
                 if ($key == 67 || $key == 99) {
-                    $("#opt-1").removeAttr("checked", true);
-                    $("#opt-2").removeAttr("checked", true);
-                    $("#opt-3").attr("checked", true);
-                    $("#opt-4").removeAttr("checked", true);
+                    document.getElementById("opt-3").checked = true;
+                    document.getElementById("opt-1").checked = false;
+                    document.getElementById("opt-2").checked = false;
+                    document.getElementById("opt-4").checked = false;
+                    $op3=$('input[name="select"]:checked').val();
+                    console.log($op3);
                     console.log("option-c selected");
                 }
 
                 if ($key == 68 || $key == 100) {
 
-                    $("#opt-1").removeAttr("checked", true);
-                    $("#opt-2").removeAttr("checked", true);
-                    $("#opt-3").removeAttr("checked", true);
-                    $("#opt-4").attr("checked", true);
+                    document.getElementById("opt-4").checked = true;
+                    document.getElementById("opt-1").checked = false;
+                    document.getElementById("opt-3").checked = false;
+                    document.getElementById("opt-2").checked = false;
+                    $op4=$('input[name="select"]:checked').val();
+                    console.log($op4);
                     console.log("option-d selected");
                 }
 
@@ -248,7 +189,17 @@
                         }
                     })
 
-
+                    
+                    $.ajax({
+                        type: 'POST',
+                        url: 'correct_answer.php',
+                        data: { answer: $('input[name="select"]:checked').val(),
+                        question: $('textarea[name= "question"]').val()},
+                        // do these thing 
+                        success: function(response) {
+                        $('#result').html(response);
+                        }
+                  });
 
                 }
 
@@ -324,41 +275,7 @@
     })
 </script> -->
 
-    <!-- <script>
-    document.onkeydown = function (e) {
-        return false;
-    }   
-</script> -->
-
-
-    <!-- <script type="text/javascript">
-      document.onkeydown = function (e) {
-        e.preventDefault();
-      };
-    </script>
-
-    <script type="text/javascript">
-      document.onkeydown = function (e) {
-        var key = e.charCode || e.keyCode;
-        if (key == 65 || key == 66 || key == 67 || key == 68) {
-            var option = document.getElementsByClassName("options");
-            options.addEventListener("")
-
-          if (key == 65) {
-
-          } else if (key == 66) {
-          } else if (key == 67) {
-          } else {
-          }
-          // enter key do nothing
-        } else if (key == 37 || key == 38 || key == 39 || key == 40) {
-        } else {
-          e.preventDefault();
-        }
-      };
-    </script> -->
-
-    <!-- <script type="text/javascript">
+<script type="text/javascript">
         if (document.layers) {
             //Capture the MouseDown event.
             document.captureEvents(Event.MOUSEDOWN);
@@ -385,7 +302,72 @@
         document.oncontextmenu = function () {
             return false;
         };
-        </script> -->
+        </script>
+
+
+        <script>
+
+        ///to disable full sreen comment this part
+        function requestFullScreen(element) {
+                // Supports most browsers and their versions.
+                var requestMethod = element.requestFullScreen || element.webkitRequestFullScreen || element.mozRequestFullScreen || element.msRequestFullScreen;
+
+                if (requestMethod) { // Native full screen.
+                    requestMethod.call(element);
+                } else if (typeof window.ActiveXObject !== "undefined") { // Older IE.
+                    var wscript = new ActiveXObject("WScript.Shell");
+                    if (wscript !== null) {
+                        wscript.SendKeys("{F11}");
+                    }
+                }
+            }
+
+            var elem = document.body; // Make the body go full screen.
+            requestFullScreen(elem);
+
+            $(document).ready(function(){  
+                $(document).keydown(function(event) {  
+                //event.ctrlKey = check ctrl key is press or not  
+                //event.which = check for F7  
+                // event.which =check for v key  
+                if (event.ctrlKey==true && (event.which == '118' || event.which == '86')) {  
+                    event.preventDefault();  
+                    }  
+                });  
+            }); 
+
+
+
+        $(document).keydown(function (event) {
+        // Prevent F12/F11
+
+        if (event.keyCode == 123 || event.keyCode == 122|| event.keyCode == 27) {
+        return false;
+        }
+
+        // Prevent Ctrl+a = disable select all
+        // Prevent Ctrl+u = disable view page source
+        // Prevent Ctrl+s = disable save
+        if (event.ctrlKey && (event.keyCode === 1 || event.keyCode === 83 || event.keyCode ===65 )) {
+        return false;
+        }
+        //Prevent Alt and Tab
+        else if(event.keyCode===18 || event.keyCode === 9 || event.keyCode ===18 && event.keyCode === 9){
+        return false;
+        }
+
+        else if(event.keyCode==27){
+        return false;
+        }
+        // Prevent Ctrl+Shift+I = disabled debugger console using keys open
+        else if (event.ctrlKey && event.shiftKey && event.keyCode === 73)
+        {
+        return false;
+        }
+        });
+
+    </script>
+   
 </body>
 
 </html>
