@@ -11,3 +11,6 @@ create table user_info(user_name varchar(1000),password varchar(1000));
 create table online_test(Username_test varchar(1000),score int); // score wala the table
 
 //insertion  of the databases want to make it yourself ;
+
+//update purpose sql query;
+UPDATE `online_test` SET `userid` = '1' WHERE `online_test`.`score` = 0;
