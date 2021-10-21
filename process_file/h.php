@@ -36,10 +36,10 @@
           <hr>
 
           <label for="UserName" class="inputs">Registration ID/Roll Number:</label>
-          <input type="text" name= "username" style="outline: none;" class="form-control" placeholder="Username" autofocus>
+          <input type="text" name= "username" style="outline: none;" class="form-control" autocomplete="username" placeholder="Username" autofocus>
 
           <label for="Password" class="inputs">Password:</label>
-          <input type="password" name = "password" class="form-control" placeholder="Username">
+          <input type="password" name = "password" class="form-control" autocomplete="current-password" placeholder="Password">
           
           <div class="button-sub">
 
@@ -47,26 +47,13 @@
           </div>
       </form>
 
-
       <script>
-          ///to disable full sreen comment this part
-        function requestFullScreen(element) {
-                // Supports most browsers and their versions.
-                var requestMethod = element.requestFullScreen || element.webkitRequestFullScreen || element.mozRequestFullScreen || element.msRequestFullScreen;
+        $(window).on('focus', function () {
 
-                if (requestMethod) { // Native full screen.
-                    requestMethod.call(element);
-                } else if (typeof window.ActiveXObject !== "undefined") { // Older IE.
-                    var wscript = new ActiveXObject("WScript.Shell");
-                    if (wscript !== null) {
-                        wscript.SendKeys("{F11}");
-                    }
-                }
-            }
-
-            var elem = document.body; // Make the body go full screen.
-            requestFullScreen(elem);
-
+        });
+        $(window).on('blur', function () {
+            alert("this is yor 1st warning");
+        });
       </script>
   </div>
 </body>

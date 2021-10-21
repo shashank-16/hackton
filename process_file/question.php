@@ -2,6 +2,8 @@
 session_start(); // session is god
 
 ?>
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -37,15 +39,37 @@ session_start(); // session is god
 
                         <hr>
                         <div class="question-box">
+                            <?php
+                            include 'connective.php';
+                            $count=1;
+                            // $count=$_POST['count'];
+                            $query = "SELECT * FROM optionsheet where question_no ='{$count}' ";
+                        
+                            $result = mysqli_query($connection, $query) or die("database cant load");
+                            if (mysqli_num_rows($result) > 0) {
+                        
+                               while ($rowforjoin = mysqli_fetch_assoc($result)) {
 
-
+                            ?>
+                                <label for="question"></label><textarea disabled style="height: 100%; width:100%; border:2px solid green; border-radius: 8px; resize: none;" name ="question" id= "questions"><?php echo  $rowforjoin['question_id'] ?></textarea>
+                            
                         </div>
                     </div>
                     <hr>
 
                     <ul class="options">
 
+                        <li style="list-style: none;"><label for="option1"><input type="radio" id="opt-1" name="select" class="option-1" value="<?php echo  $rowforjoin['option1'] ?>"><?php echo  $rowforjoin['option1'] ?></label></li>
+                        <li style="list-style: none;"><label for="option1"><input type="radio" id="opt-2" name="select" class="option-1" value="<?php echo  $rowforjoin['option2'] ?>"><?php echo  $rowforjoin['option2'] ?></label></li>
+                        <li style="list-style: none;"><label for="option1"><input type="radio" id="opt-3" name="select" class="option-1" value="<?php echo  $rowforjoin['option3'] ?>"><?php echo  $rowforjoin['option3'] ?></label></li>
+                        <li style="list-style: none;"><label for="option1"><input type="radio" id="opt-4" name="select" class="option-1" value="<?php echo  $rowforjoin['option4'] ?>"><?php echo  $rowforjoin['option4'] ?></label></li>
+
                     </ul>
+
+                    <?php  
+                    }
+                    }?>
+                        
 
                     
                 </form>
@@ -60,20 +84,27 @@ session_start(); // session is god
                 <hr>
 
 
-                <div class="number-of-question">
+                <div class="number-of-question" style="width: 300px;">
                     <div id="menu-outer">
-                        <div class="table">
-                            <ul id="horizontal-list">
+                        <div class="table" style="display: flex; flex-grow: initial; justify-content: space-sround">
+                            <ul id="horizontal-list" style="margin: 8px; margin-bottom: 10px">
                                 <!-- Question panel -->
                                 <li id="q-1" class="no">1</li>
                                 <li id="q-2" class="no">2</li>
                                 <li id="q-3" class="no">3</li>
                                 <li id="q-3" class="no">4</li>
+                                <li id="q-1" class="no">5</li>
+                                <li id="q-2" class="no">6</li>
+                                <li id="q-3" class="no">7</li>
+                                <li id="q-3" class="no">8</li>
+                                <li id="q-1" class="no">9</li>
+                                <li id="q-2" class="no">10</li>
                             </ul>
                         </div>
                     </div>
 
                 </div>
+                <button id=" full" onclick="toggleFullScreen()" class="btn btn-primary"> fullscreen</button>
 
             </div>
         </div>
@@ -90,6 +121,10 @@ session_start(); // session is god
     </script>
 
     <script>
+
+
+
+        sessionStorage.setItem('username:','user_name')
 
         // function setCookie(name) {
         //     var expires = "";
@@ -109,7 +144,7 @@ session_start(); // session is god
 
 
         $(document).ready(function() {
-            $(document).keypress(function(e) {
+            $(document).keydown(function(e) {
 
                 var $key = e.charCode || e.keyCode;
 
@@ -120,7 +155,7 @@ session_start(); // session is god
                     document.getElementById("opt-1").checked = true;
                     $op1=$('input[name="select"]:checked').val();
                     console.log($op1);
-                    setCookie();
+                    // setCookie();
                     document.getElementById("opt-2").checked = false;
                     document.getElementById("opt-3").checked = false;
                     document.getElementById("opt-4").checked = false;
@@ -173,7 +208,6 @@ session_start(); // session is god
                         },
                         success: function(data) {
                             $(".question-box").html(data);
-                            // $(".options").html(data);
                         }
                     })
 
@@ -231,142 +265,111 @@ session_start(); // session is god
 
                     // getCookie();
                 } 
-                else {
+
+
+
+                //keys locked
+
+                else if(e.escape=true){
+                    console.log( "control || Alter || ctrl + alt closed");
+                    return false;
+                }
+
+                else if(e.ctrlKey && e.altKey)
+                {
+                    console.log("ctrl+alt closed");
+                    return false;
+                    
+                }
+                else if(e.ctrlKey || e.metaKey || e.keyCode==32 || e.shiftKey){
+                    console.log( "control || window || spacebar || shift");
+                    return false;
+                }
+                else if(e.keyCode==122 || e.keyCode==123){
+                    console.log("f11 || f12");
+                    return true;
+                }
+                else if(e.keyCode==27)
+                {
+                    console.log("i will not, I am escape!");
+                    return false;
+                }
+
+                else if( e.altKey && (e.keyCode==9))
+                {
+                    alert("You are violating the protocol!");
+                    return false;
+                }
+                // else if (e.metaKey==true && e.shiftKey==true && e.keyCode === 83)
+                // {
+                // e.preventDefault();
+                // }
+
+                else if(e.keyCode==13){
+                    return true;
+                }
+                
+
+                else
+                {
                     e.preventDefault();
                 }
-
-
-                function getKeyCodeEvent(ev) {
-                    var code = (document.all) ?
-                        event.keyCode : ev.which;
-
-                    var alt = (document.all) ?
-                        event.altKey :
-                        ev.modifiers & Event.ALT_MASK;
-
-                    if (document.all) {
-
-                        // Example ALT+F4
-                        if (alt && code == 115) {
-                            try {
-                                // Your requirements
-                                console.log("close");
-                            } catch (e) {}
-                        }
-                    }
-                }
+                
             })
 
         })
+
     </script>
 
-
-    <!-- <script>
-    $(document).ready(function(){
-        $(document).keypress(function(e){
-            var $key = e.charCode || e.keyCode;
-            if($key==377 || $key==375)
-            {
-                // $where++;
-                console.log("hii")
-
+    <script type="text/javascript">
+            if (document.layers) {
+                //Capture the MouseDown event.
+                document.captureEvents(Event.MOUSEDOWN);
+            
+                //Disable the OnMouseDown event handler.
+                document.onmousedown = function () {
+                    return false;
+                };
             }
-        })
-    })
-</script> -->
-
-<script type="text/javascript">
-        if (document.layers) {
-            //Capture the MouseDown event.
-            document.captureEvents(Event.MOUSEDOWN);
-         
-            //Disable the OnMouseDown event handler.
-            document.onmousedown = function () {
+            else {
+                //Disable the OnMouseUp event handler.
+                document.onmouseup = function (e) {
+                    if (e != null && e.type == "mouseup") {
+                        //Check the Mouse Button which is clicked.
+                        if (e.which == 0 && e.which == 1) {
+                            //If the Button is middle or right then disable.
+                            return false;
+                        }
+                    }
+                };
+            }
+            
+            //Disable the Context Menu event.
+            document.oncontextmenu = function () {
                 return false;
             };
-        }
-        else {
-            //Disable the OnMouseUp event handler.
-            document.onmouseup = function (e) {
-                if (e != null && e.type == "mouseup") {
-                    //Check the Mouse Button which is clicked.
-                    if (e.which == 0 && e.which == 1) {
-                        //If the Button is middle or right then disable.
-                        return false;
-                    }
-                }
-            };
-        }
-         
-        //Disable the Context Menu event.
-        document.oncontextmenu = function () {
-            return false;
-        };
-        </script>
-
-
-        <script>
-
-        ///to disable full sreen comment this part
-        function requestFullScreen(element) {
-                // Supports most browsers and their versions.
-                var requestMethod = element.requestFullScreen || element.webkitRequestFullScreen || element.mozRequestFullScreen || element.msRequestFullScreen;
-
-                if (requestMethod) { // Native full screen.
-                    requestMethod.call(element);
-                } else if (typeof window.ActiveXObject !== "undefined") { // Older IE.
-                    var wscript = new ActiveXObject("WScript.Shell");
-                    if (wscript !== null) {
-                        wscript.SendKeys("{F11}");
-                    }
-                }
-            }
-
-            var elem = document.body; // Make the body go full screen.
-            requestFullScreen(elem);
-
-            $(document).ready(function(){  
-                $(document).keydown(function(event) {  
-                //event.ctrlKey = check ctrl key is press or not  
-                //event.which = check for F7  
-                // event.which =check for v key  
-                if (event.ctrlKey==true && (event.which == '118' || event.which == '86')) {  
-                    event.preventDefault();  
-                    }  
-                });  
-            }); 
-
-
-
-        $(document).keydown(function (event) {
-        // Prevent F12/F11
-
-        if (event.keyCode == 123 || event.keyCode == 122|| event.keyCode == 27) {
-        return false;
-        }
-
-        // Prevent Ctrl+a = disable select all
-        // Prevent Ctrl+u = disable view page source
-        // Prevent Ctrl+s = disable save
-        if (event.ctrlKey && (event.keyCode === 1 || event.keyCode === 83 || event.keyCode ===65 )) {
-        return false;
-        }
-        //Prevent Alt and Tab
-        else if(event.keyCode===18 || event.keyCode === 9 || event.keyCode ===18 && event.keyCode === 9){
-        return false;
-        }
-
-        else if(event.keyCode==27){
-        return false;
-        }
-        // Prevent Ctrl+Shift+I = disabled debugger console using keys open
-        else if (event.ctrlKey && event.shiftKey && event.keyCode === 73)
-        {
-        return false;
-        }
-        });
-
     </script>
+
+    <script>
+        function toggleFullScreen() {
+        if (!document.fullscreenElement) {
+            document.documentElement.requestFullscreen();
+        } 
+        else {
+            if (document.exitFullscreen) {
+            document.exitFullscreen();
+            }
+        }
+        }
+    </script>
+    <script>
+        $(window).on('focus', function () {
+
+        });
+        $(window).on('blur', function () {
+            alert("this is yor 1st warning");
+        });
+      </script>
    
 </body>
 
