@@ -30,7 +30,7 @@ if(isset($_POST["submit"]))
     else 
     {
         echo(1);
-        header("Location: home.php");
+        header("Location: h.php");
     }
 }
 else {

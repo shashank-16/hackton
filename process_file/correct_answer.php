@@ -3,7 +3,6 @@
 <?php
 session_start();
 
-// echo($_SESSION["score"]);
 //data json -> process and databases 
 
 include 'connective.php';

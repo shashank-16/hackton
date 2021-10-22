@@ -117,7 +117,7 @@ session_start(); // session is god
 
 
     <script>
-        where = 1;
+       var  where = 1;
     </script>
 
     <script>
@@ -196,8 +196,8 @@ session_start(); // session is god
 
                 // M button for next
                 if ($key == 77 || $key == 109) {
-
-
+                    
+                   var  total_question=4;
 
                     where++;
                     $.ajax({
@@ -223,7 +223,10 @@ session_start(); // session is god
                         }
                     })
 
-                    
+                    if(where<=total_question)
+                    {
+                        // console.log(where<=total_question);
+
                     $.ajax({
                         type: 'POST',
                         url: 'correct_answer.php',
@@ -234,8 +237,28 @@ session_start(); // session is god
                         $('#result').html(response);
                         }
                   });
-
                 }
+                    
+
+                    if(where>total_question){
+                   
+
+                        
+                        $.ajax({
+                        type: 'POST',
+                        url: 'exam_end.php'
+                       
+                        // do these thing 
+                        
+                  });
+                }
+                      
+                            //it may call it i think
+                  
+                }
+
+
+                
 
                 //n button for previous
                 if ($key == 78 || $key == 110) {
