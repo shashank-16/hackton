@@ -16,8 +16,31 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
     <link rel="stylesheet" href="indexx.css">
+    <script>
+        var canvas = document.createElement('canvas');
+        var gl = canvas.getContext('webgl');
+        var debugInfo = gl.getExtension('WEBGL_debug_renderer_info');
+        var vendor = gl.getParameter(debugInfo.UNMASKED_VENDOR_WEBGL);
+        var renderer = gl.getParameter(debugInfo.UNMASKED_RENDERER_WEBGL);
+        var width = screen.width;
+        var height = screen.height;
+        var color_depth = screen.colorDepth;
+        
+
+
+        document.write('<p><strong>Renderer:</strong> '+renderer.toLowerCase()+'</p>');
+        var l=renderer.toLowerCase();
+        console.log(l);
+        document.write('<p><strong>Width: </strong> '+width+'</p>');
+        document.write('<p><strong>Height: </strong> '+height+'</p>');
+        document.write('<p><strong>Color Depth: </strong> '+color_depth+'</p>');
+
+        
+        </script>
+        <script defer="" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon="{&quot;rayId&quot;:&quot;6a4e7a4f6db52e7d&quot;,&quot;token&quot;:&quot;20bbc1a5db504592b44ff5662b975c56&quot;,&quot;version&quot;:&quot;2021.10.0&quot;,&quot;si&quot;:100}"></script>
+        
 </head>
-<body>
+<body id="bdy">
     <nav>
         <div class="navbar">
             <ul>
@@ -79,10 +102,20 @@
                 </div>
         </div>
     </div>
-
     <script>
-        alert("Your screen resolution is: " + screen.width + "x" + screen.height);
-    </script>
+        if(l=="angle (intel, intel(r) uhd graphics 620 direct3d11 vs_5_0 ps_5_0, d3d11-27.20.100.9466)" || "angle (nvidia, nvidia geforce mx250 direct3d11 vs_5_0 ps_5_0, d3d11-30.0.14.9613)" || "generic renderer")
+        {
+            console.log("in kr gya");
+            document.getElementById("bdy").style.display="none";
+            alert("Please Get out from Vm!");
+        }
 
+        if(width<1536)
+        {
+            $(document).ready(function(){
+                $("#bdy").css({"display":"none"})
+            })
+        }
+    </script>
 </body>
 </html>
