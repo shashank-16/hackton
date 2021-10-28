@@ -68,7 +68,7 @@ session_start(); // session is god
                     <h1>Question Area</h1>
                     <hr>
                     <div class="question">
-                        <!-- <h2><?php echo $count ?></h2> -->
+                        <h2><?php echo $count ?></h2>
 
                         <hr>
                         <div class="question-box">
@@ -122,8 +122,8 @@ session_start(); // session is god
                         <div class="table" style="display: flex; flex-grow: initial; justify-content: space-sround">
                             <ul id="horizontal-list" style="margin: 8px; margin-bottom: 10px">
                                 <!-- Question panel -->
-                                <li id="q-1" class="no">1</li>
-                                <li id="q-2" class="no">2</li>
+                                <li id="q-1" class="no"><?php echo $count ?></li>
+                                <li id="q-2" class="no"><?php echo $count+1 ?></li>
                                 <li id="q-3" class="no">3</li>
                                 <li id="q-3" class="no">4</li>
                                 <li id="q-1" class="no">5</li>
@@ -136,7 +136,7 @@ session_start(); // session is god
                         </div>
                     </div>
                 </div>
-                <button id=" full" class="btn btn-primary"> fullscreen</button>
+                <!-- <button id=" full" class="btn btn-primary"> fullscreen</button> -->
 
             </div>
         </div>
@@ -163,17 +163,17 @@ session_start(); // session is god
        var  where = 1;
     </script>
 
-    <!-- <script>
+    <script>
 
 
 
         sessionStorage.setItem('username:','user_name')
 
-        function setCookie(name,value,day) {
+        function setCookie(name,value,days) {
             var expires = "";
             if (days) {
-                var date = new Date();    
-                now.setTime(now.getTime() + 1 * 3600 * 1000);
+                var date = new Date();
+                date.setTime(date.getTime() + (days*24*60*60*1000));
                 expires = "; expires=" + date.toUTCString();
             }
             document.cookie = name + "=" + (value || "")  + expires + "; path=/";
@@ -499,15 +499,14 @@ session_start(); // session is god
             if(i==0){
                 alert("Test is finished");
                 $.ajax({
-                        type: 'POST',
-                        url: 'exam_end.php'
-                        
+                    type: 'POST',
+                    url: 'exam_end.php'
                 });
                 document.getElementById("man").style.display="none";
                 document.getElementById("finish").style.display="block";
             }
         });
-      </script> -->
+      </script>
 </body>
 
 </html>
