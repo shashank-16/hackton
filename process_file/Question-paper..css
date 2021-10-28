@@ -6,7 +6,9 @@
 }
 
 
-
+body{
+    height:100vh;
+}
 a{
     text-decoration: none;
     color: white;
@@ -36,6 +38,7 @@ nav{
 {
     display: flex;
     padding: 20px;
+    height:80vh;
 }
 
 
@@ -57,31 +60,34 @@ nav{
 
 .proter-region
 {
-    height: 600px;
-    border: 2px solid red;
+    height: 100%;
+    background-color:#FED2AA;
+    /* border: 2px solid red; */
     padding: 10px;
     margin-left: 50px;
+    border-radius:10px;
 }
 
 .video
 {
-
     height: 200px;
     width: 300px;
-    border: 2px solid green;
+    border: 2px solid white;
     border-radius: 6px;
-    /* margin-left: 30px; */
+    background-color: blanchedalmond;
 }
 
 
 .video>p{
     text-align: center;
+    margin-top:27%;
+    font-size:30px;
 }
 
 
 .number-of-question ul li {
    list-style: none;
-   border: 1pz solid black;
+   border: 1px solid black;
 }
 
 
