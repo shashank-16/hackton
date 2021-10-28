@@ -1,0 +1,100 @@
+*{
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+    overflow-y: hidden;
+}
+
+a{
+    text-decoration: none;
+    color: white;
+}
+
+nav{
+    background-image: url('wallppr.jpg');
+    background-position: center;
+}
+
+
+.navbar ul li{
+    list-style: none;
+    display: inline-block;
+    margin: 0px 20px 0 20px;
+    font-size: 30px;
+}
+.navbar ul li a:hover{
+    /* background-color: rgba(0, 0, 0, 0.6); */
+    color: seashell;
+
+}
+
+
+
+
+
+.main{
+    display: flex;
+}
+
+
+
+.write-up{
+    height: 90vh;
+    width: 50%;
+    /* border: 2px solid red; */
+    background-color: rgb(121, 224, 121);
+}
+
+.write-up svg{
+    margin-top: 170px;
+    margin-left: 100px;
+}
+
+.write-up pre h1{
+    font-weight: 700;
+}
+
+
+
+
+.log{
+    width: 50%;
+}
+
+.login{
+    height: 90vh;
+    display: block;
+    justify-content: space-around;
+}
+
+
+
+.proctor{
+    margin-bottom: 50px;
+    height: 40vh;
+    width: 100%;
+    background-color: rgb(13, 179, 230);
+    display: flex;
+    justify-content: space-evenly;
+    padding: 40px;
+}
+.proctor h1{
+    text-align: left;
+    margin-top: 10%;
+}
+
+
+
+.candidate{
+    height: 40vh;
+    width: 100%;
+    background-color: rgb(211, 91, 11);
+    display: flex;
+    justify-content: space-evenly;
+    padding: 40px;
+}
+.candidate h1{
+    text-align: right;
+    margin-top: 10%;
+}
+

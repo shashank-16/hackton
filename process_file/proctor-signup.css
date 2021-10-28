@@ -1,0 +1,76 @@
+*{
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+}
+
+
+
+a{
+    text-decoration: none;
+    color: white;
+}
+
+nav{
+    background-image: url('wallppr.jpg');
+    background-position: center;
+}
+
+
+.navbar ul li{
+    list-style: none;
+    display: inline-block;
+    margin: 0px 20px 0 20px;
+    font-size: 30px;
+}
+.navbar ul li a:hover{
+    /* background-color: rgba(0, 0, 0, 0.6); */
+    color: seashell;
+
+}
+
+
+.main{
+
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.heading{
+    text-align: center;
+    font-size: 40px;
+}
+
+nav p{
+    font-size: 60px;
+
+    text-align: center;
+    background: linear-gradient(grey,blue);
+}
+
+
+
+form{
+    width: 600px;
+    border: 2px solid black;
+    border-radius: 10px;
+    padding: 30px;
+}
+
+h2{
+    color: black;
+    text-align: center;
+}
+
+label{
+    font-size: 20px;
+    
+}
+
+.button-sub{
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}

@@ -12,7 +12,7 @@ if(mysqli_num_rows($query_existing)>0)
 {
     $modify_record="UPDATE `exam_record` SET `total_score` ={$_SESSION["score"]}  WHERE `user_name` = '{$_SESSION["username"]}'";    
     $modify_query=mysqli_query($connection,$modify_record) or die("nope bitch");
-    // header("Location: h.php");
+    header("Location: Exam-end.html");
     // echo("record has been modfiy");
     
 }

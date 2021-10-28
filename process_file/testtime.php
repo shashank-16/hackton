@@ -24,18 +24,19 @@ if(isset($_POST["submit"]))
         $putting_name= mysqli_query($connection,$sql_username_insertion_in_online_test) or die($username);
         
       
-        header("Location: question.php");
+        header("Location: Question-paper.php");
 
     }
     else 
     {
         echo(1);
-        header("Location: h.php");
+        header("Location: canndicate-login.php");
     }
 }
 else {
     echo(10);
 }
+
 
 
 
