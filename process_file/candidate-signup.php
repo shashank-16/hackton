@@ -18,7 +18,7 @@
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Font+Name">
-    <link rel="stylesheet" href="candidate-signup.css">
+    <link rel="stylesheet" href="candidate--signup.css">
 </head>
 <body>
     <div class=" col signup_form">
@@ -62,26 +62,29 @@
 
         <div class="col"> 
             <label for="Email">Email</label>
-            <input type="text" class="form-control" id="Usermail" name = "Email" autocomplete="Email" placeholder="Email">
+            <input type="email" class="form-control" id="Usermail" name = "Email" autocomplete="Email" required placeholder="Email">
         </div>
 
         <div class="col"> 
             <label for="Password">Password</label>
-            <input type="password" autocomplete="current-password" class="form-control" placeholder="Password">
+            <input type="password" autocomplete="current-password" class="form-control" required placeholder="Password">
         </div>
 
         <div class="col"> 
             <label for="Password">Confirm Password</label>
-            <input type="password" autocomplete="current-password"  name = "password" class="form-control" placeholder="Password">
+            <input type="password" autocomplete="current-password"  name = "password" class="form-control" required placeholder="Password">
         </div>
         <div class="col"> 
-            <button type="submit" onclick="hello()" name="submit" class="btn-sm btnn" >Register</button>
+            <button type="submit" onclick="hello()" name="submit" class="btn-sm btnn btn-primary" >Register</button>
+        </div>
+        <div class="login">
+            <p>Registered Candidate <a href="candidate-login.php">Login</a> here.</p>
         </div>
     </form>
 
     <script>
         function hello(){
-            alert(document.getElementById=("Usermail").value + "Sucessfully Registred");
+            alert(document.getElementById=("Usermail").val() + "Sucessfully Registred");
         }
     </script>
 

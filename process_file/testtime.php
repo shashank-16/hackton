@@ -24,7 +24,7 @@ if(isset($_POST["submit"]))
         $putting_name= mysqli_query($connection,$sql_username_insertion_in_online_test) or die($username);
         
       
-        header("Location: Question-paper.php");
+        header("Location: Key-bindings.html");
 
     }
     else 
