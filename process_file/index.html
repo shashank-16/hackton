@@ -103,12 +103,11 @@
         </div>
     </div>
     <script>
-        // if(l=="angle (intel, intel(r) uhd graphics 620 direct3d11 vs_5_0 ps_5_0, d3d11-27.20.100.9466)" || "angle (nvidia, nvidia geforce mx250 direct3d11 vs_5_0 ps_5_0, d3d11-30.0.14.9613)" || "generic renderer")
-        // {
-        //     console.log("in kr gya");
-        //     document.getElementById("bdy").style.display="none";
-        //     alert("Please Get out from Vm!");
-        // }
+        if(l=="generic renderer")
+        {
+            document.getElementById("bdy").style.display="none";
+            alert("Please Get out from Vm!");
+        }
 
         if(width<1536)
         {
@@ -117,11 +116,5 @@
             })
         }
     </script>
-    <script>
-        function mouseLeave() {
-            document.getElementById("bdy").style.display = "none";
-            alert("warning No."+" "+ i);
-        }
-      </script>
 </body>
 </html>

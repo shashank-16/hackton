@@ -31,16 +31,19 @@
             margin: auto;
             box-shadow: 1px -1px 7px grey;
         }
-        p{
+        #head p{
             font-size: 20px;
             text-align: center;
-            color: red;
-
+            color: rgb(255, 255, 255);
         }
         label{
             font-size: 20px;
             margin-top: 20px;
             margin-left: 20px;
+        }
+
+        ul li{
+            color: red;
         }
     </style>
 </head>
@@ -49,9 +52,18 @@
         <h1>
             All The Very Best For Your Exam!
         </h1>
+        <ul>
+            <li>Do Not choose any special character.</li>
+            <li>Choose only Alphabets.</li>
+            <li>You can choose only once for this exam.</li>
+            <li>You can't <strong>Alter</strong> it, once you lock.</li>
+        </ul>
         <hr>
         <div class="main form-group">
-            <p>Enter your own Choise Key for Selection of Option.</p>
+            <div id="head" style="background-color: royalblue;">
+                <p>Enter your own Choise Key for Selection of Option.</p>
+            </div>
+            <hr>
             <label for="option"><b>Option-1</b><input id="option-1" class="form-control" type="text" name="opt-key-1" autofocus ></label>
             <span id="op1"></span>
             <label for="option"><b>Option-2</b><input id="option-2" class="form-control" type="text" name="opt-key-2"></label>
