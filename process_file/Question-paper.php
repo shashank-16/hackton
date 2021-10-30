@@ -162,6 +162,8 @@ session_start(); // session is god
 
     <script>
        var  where = 1;
+       var  total_question=4;
+
     </script>
 
     <script>
@@ -170,15 +172,15 @@ session_start(); // session is god
 
         sessionStorage.setItem('username:','user_name')
 
-        function setCookie(name,value,day) {
-            var expires = "";
-            if (days) {
-                var date = new Date();    
-                now.setTime(now.getTime() + 1 * 3600 * 1000);
-                expires = "; expires=" + date.toUTCString();
-            }
-            document.cookie = name + "=" + (value || "")  + expires + "; path=/";
-        }
+        function setCookie(name,value,days) {
+        var expires = "";
+         if (days) {
+        var date = new Date();
+        date.setTime(date.getTime() + (days2460601000));
+        expires = "; expires=" + date.toUTCString();
+    }
+    document.cookie = name + "=" + (value || "")  + expires + "; path=/";
+}
         function getCookie(name) {
             var nameEQ = name + "=";
             var ca = document.cookie.split(';');
@@ -251,7 +253,6 @@ session_start(); // session is god
                 // M button for next
                 if ($key == 77 || $key == 109) {
                     
-                   var  total_question=6;
 
                     where++;
                     $.ajax({
@@ -317,19 +318,21 @@ session_start(); // session is god
                         $('#result').html(response);
                         }
                   });
-                }
-                    
-
-                    if(where>total_question){
-                   
-                        $.ajax({
+                    if(where==total_question)
+                    {
+                
+                    $.ajax({
                         type: 'POST',
                         url: 'exam_end.php' 
                         
                     });
                     document.getElementById("man").style.display="none";
                     document.getElementById("finish").style.display="block";
-                    }
+                 }
+                    
+                 }
+                
+
                 }
 
 

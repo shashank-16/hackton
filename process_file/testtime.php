@@ -30,7 +30,7 @@ if(isset($_POST["submit"]))
     else 
     {
         echo(1);
-        header("Location: canndicate-login.php");
+        header("Location: candidate-login.php");
     }
 }
 else {

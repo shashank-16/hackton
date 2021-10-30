@@ -40,19 +40,19 @@
             </ul>
 
             <ul>
-                <a href="proctor-signup.html"><li>Proctor SignUp</li></a>
+                <a href="proctor-signup.php"><li>Proctor SignUp</li></a>
             </ul>
         </div>
     </nav>
   <hr>
   <div class="heading"> Online Exam Portal</div>
   <div class="main" >
-      <form action="" class="form-group" method="POST">
+      <form action="<?php echo $_SERVER['PHP_SELF']; ?>" class="form-group" method="POST">
           <h2>Proctor Login</h2>
 
           <hr>
           <label for="Registered-ID" class="inputs">Registered ID:</label>
-          <input type="text" name= "Registered ID" style="outline: none;" class="form-control" autocomplete="Registered ID" placeholder="Registered ID" autofocus>
+          <input type="text" name= "Registered_ID" style="outline: none;" class="form-control" autocomplete="Registered ID" placeholder="Registered ID" autofocus>
 
           <label for="Email" class="inputs">E-Mail</label>
           <input type="email" name= "username" style="outline: none;" class="form-control" autocomplete="Email" placeholder="Email" autofocus>
@@ -63,6 +63,41 @@
           <div class="button-sub">
             <button type = "submit" id="login" name ="login" class="btn btn-lg btn-primary">Login</button>
           </div>
+
+          <?php
+          
+          include('connective.php');
+
+          if(isset($_POST["login"]))
+          {
+              $institute=$_POST["Registered_ID"];
+
+              $username=$_POST["username"];
+              $password=$_POST["password"];
+               $sql="SELECT *FROM teacher_info where Username= '{$username}' and Password='{$password}'";
+            
+                $query1=mysqli_query($connection,$sql) or die("didnt login");
+
+                if(mysqli_num_rows($query1)>0)
+                {
+                     echo(10);
+                    header("Location: Question_upload.php");
+
+                }
+
+                
+                else{
+                    echo(1);
+                    header("Location: proctor-login.php");
+                }
+
+            }
+
+          
+          ?>
+      <form>
+
+
       </form>
 </body>
 </html>

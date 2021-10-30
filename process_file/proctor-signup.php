@@ -40,21 +40,21 @@
             </ul>
 
             <ul>
-                <a href="proctor-login.html" ><li>Proctor Login</li></a>
+                <a href="proctor-login.php" ><li>Proctor Login</li></a>
             </ul>
         </div>
     </nav>
   <hr>
   <!-- <div class="heading"> Online Exam Portal</div> -->
   <div class="main" >
-      <form action="" class="form-group" method="POST">
+      <form action="<?php  $_SERVER['PHP_SELF']; ?>" class="form-group" method="POST">
           <h2>Proctor SignUp</h2>
         <hr>
           <!-- <label for="Provided-id" class="inputs">Registration ID:</label>
           <input type="text" name= "Provided-id" style="outline: none;" class="form-control" autocomplete="Registration-id" placeholder="Provided-ID by University" autofocus> -->
 
           <label for="institute" class="inputs">Institute Name:</label>
-          <input type="text" name= "Institute Name" style="outline: none;" class="form-control" autocomplete="Institute Name" placeholder="Institute Name">
+          <input type="text" name= "Institute_Name" style="outline: none;" class="form-control" autocomplete="Institute Name" placeholder="Institute Name">
 
 
           <label for="Email" class="inputs">E-Mail</label>
@@ -67,12 +67,34 @@
           <input type="password" name = "password" class="form-control" autocomplete="current-password" placeholder="Password">
 
           <label for="Password" class="inputs">Confirm Password:</label>
-          <input type="password" name = "password" class="form-control" autocomplete="confirm-password" placeholder="Confirm Password">
+          <input type="password" name = "Confirm_password" class="form-control" autocomplete="confirm-password" placeholder="Confirm Password">
           
           <div class="button-sub">
 
             <button type = "submit" id="Register" name ="Register" class="btn btn-lg btn-primary">Register</button>
           </div>
+
+          <?php 
+          
+          include 'connective.php';
+
+
+        if(isset($_POST["Register"]))
+        {
+            $Institution=$_POST["Institute_Name"];
+            $username_teacher=$_POST["email"];
+            $password_teacher=$_POST["Confirm_password"];
+
+            $sql_teacher="INSERT INTO teacher_info(`Username`,`Password`,`Institute_name`) VALUES('{$username_teacher}','{$password_teacher}','{$Institution}')";
+
+            mysqli_query($connection,$sql_teacher) or die("failed");
+
+            // mysqli_close($connection);
+
+
+        }
+
+                ?>
       </form>
 </body>
 </html>

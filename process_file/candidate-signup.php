@@ -31,12 +31,12 @@
         <div class="row">
             <div class="col">
                 <label for="ID">Student ID</label>
-                <input type="text" class="form-control" placeholder="Student ID">
+                <input type="text"  name ="student_id"class="form-control" placeholder="Student ID">
                 
             </div>
             <div class="col">
                 <label for="ID">Branch</label>
-                <input type="text" class="form-control" placeholder="Branch">
+                <input type="text" name ="branch" class="form-control" placeholder="Branch">
                 
             </div>
         </div>
@@ -44,12 +44,12 @@
         <div class="row">
             <div class="col">
                 <label for="Name">First Name</label>
-                <input type="text" class="form-control" autocomplete="First-name" placeholder="First Name">
+                <input type="text" name ="F_name" class="form-control" autocomplete="First-name" placeholder="First Name">
                 
             </div>
             <div class="col">
                 <label for="Name">Last Name</label>
-                <input type="text" class="form-control" autocomplete="Last-name" placeholder="Last Name">
+                <input type="text" name = "L_name" class="form-control" autocomplete="Last-name" placeholder="Last Name">
             </div>
         </div>
         
@@ -85,22 +85,32 @@
         }
     </script>
 
-    <?php
+<?php
 
-    include 'connective.php';
+include 'connective.php';
 
-    if(isset($_POST["submit"]))
-    {
-    $username_for_student=$_POST["Email"];
-    $password_of_student=$_POST["password"];
 
-    $sql="INSERT INTO user_info(user_name,password) values('{$username_for_student}','{$password_of_student}')";
+if(isset($_POST["submit"]))
+{
+$username_for_student=$_POST["Email"];
+$password_of_student=$_POST["password"];
+$name= $_POST["F_name"];
+// $gender=$_POST["gender"];
+$student_ID=$_POST["student_id"];
+$branch=$_POST["branch"];
 
-    $query= mysqli_query($connection,$sql);
 
-    }
 
-    ?>
+
+$sql="INSERT INTO user_info(`user_name`,`password`,`student_Id`,`branch`,`name_student`)
+ values('{$username_for_student}','{$password_of_student}','{$student_ID}','{$branch}','{$name}')";
+
+
+$query= mysqli_query($connection,$sql) or die("FAIL TO UPLOAD");
+
+}
+
+?>
     
     
 </div>
