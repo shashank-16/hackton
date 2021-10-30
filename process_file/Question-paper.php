@@ -47,7 +47,7 @@ session_start(); // session is god
     </style>
 </head> 
 
-<body>
+<body id="bdy" onmouseleave="mouseLeave()" onmouseenter="mouseEnter()" style="visibility: visible;">
     <div class="">
     <nav>
         <div class="navbar">
@@ -68,14 +68,10 @@ session_start(); // session is god
                     <h1>Question Area</h1>
                     <hr>
                     <div class="question">
-                        <!-- <h2><?php echo $count ?></h2> -->
-
-                        <hr>
                         <div class="question-box">
                             <?php
                             include 'connective.php';
                             $count=1;
-                            // $count=$_POST['count'];
                             $query = "SELECT * FROM optionsheet where question_no ='{$count}' ";
                         
                             $result = mysqli_query($connection, $query) or die("database cant load");
@@ -112,7 +108,7 @@ session_start(); // session is god
 
             <div class="proter-region">
                 <div class="video">
-                    <p>video-view</p>
+                    <p>VIDEO-VIEW</p>
                 </div>
                 <hr>
 
@@ -122,8 +118,8 @@ session_start(); // session is god
                         <div class="table" style="display: flex; flex-grow: initial; justify-content: space-sround">
                             <ul id="horizontal-list" style="margin: 8px; margin-bottom: 10px">
                                 <!-- Question panel -->
-                                <li id="q-1" class="no">1</li>
-                                <li id="q-2" class="no">2</li>
+                                <li id="q-1" class="no"><?php echo $count ?></li>
+                                <li id="q-2" class="no"><?php echo $count+1 ?></li>
                                 <li id="q-3" class="no">3</li>
                                 <li id="q-3" class="no">4</li>
                                 <li id="q-1" class="no">5</li>
@@ -135,9 +131,8 @@ session_start(); // session is god
                             </ul>
                         </div>
                     </div>
-
                 </div>
-                <button id=" full" class="btn btn-primary"> fullscreen</button>
+                <!-- <button id=" full" class="btn btn-primary"> fullscreen</button> -->
 
             </div>
         </div>
@@ -173,14 +168,14 @@ session_start(); // session is god
         sessionStorage.setItem('username:','user_name')
 
         function setCookie(name,value,days) {
-        var expires = "";
-         if (days) {
-        var date = new Date();
-        date.setTime(date.getTime() + (days2460601000));
-        expires = "; expires=" + date.toUTCString();
-    }
-    document.cookie = name + "=" + (value || "")  + expires + "; path=/";
-}
+            var expires = "";
+            if (days) {
+                var date = new Date();
+                date.setTime(date.getTime() + (days*3600*3600));
+                expires = "; expires=" + date.toUTCString();
+            }
+            document.cookie = name + "=" + (value || "")  + expires + "; path=/";
+        }
         function getCookie(name) {
             var nameEQ = name + "=";
             var ca = document.cookie.split(';');
@@ -200,10 +195,15 @@ session_start(); // session is god
         $(document).ready(function() {
             $(document).keydown(function(e) {
 
-                var $key = e.charCode || e.keyCode;
-
-                if ($key == 65 || $key == 97) {
-                    console.log("inside first");
+                var $key = e.keyCode;
+                console.log("$key: " + $key)
+                var key1 = sessionStorage.getItem("option-1");
+                var key2 = sessionStorage.getItem("option-2")
+                var key3 = sessionStorage.getItem("option-3")
+                var key4 = sessionStorage.getItem("option-4")
+                console.log("key1: " + key1)
+                if ($key == key1-32) {
+                    // console.log();
                     
                     document.getElementById("opt-1").checked = true;
                     $op1=$('input[name="select"]:checked').val();
@@ -216,7 +216,7 @@ session_start(); // session is god
 
                 }
 
-                if ($key == 66 || $key == 98) {
+                if ($key == key2-32) {
                     document.getElementById("opt-2").checked = true;
                     document.getElementById("opt-1").checked = false;
                     document.getElementById("opt-3").checked = false;
@@ -227,7 +227,7 @@ session_start(); // session is god
                     console.log("option-b selected");
                 }
 
-                if ($key == 67 || $key == 99) {
+                if ($key == key3-32) {
                     document.getElementById("opt-3").checked = true;
                     document.getElementById("opt-1").checked = false;
                     document.getElementById("opt-2").checked = false;
@@ -238,7 +238,7 @@ session_start(); // session is god
                     console.log("option-c selected");
                 }
 
-                if ($key == 68 || $key == 100) {
+                if ($key == key4-32) {
 
                     document.getElementById("opt-4").checked = true;
                     document.getElementById("opt-1").checked = false;
@@ -251,7 +251,7 @@ session_start(); // session is god
                 }
 
                 // M button for next
-                if ($key == 77 || $key == 109) {
+                if ($key == 39) {
                     
 
                     where++;
@@ -339,7 +339,7 @@ session_start(); // session is god
                 
 
                 //n button for previous
-                if ($key == 78 || $key == 110) {
+                if ($key == 37) {
                     where--;
                     $.ajax({
                         url: "Question-Render.php",
@@ -457,6 +457,7 @@ session_start(); // session is god
                 };
             }
             else {
+    
                 //Disable the OnMouseUp event handler.
                 document.onmousedown = function (e) {
                     if (e != null && e.type == "mousedown") {
@@ -490,9 +491,12 @@ session_start(); // session is god
         }
         window.onload="toggleFullScreen()";
     </script>
-    <script>
+    <!-- <script>
         var i=4;
         $(window).on('focus', function () {
+            function mouseLeave() {
+            alert("warning! Don't Do this again");
+        }
 
         });
         $(window).on('blur', function () {
@@ -502,14 +506,26 @@ session_start(); // session is god
             if(i==0){
                 alert("Test is finished");
                 $.ajax({
-                        type: 'POST',
-                        url: 'exam_end.php'
-                        
+                    type: 'POST',
+                    url: 'exam_end.php'
                 });
                 document.getElementById("man").style.display="none";
                 document.getElementById("finish").style.display="block";
             }
         });
+      </script> -->
+
+      <script>
+
+        // if(mouseLeave)
+        // {
+        //     function mouseLeave() {
+        //     alert("warning! Don't Do this again");
+        // }
+        // }
+        // else{
+
+        // }
       </script>
 </body>
 

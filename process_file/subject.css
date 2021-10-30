@@ -1,0 +1,74 @@
+body{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+
+
+a{
+    text-decoration: none;
+    color: white;
+}
+
+nav{
+    background-image: url('wallppr.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+
+.navbar ul li{
+    list-style: none;
+    display: inline-block;
+    margin: 0px 20px 0 20px;
+    font-size: 30px;
+}
+.navbar ul li a:hover{
+    /* background-color: rgba(0, 0, 0, 0.6); */
+    color: seashell;
+
+}
+
+
+.main{
+    height:100%;
+    width:100%;
+    padding:100px;
+    display:flex;
+    flex-wrap:wrap;
+}
+.sub-div{
+    border:3px solid rgb(0, 0, 0);
+    width:250px;
+    height:350px;
+    margin:20px;
+    background-color: whitesmoke;
+}
+.sub-name{
+    width:100%;
+    background-color:orange;
+    padding:10px;
+    text-align:center;
+    margin-bottom:20px;
+}
+.time-div,.duration-div,.no-ques-div,.total-marks-div{
+    padding:5px;
+}
+.start-btn{
+    background-color:rgb(17, 207, 191);
+    border-radius:10px;
+    padding:10px;
+    width:fit-content;
+    border:transparent;
+    margin:25px
+}
+
+.instruction p{
+    font-size: 30px;
+}
+
+
+.instruction ul li{
+    color: red;
+    font-size: 20px;
+}
