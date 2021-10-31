@@ -16,4 +16,6 @@ create table online_test(Username_test varchar(1000),score int); // score wala t
 UPDATE `online_test` SET `userid` = '1' WHERE `online_test`.`score` = 0;
 
 create table exam_record(user_name varchar(1000), total_score int);
+
+create table teacher_info(Username varchar(1000),Password varchar(1000),Institute_name varchar(1000) );
 online_test database only working during the online_test going on after it delete the student record;

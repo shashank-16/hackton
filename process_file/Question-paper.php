@@ -2,6 +2,14 @@
 session_start(); // session is god
 
 ?>
+
+<script>
+       var  where = 1;
+       var  total_question=3;
+</script>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -69,37 +77,12 @@ session_start(); // session is god
                     <hr>
                     <div class="question">
                         <div class="question-box">
-                            <?php
-                            include 'connective.php';
-                            $count=1;
-                            $query = "SELECT * FROM optionsheet where question_no ='{$count}' ";
-                        
-                            $result = mysqli_query($connection, $query) or die("database cant load");
-                            if (mysqli_num_rows($result) > 0) {
-                        
-                               while ($rowforjoin = mysqli_fetch_assoc($result)) {
 
-                            ?>
-                                <label style="margin-left:10px" for="question"><textarea disabled style="height: 100%; width:100%; border:0px solid green; border-radius: 8px; resize: none;" name ="question" id= "questions"><?php echo  $rowforjoin['question_id'] ?></textarea></label>
-                            
                         </div>
+                        <ul class="options">
+       
+                        </ul>
                     </div>
-                    <hr>
-
-                    <ul class="options">
-
-                        <li style="list-style: none;"><label for="option1"><input type="radio" id="opt-1" name="select" class="option-1" value="<?php echo  $rowforjoin['option1'] ?>"><?php echo  $rowforjoin['option1'] ?></label></li>
-                        <li style="list-style: none;"><label for="option1"><input type="radio" id="opt-2" name="select" class="option-1" value="<?php echo  $rowforjoin['option2'] ?>"><?php echo  $rowforjoin['option2'] ?></label></li>
-                        <li style="list-style: none;"><label for="option1"><input type="radio" id="opt-3" name="select" class="option-1" value="<?php echo  $rowforjoin['option3'] ?>"><?php echo  $rowforjoin['option3'] ?></label></li>
-                        <li style="list-style: none;"><label for="option1"><input type="radio" id="opt-4" name="select" class="option-1" value="<?php echo  $rowforjoin['option4'] ?>"><?php echo  $rowforjoin['option4'] ?></label></li>
-
-                    </ul>
-
-                    <?php  
-                    }
-                    }?>
-                        
-
                     
                 </form>
 
@@ -118,8 +101,8 @@ session_start(); // session is god
                         <div class="table" style="display: flex; flex-grow: initial; justify-content: space-sround">
                             <ul id="horizontal-list" style="margin: 8px; margin-bottom: 10px">
                                 <!-- Question panel -->
-                                <li id="q-1" class="no"><?php echo $count ?></li>
-                                <li id="q-2" class="no"><?php echo $count+1 ?></li>
+                                <!-- <li id="q-1" class="no"><?php echo $count ?></li> -->
+                                <!-- <li id="q-2" class="no"><?php echo $count+1 ?></li> -->
                                 <li id="q-3" class="no">3</li>
                                 <li id="q-3" class="no">4</li>
                                 <li id="q-1" class="no">5</li>
@@ -155,11 +138,7 @@ session_start(); // session is god
 
 
 
-    <script>
-       var  where = 1;
-       var  total_question=4;
 
-    </script>
 
     <script>
 
@@ -171,7 +150,9 @@ session_start(); // session is god
             var expires = "";
             if (days) {
                 var date = new Date();
-                date.setTime(date.getTime() + (days*3600*3600));
+                // date.setcookie("TestCookie", value, time()+3600);
+                date.setTime(date.getTime() + 1 * 3600 * 1000);
+                // date.setTime(date.getTime() + (days+3600));
                 expires = "; expires=" + date.toUTCString();
             }
             document.cookie = name + "=" + (value || "")  + expires + "; path=/";
@@ -190,6 +171,53 @@ session_start(); // session is god
             document.cookie = name +'=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
         }
 
+
+        window.addEventListener("load",()=>{
+            $.ajax({
+                        url: "Question-Render.php",
+                        type: "POST",
+                        data: {
+                            count: where
+                        },
+                        success: function(data) {
+                            $(".question-box").html(data);
+                        }
+                    });
+                    $.ajax({
+                        url: "option-Render.php",
+                        type: "POST",
+                        data: {
+                            count: where
+                        },
+                        success: function(data) {
+                            $(".options").html(data);
+                            var ans1 = getCookie(where);
+                            var ans2 = getCookie(where);
+                            var ans3 = getCookie(where);
+                            var ans4 = getCookie(where);
+                            
+                            
+                            if(ans1 || ans2 || ans3 || ans4){
+                                if(ans1=='opt-1'){
+                                    document.getElementById("opt-1").checked = true;
+                                    console.log(ans1);
+                                }
+                                if(ans2=='opt-2'){
+                                    document.getElementById("opt-2").checked = true;
+                                    console.log(ans2);
+                                }
+                                if(ans3=='opt-3'){
+                                    document.getElementById("opt-3").checked = true;
+                                    console.log(ans3);
+                                }
+                                if(ans4=='opt-4'){
+                                    document.getElementById("opt-4").checked = true;
+                                    console.log(ans4);
+                                }
+                            }
+                        }
+                    });        
+        });
 
 
         $(document).ready(function() {
@@ -250,11 +278,42 @@ session_start(); // session is god
                     console.log("option-d selected");
                 }
 
+
                 // M button for next
                 if ($key == 39) {
                     
+                    if(where<=total_question)
+                    {
+                        // console.log(where<=total_question);
+
+                            $.ajax({
+                            type: 'POST',
+                            url: 'correct_answer.php',
+                            data: { answer: $('input[name="select"]:checked').val(),
+                            question: $('textarea[name= "question"]').val(),count: where },
+                            
+                            // do these thing 
+                            success: function(response) {
+                            $('#result').html(response);
+                            }
+                        })
+                        if(where==total_question)
+                        {
+                    
+                        $.ajax({
+                            type: 'POST',
+                            url: 'exam_end.php' 
+                            
+                        })
+                        document.getElementById("man").style.display="none";
+                        document.getElementById("finish").style.display="block";
+                        }
+                   
+                    }
+
 
                     where++;
+
                     $.ajax({
                         url: "Question-Render.php",
                         type: "POST",
@@ -264,7 +323,7 @@ session_start(); // session is god
                         success: function(data) {
                             $(".question-box").html(data);
                         }
-                    })
+                    });
 
 
                     $.ajax({
@@ -300,39 +359,12 @@ session_start(); // session is god
                                 }
                             }
                         }
-                    })
+                    });
 
                     getCookie();
 
-                    if(where<=total_question)
-                    {
-                        // console.log(where<=total_question);
-
-                    $.ajax({
-                        type: 'POST',
-                        url: 'correct_answer.php',
-                        data: { answer: $('input[name="select"]:checked').val(),
-                        question: $('textarea[name= "question"]').val()},
-                        // do these thing 
-                        success: function(response) {
-                        $('#result').html(response);
-                        }
-                  });
-                    if(where==total_question)
-                    {
-                
-                    $.ajax({
-                        type: 'POST',
-                        url: 'exam_end.php' 
-                        
-                    });
-                    document.getElementById("man").style.display="none";
-                    document.getElementById("finish").style.display="block";
-                 }
                     
-                 }
-                
-
+           
                 }
 
 

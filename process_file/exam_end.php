@@ -8,7 +8,7 @@ echo($_SESSION["score"].$_SESSION["username"]);
 $checking_existing="SELECT `user_name` FROM exam_record WHERE `user_name` = '{$_SESSION["username"]}'";
 $query_existing=mysqli_query($connection,$checking_existing) or die("cannot check the exist id");
 
-if(mysqli_num_rows($query_existing)>0)
+if(mysqli_num_rows($query_existing)>0) // if exist username then modify 
 {
     $modify_record="UPDATE `exam_record` SET `total_score` ={$_SESSION["score"]}  WHERE `user_name` = '{$_SESSION["username"]}'";    
     $modify_query=mysqli_query($connection,$modify_record) or die("nope bitch");
@@ -16,7 +16,7 @@ if(mysqli_num_rows($query_existing)>0)
     // echo("record has been modfiy");
     
 }
-else{
+else{ // no record 
     
     $exam_record="INSERT INTO exam_record(`user_name`,`total_score`) values('{$_SESSION["username"]}','{$_SESSION["score"]}')";
     

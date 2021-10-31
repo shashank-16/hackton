@@ -4,6 +4,7 @@ $_SESSION["username"]=$_POST["username"];
 
 $_SESSION["score"]=0;
 
+// $question_no=5;
 
 
 include 'connective.php';
@@ -23,6 +24,7 @@ if(isset($_POST["submit"]))
         $sql_username_insertion_in_online_test= "INSERT INTO online_test(Username_test,score) VALUES('{$username}','{$_SESSION["score"]}') ";
         $putting_name= mysqli_query($connection,$sql_username_insertion_in_online_test) or die($username);
         
+    
       
         header("Location: subject.html");
 
