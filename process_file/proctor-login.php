@@ -81,13 +81,13 @@
                 if(mysqli_num_rows($query1)>0)
                 {
                      echo(10);
-                    header("Location: Question_upload.php");
+                    header("Location: after_teacherlogin.php");
 
                 }
 
                 
                 else{
-                    echo(1);
+                    echo '<div class="alert alert-danger">check your username Or Password.</div>';
                     header("Location: proctor-login.php");
                 }
 

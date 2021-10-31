@@ -5,7 +5,7 @@ session_start(); // session is god
 
 <script>
        var  where = 1;
-       var  total_question=3;
+       var  total_question=5;
 </script>
 
 
@@ -101,8 +101,8 @@ session_start(); // session is god
                         <div class="table" style="display: flex; flex-grow: initial; justify-content: space-sround">
                             <ul id="horizontal-list" style="margin: 8px; margin-bottom: 10px">
                                 <!-- Question panel -->
-                                <!-- <li id="q-1" class="no"><?php echo $count ?></li> -->
-                                <!-- <li id="q-2" class="no"><?php echo $count+1 ?></li> -->
+                                <li id="q-1" class="no">1<</li>
+                                <li id="q-2" class="no">2</li>
                                 <li id="q-3" class="no">3</li>
                                 <li id="q-3" class="no">4</li>
                                 <li id="q-1" class="no">5</li>
@@ -299,16 +299,16 @@ session_start(); // session is god
                         })
                         if(where==total_question)
                         {
+
                     
-                        $.ajax({
-                            type: 'POST',
-                            url: 'exam_end.php' 
+                        // $.ajax({
+                        //     type: 'POST',
+                        //     url: 'exam_end.php', 
                             
-                        })
-                        document.getElementById("man").style.display="none";
-                        document.getElementById("finish").style.display="block";
+                        // })
+                        // document.getElementById("man").style.display="none";
+                        // document.getElementById("finish").style.display="block";
                         }
-                   
                     }
 
 
@@ -428,6 +428,17 @@ session_start(); // session is god
 
                 //keys locked
 
+                else if(e.keyCode==13){
+                    $.ajax({
+                            type: 'POST',
+                            url: 'exam_end.php', 
+                            
+                        })
+                    document.getElementById("man").style.display="none";
+                    document.getElementById("finish").style.display="block";
+                    window.close();
+                }
+
                 else if(e.escape){     //Esc key
                     console.log( "escape");
                     return false;
@@ -523,7 +534,7 @@ session_start(); // session is god
         }
         window.onload="toggleFullScreen()";
     </script>
-    <!-- <script>
+    <script>
         var i=4;
         $(window).on('focus', function () {
             function mouseLeave() {
@@ -545,16 +556,16 @@ session_start(); // session is god
                 document.getElementById("finish").style.display="block";
             }
         });
-      </script> -->
+      </script>
 
       <script>
 
-        // if(mouseLeave)
-        // {
-        //     function mouseLeave() {
-        //     alert("warning! Don't Do this again");
-        // }
-        // }
+        if(mouseLeave)
+        {
+            function mouseLeave() {
+            alert("warning! Don't Do this again");
+        }
+        }
         // else{
 
         // }

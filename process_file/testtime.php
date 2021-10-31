@@ -31,7 +31,7 @@ if(isset($_POST["submit"]))
     }
     else 
     {
-        echo(1);
+        echo '<div class="alert alert-danger">check your username Or Password.</div>';
         header("Location: candidate-login.php");
     }
 }

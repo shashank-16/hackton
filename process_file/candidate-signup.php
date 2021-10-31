@@ -52,13 +52,6 @@
                 <input type="text" name = "L_name" class="form-control" autocomplete="Last-name" placeholder="Last Name">
             </div>
         </div>
-        
-        <div class="col"> 
-            <label for="gender">Gender:</label>
-            <input type="radio" name="gender">Male
-            <input type="radio" name="gender">Female
-            <input type="radio" name="gender">Transgender
-        </div>
 
         <div class="col"> 
             <label for="Email">Email</label>
@@ -67,12 +60,13 @@
 
         <div class="col"> 
             <label for="Password">Password</label>
-            <input type="password" autocomplete="current-password" class="form-control" required placeholder="Password">
+            <input type="password" autocomplete="current-password" name="" class="form-control" minlength="8" maxlength="16" required placeholder="Password">
         </div>
 
         <div class="col"> 
             <label for="Password">Confirm Password</label>
-            <input type="password" autocomplete="current-password"  name = "password" class="form-control" required placeholder="Password">
+            <input type="password" autocomplete="current-password"  name = "password" class="form-control" minlength="8" maxlength="16" required placeholder="Password">
+            <p>Password must be same as Above </p>
         </div>
         <div class="col"> 
             <button type="submit" onclick="hello()" name="submit" class="btn-sm btnn btn-primary" >Register</button>
@@ -82,11 +76,11 @@
         </div>
     </form>
 
-    <script>
+    <!-- <script>
         function hello(){
-            alert(document.getElementById=("Usermail").val() + "Sucessfully Registred");
+            alert(document.getElementById=("Usermail").value + "Sucessfully Registred");
         }
-    </script>
+    </script> -->
 
 <?php
 
@@ -95,19 +89,20 @@ include 'connective.php';
 
 if(isset($_POST["submit"]))
 {
-$username_for_student=$_POST["Email"];
-$password_of_student=$_POST["password"];
-$name= $_POST["F_name"];
-// $gender=$_POST["gender"];
-$student_ID=$_POST["student_id"];
-$branch=$_POST["branch"];
+    $student_ID=$_POST["student_id"];
+    $branch=$_POST["branch"];
+    $f_name= $_POST["F_name"];
+    $L_name= $_POST["L_name"];
+    $username_for_student=$_POST["Email"];
+    $password_of_student=$_POST["password"];
 
 
 
 
-$sql="INSERT INTO user_info(`user_name`,`password`,`student_Id`,`branch`,`name_student`)
- values('{$username_for_student}','{$password_of_student}','{$student_ID}','{$branch}','{$name}')";
 
+
+$sql="INSERT INTO user_info(`student_Id`,`branch`,`F_name`,`L_name`,`user_name`,`password`)
+ values('{$student_ID}','{$branch}','{$f_name}','{$L_name}','{$username_for_student}','{$password_of_student}')";
 
 $query= mysqli_query($connection,$sql) or die("FAIL TO UPLOAD");
 
