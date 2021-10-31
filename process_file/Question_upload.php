@@ -24,7 +24,7 @@
 </head>
 <body>
     <div class="container">
-        <form action="render_question.php" method="POST">
+        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
         <div class="Question form-group">
             <hr>
             <textarea name="question" style="border: 2px solid black;
@@ -50,3 +50,30 @@
     </div>
 </body>
 </html>
+
+
+<?php
+
+
+    include 'connective.php';
+
+    if(isset($_POST["submit"]))
+    {
+    $Question=$_POST["question"];
+    $option_1=$_POST["option_1"];
+    $option_2=$_POST["option_2"];
+    $option_3=$_POST["option_3"];
+    $option_4=$_POST["option_4"];
+    $Answer=$_POST["answer"];
+
+    $sql="INSERT INTO optionsheet(`question_id`,`option1`,`option2`,`option3`,`option4`) 
+    values('{$Question}','{$option_1}','{$option_2}','{$option_3}','{$option_4}')";
+
+    $sql2="INSERT INTO test(question,answer) VALUE('{$Question}','{$Answer}')";
+    
+    $query= mysqli_query($connection,$sql) or die("nhi gya"); 
+    
+    $query2= mysqli_query($connection,$sql2) or die("nhi gya");
+    }
+
+?>
