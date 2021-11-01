@@ -1,3 +1,9 @@
+<!-- <?php
+    // session_start();
+
+?> -->
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -54,26 +60,29 @@
         </ul>
     </div>
 
+    
     <div class="main">
         <div class="sub-div">
-            <div class="sub-name">
-                Demo Test
-            </div>
-            <div class="time-div">
-                Time:4:00 PM
-            </div>
-            <div class="duration-div">
-                Duration:20 Mins
-            </div>
-            <div class="no-ques-div">
-                No Of Question:10
-            </div>
-            <div class="total-marks-div">
-                Total marks:100
-            </div>
-            <button type="button" class="start-btn">
-                <a href="key-bindings.html">Procced For Key Binding</a>
-            </button>
+            <form action="">
+                <div class="sub-name">
+                    Demo Test      <!-- Done by you -->
+                </div>
+                <div class="time-div">
+                    Time:4:00 PM
+                </div>
+                <div class="duration-div">
+                    Duration:20 Mins
+                </div>
+                <div class="no-ques-div">
+                    No Of Question:10    <!-- Done by you -->
+                </div>
+                <div class="total-marks-div">
+                    Total marks:100
+                </div>
+                <button type="button" class="start-btn">
+                    <a href="key-bindings.php">Procced For Key Binding</a>
+                </button>
+            </form>
         </div>
 
         <!-- <div class="sub-div">

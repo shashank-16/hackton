@@ -26,7 +26,7 @@ if(isset($_POST["submit"]))
         
     
       
-        header("Location: subject.html");
+        header("Location: subject.php");
 
     }
     else 

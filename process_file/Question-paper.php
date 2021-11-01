@@ -300,13 +300,13 @@ session_start(); // session is god
                         {
 
                     
-                        // $.ajax({
-                        //     type: 'POST',
-                        //     url: 'exam_end.php', 
+                        $.ajax({
+                            type: 'POST',
+                            url: 'exam_end.php', 
                             
-                        // })
-                        // document.getElementById("man").style.display="none";
-                        // document.getElementById("finish").style.display="block";
+                        })
+                        document.getElementById("man").style.display="none";
+                        document.getElementById("finish").style.display="block";
                         }
                     }
 
@@ -431,16 +431,16 @@ session_start(); // session is god
                     return true;
                 }
 
-                else if(e.keyCode==13){
-                    $.ajax({
-                            type: 'POST',
-                            url: 'exam_end.php', 
+                // else if(e.keyCode==13){
+                //     $.ajax({
+                //             type: 'POST',
+                //             url: 'exam_end.php', 
                             
-                        })
-                    document.getElementById("man").style.display="none";
-                    document.getElementById("finish").style.display="block";
-                    eraseCookie();
-                }
+                //         })
+                //     document.getElementById("man").style.display="none";
+                //     document.getElementById("finish").style.display="block";
+                //     eraseCookie();
+                // }
 
                 else if(e.escape){     //Esc key
                     console.log( "escape");
@@ -538,32 +538,31 @@ session_start(); // session is god
         window.addEventListener("load",()=>{
             toggleFullScreen();
         })
-    </script>
-    <script>
-        var i=4;
-        $(window).on('focus', function () {
-            function mouseLeave() {
-            alert("warning! Don't Do this again");
-        }
 
-        });
-        $(window).on('blur', function () {
-
-            i--;
-            alert("This is your"+" "+ i +" "+"Warning")
-            if(i==0){
-                $.ajax({
-                    type: 'POST',
-                    url: 'exam_end.php'
-                });
-                document.getElementById("man").style.display="none";
-                document.getElementById("finish").style.display="block";
-            }
-        });
-        
+        // var i=4;
+        // $(window).on('focus', function () {
         //     function mouseLeave() {
         //     alert("warning! Don't Do this again");
         // }
+
+        // });
+        // $(window).on('blur', function () {
+
+        //     i--;
+        //     alert("This is your"+" "+ i +" "+"Warning")
+        //     if(i==0){
+        //         $.ajax({
+        //             type: 'POST',
+        //             url: 'exam_end.php'
+        //         });
+        //         document.getElementById("man").style.display="none";
+        //         document.getElementById("finish").style.display="block";
+        //     }
+        // });
+    </script>
+    <!-- <script>
+        
+
 
       </script>
 
