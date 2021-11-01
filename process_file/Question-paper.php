@@ -427,6 +427,10 @@ session_start(); // session is god
 
                 //keys locked
 
+                else if(e.keyCode==38 || e.keyCode==40){
+                    return true;
+                }
+
                 else if(e.keyCode==13){
                     $.ajax({
                             type: 'POST',
