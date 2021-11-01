@@ -5,7 +5,7 @@ session_start(); // session is god
 
 <script>
        var  where = 1;
-       var  total_question=5;
+       var  total_question=10;
 </script>
 
 
