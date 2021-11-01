@@ -55,7 +55,7 @@ session_start(); // session is god
     </style>
 </head> 
 
-<body id="bdy" onmouseleave="mouseLeave()" onmouseenter="mouseEnter()" style="visibility: visible;">
+<body id="bdy" onmouseleave="mouseLeave()" style="visibility: visible;">
     <div class="">
     <nav>
         <div class="navbar">
@@ -101,7 +101,7 @@ session_start(); // session is god
                         <div class="table" style="display: flex; flex-grow: initial; justify-content: space-sround">
                             <ul id="horizontal-list" style="margin: 8px; margin-bottom: 10px">
                                 <!-- Question panel -->
-                                <li id="q-1" class="no">1<</li>
+                                <li id="q-1" class="no">1</li>
                                 <li id="q-2" class="no">2</li>
                                 <li id="q-3" class="no">3</li>
                                 <li id="q-3" class="no">4</li>
@@ -150,9 +150,7 @@ session_start(); // session is god
             var expires = "";
             if (days) {
                 var date = new Date();
-                // date.setcookie("TestCookie", value, time()+3600);
-                date.setTime(date.getTime() + 1 * 3600 * 1000);
-                // date.setTime(date.getTime() + (days+3600));
+                date.setTime(date.getTime() + (days+60*60*90));
                 expires = "; expires=" + date.toUTCString();
             }
             document.cookie = name + "=" + (value || "")  + expires + "; path=/";
@@ -170,6 +168,7 @@ session_start(); // session is god
         function eraseCookie(name) {   
             document.cookie = name +'=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
         }
+        
 
 
         window.addEventListener("load",()=>{
@@ -436,7 +435,7 @@ session_start(); // session is god
                         })
                     document.getElementById("man").style.display="none";
                     document.getElementById("finish").style.display="block";
-                    window.close();
+                    eraseCookie();
                 }
 
                 else if(e.escape){     //Esc key
@@ -532,7 +531,9 @@ session_start(); // session is god
             }
         }
         }
-        window.onload="toggleFullScreen()";
+        window.addEventListener("load",()=>{
+            toggleFullScreen();
+        })
     </script>
     <script>
         var i=4;
@@ -547,7 +548,6 @@ session_start(); // session is god
             i--;
             alert("This is your"+" "+ i +" "+"Warning")
             if(i==0){
-                alert("Test is finished");
                 $.ajax({
                     type: 'POST',
                     url: 'exam_end.php'
@@ -556,16 +556,17 @@ session_start(); // session is god
                 document.getElementById("finish").style.display="block";
             }
         });
+        
+        //     function mouseLeave() {
+        //     alert("warning! Don't Do this again");
+        // }
+
       </script>
 
       <script>
-
-        if(mouseLeave)
-        {
-            function mouseLeave() {
-            alert("warning! Don't Do this again");
-        }
-        }
+        //     function mouseLeave() {
+        //     alert("warning! Don't Do this again");
+        // }
         // else{
 
         // }
