@@ -1,16 +1,9 @@
-<<<<<<< HEAD:process_file/subject.php
+
 <?php 
 
 session_start();
 
 ?>
-=======
-<!-- <?php
-    // session_start();
-
-?> -->
-
->>>>>>> 470aa93ad8cdf4c493ee0cba8eb20b84fbeeac0d:process_file/subject.html
 
 <!DOCTYPE html>
 <html lang="en">
