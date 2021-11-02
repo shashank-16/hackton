@@ -96,26 +96,48 @@
     </nav>
 
     <div class="container">
-        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
+        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" id="nm" name="form-a" method="POST">
         
             <div class="Question form-group">
                 <h1>Upload Question</h1>
                 <hr>
-                <textarea name="question" style="border: 2px solid black;
+                <textarea name="paperdata[0][question]" style="border: 2px solid black;
                 margin-top: 50px;" id="question"></textarea>
                 <ul>
                     <label for="option-1">Options</label>
-                    <li><input type="text" name="option_1" id="" placeholder="Option-1"></li>
+                    <li><input type="text" name="paperdata[0][option_1]" id="" placeholder="Option-1"></li>
                     <br>
-                    <li><input type="text" name="option_2" id="" placeholder="Option-2"></li>
+                    <li><input type="text" name="paperdata[0][option_2]" id="" placeholder="Option-2"></li>
                     <br>
-                    <li><input type="text" name="option_3" id="" placeholder="Option-3"></li>
+                    <li><input type="text" name="paperdata[0][option_3]" id="" placeholder="Option-3"></li>
                     <br>
-                    <li><input type="text" name="option_4" id="" placeholder="Option-4"></li>
+                    <li><input type="text" name="paperdata[0][option_4]" id="" placeholder="Option-4"></li>
                     <label for="Answer">Answer</label>
-                    <li><input type="text" name="answer" id="" placeholder="Corect Answer"></li>
+                    <li><input type="text" name="paperdata[0][answer]" id="" placeholder="Corect Answer"></li>
                 </ul>
-                <button type="submit" name="submit" class="btn btn-lg btn-primary">Next</button>
+                <!-- <button type="submit" name="submit" class="btn btn-lg btn-primary" onclick="change(), formSubmit()" >Next</button> -->
+            </div>
+
+
+            
+            <div class="Question form-group">
+                <h1>Upload Question</h1>
+                <hr>
+                <textarea name="paperdata[1][question]" style="border: 2px solid black;
+                margin-top: 50px;" id="question"></textarea>
+                <ul>
+                    <label for="option-1">Options</label>
+                    <li><input type="text"  name="paperdata[1][option_1]" id="" placeholder="Option-1"></li>
+                    <br>
+                    <li><input type="text"  name="paperdata[1][option_2]" id="" placeholder="Option-2"></li>
+                    <br>
+                    <li><input type="text"  name="paperdata[1][option_3]" id="" placeholder="Option-3"></li>
+                    <br>
+                    <li><input type="text"  name="paperdata[1][option_4]" id="" placeholder="Option-4"></li>
+                    <label for="Answer">Answer</label>
+                    <li><input type="text" name="paperdata[1][answer]" id="" placeholder="Corect Answer"></li>
+                </ul>
+                <button type="submit" name="submit" class="btn btn-lg btn-primary" >Next</button>
             </div>
         
         </form>
@@ -129,26 +151,40 @@
 
 <?php
 
-
-    include 'connective.php';
-
     if(isset($_POST["submit"]))
     {
-    $Question=$_POST["question"];
-    $option_1=$_POST["option_1"];
-    $option_2=$_POST["option_2"];
-    $option_3=$_POST["option_3"];
-    $option_4=$_POST["option_4"];
-    $Answer=$_POST["answer"];
 
-    $sql="INSERT INTO optionsheet(`question_id`,`option1`,`option2`,`option3`,`option4`) 
-    values('{$Question}','{$option_1}','{$option_2}','{$option_3}','{$option_4}')";
+        // $c = $_POST['paperdata'];
+        // print_r($c);
 
-    $query= mysqli_query($connection,$sql) or die("question nhi gya");
+        function insertData($data)
+        {
 
-    $sql2="INSERT INTO test(question,answer) VALUE('{$Question}','{$Answer}')";
-    
-    $query2= mysqli_query($connection,$sql2) or die("answer nhi gya");
+        print_r($data);
+        $Question = $data['question'];
+        $option_1 = $data['option_1'];
+        $option_2 = $data['option_2'];
+        $option_3 = $data['option_3'];
+        $option_4 = $data['option_4'];
+        $Answer= $data['answer'];
+
+        include 'connective.php';
+
+
+        $sql="INSERT INTO optionsheet(`question_id`,`option1`,`option2`,`option3`,`option4`) 
+        values('{$Question}','{$option_1}','{$option_2}','{$option_3}','{$option_4}')";
+
+        print_r($sql);
+
+        mysqli_query($connection,$sql) or die("question nhi gya");
+
+
+
+        $sql2="INSERT INTO test(question,answer) VALUE('{$Question}','{$Answer}')";
+        mysqli_query($connection,$sql2) or die("answer nhi gya");
+        }
+        array_map("insertData", $_POST['paperdata']);
     }
+
 
 ?>
