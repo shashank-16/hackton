@@ -21,14 +21,7 @@ if(isset($_POST["submit"]))
 
     if(mysqli_num_rows($finally)>0)
     {
-<<<<<<< HEAD
-=======
-        $sql_username_insertion_in_online_test= "INSERT INTO online_test(Username_test,score) VALUES('{$username}','{$_SESSION["score"]}') ";
-        $putting_name= mysqli_query($connection,$sql_username_insertion_in_online_test) or die($username);
-        
-    
-      
->>>>>>> 470aa93ad8cdf4c493ee0cba8eb20b84fbeeac0d
+
         header("Location: subject.php");
 
     }
