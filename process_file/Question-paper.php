@@ -5,7 +5,9 @@ session_start(); // session is god
 
 <script>
        var  where = 1;
-       var  total_question=10;
+      
+      var  total_question= '<?=$_SESSION["no_question"]?>'; // need this thing god like power
+        console.log(total_question);
 </script>
 
 
@@ -280,6 +282,7 @@ session_start(); // session is god
 
                 // M button for next
                 if ($key == 39) {
+
                     
                     if(where<=total_question)
                     {
@@ -298,21 +301,22 @@ session_start(); // session is god
                         })
                         if(where==total_question)
                         {
+                            $.ajax({
+                                type: 'POST',
+                                url: 'exam_end.php', 
+                                
+                            })
+                            document.getElementById("man").style.display="none";
+                            document.getElementById("finish").style.display="block";
 
-                    
-                        $.ajax({
-                            type: 'POST',
-                            url: 'exam_end.php', 
-                            
-                        })
-                        document.getElementById("man").style.display="none";
-                        document.getElementById("finish").style.display="block";
+                      
+                            setTimeout(function(){ window.location.href="index.html";},10000);
                         }
                     }
-
-
+                    
                     where++;
-
+                    
+                    
                     $.ajax({
                         url: "Question-Render.php",
                         type: "POST",
@@ -359,6 +363,9 @@ session_start(); // session is god
                             }
                         }
                     });
+                    
+                    
+
 
                     getCookie();
 
@@ -560,10 +567,30 @@ session_start(); // session is god
         //     }
         // });
     </script>
-    <!-- <script>
+    <script>
         
+        var warning=4;
+        $(window).on('focus', function () {
+            function mouseLeave() {
+            alert("warning! Don't Do this again");
+        }
 
+        });
+        $(window).on('blur', function () {
 
+            warning--;
+            alert("This is your"+" "+warning +" "+"Warning")
+            if(warning==0){
+                alert("Test is finished");
+                $.ajax({
+                    type: 'POST',
+                    url: 'exam_end.php'
+                });
+                document.getElementById("man").style.display="none";
+                document.getElementById("finish").style.display="block";
+                setTimeout(function(){ window.location.href="index.html";},10000);
+            }
+        });
       </script>
 
       <script>

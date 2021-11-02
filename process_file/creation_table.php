@@ -1,18 +1,24 @@
 <?php 
 
+session_start();
+
+
 include('connective.php');
 
 if(isset($_POST['submit']))
 {
 
-
-
+$_SESSION["number_question"]= $_POST["no_of_question"]; 
+$time=90;
 
 $number_of_question=$_POST['no_of_question']; // session or form 
 
 $checker=$_POST['check'];
 
-$table=$_POST['Table_name']; // session or form
+$_SESSION["table_name"]=$_POST['Table_name']; // session or form
+
+$tablename=$_SESSION["table_name"];
+$table="online_test_".$_SESSION["table_name"]; //table name change here for further testing
 
 
     if($checker=="createTable") //check box option will come here for the checking;
@@ -27,6 +33,9 @@ $table=$_POST['Table_name']; // session or form
                 $columns="ALTER TABLE `$table` ADD `$question`  BOOLEAN NULL DEFAULT NULL";
                 $query_column=mysqli_query($connection,$columns) or die("columns didn't created ");
             }
+
+        $sql_subject= "INSERT INTO subject_info VALUES('{$tablename}','{$number_of_question}','{$time}')";
+        $query_subject=mysqli_query($connection,$sql_subject);
         header("Location:Question_upload.php");
     
     }
