@@ -1,6 +1,6 @@
 <?php
         include 'connective.php';
-        // $count=1;
+        
         $count=$_POST['count'];
         $query = "SELECT option1,option2,option3,option4 FROM optionsheet where question_no ='{$count}' ";
 

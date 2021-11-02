@@ -1,3 +1,9 @@
+<?php 
+
+session_start();
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -54,109 +60,73 @@
         </ul>
     </div>
 
-    <div class="main">
-        <div class="sub-div">
-            <div class="sub-name">
-                Machine Learning
-            </div>
-            <div class="time-div">
-                Time:4:00 PM
-            </div>
-            <div class="duration-div">
-                Duration:90 Mins
-            </div>
-            <div class="no-ques-div">
-                No Of Question:50
-            </div>
-            <div class="total-marks-div">
-                Total marks:100
-            </div>
-            <button type="button" class="start-btn">
-                <a href="key-bindings.html">Procced For Key Binding</a>
-            </button>
-        </div>
+    <?php 
+    include('connective.php');
 
-        <!-- <div class="sub-div">
-            <div class="sub-name">
-                Compiler Designer
+    $show_subject="SELECT *FROM subject_info";
+    $query_subject=mysqli_query($connection,$show_subject) or die("cannot show subject");
+
+    if(mysqli_num_rows($query_subject)>0)
+    {
+        while($row=mysqli_fetch_assoc($query_subject))
+        {
+    ?>
+
+<div class="main" >
+    <div class="sub-div">
+            <form  id="nm" action="key-bindings.php" method ="POST" class="form-group" name="<?php echo($row["subject"]);?>">
+            <div class="sub-name" >
+            <select name="subject" >
+                <option value="<?php echo($row["subject"]);?>"></option>
+            </select>
+        
+            <?php echo($row["subject"]);?>
             </div>
+
+
             <div class="time-div">
                 Time:4:00 PM
             </div>
-            <div class="duration-div">
-                Duration:90 Mins
+
+
+            <div class="duration-div" name = "duration">
+            <select name="duration">
+                <option value="<?php echo($row["duration"]);?>"></option>
+            </select>
+            <?php echo($row["duration"]);?>
             </div>
-            <div class="no-ques-div">
-                No Of Question:50
+
+
+            <div class="no-ques-div" name = "question_no">
+            <select name="question_no">
+                <option value="<?php echo($row["no_question"]);?>"></option>
+            </select>
+            <?php echo($row["no_question"]);?>
             </div>
+
+            
             <div class="total-marks-div">
                 Total marks:100
             </div>
-            <button type="button" class="start-btn">
-                <a href="key-bindings.html">Procced For Key Binding</a>
-            </button>
+            <button type="submit" name="submit" class="btn btn-lg btn-primary" onclick="change()" >test time</button>
+            
+            
+        </form>
         </div>
-        <div class="sub-div">
-            <div class="sub-name">
-                DBMS-DataBase Management System
-            </div>
-            <div class="time-div">
-                Time:4:00 PM
-            </div>
-            <div class="duration-div">
-                Duration:90 Mins
-            </div>
-            <div class="no-ques-div">
-                No Of Question:50
-            </div>
-            <div class="total-marks-div">
-                Total marks:100
-            </div>
-            <button type="button" class="start-btn">
-                <a href="key-bindings.html">Procced For Key Binding</a>
-            </button>
-        </div>
-        <div class="sub-div">
-            <div class="sub-name">
-                OOPS-Object oriented System Design 
-            </div>
-            <div class="time-div">
-                Time:4:00 PM
-            </div>
-            <div class="duration-div">
-                Duration:90 Mins
-            </div>
-            <div class="no-ques-div">
-                No Of Question:50
-            </div>
-            <div class="total-marks-div">
-                Total marks:100
-            </div>
-            <button type="button" class="start-btn">
-                <a href="key-bindings.html">Procced For Key Binding</a>
-            </button>
-        </div>
-        <div class="sub-div">
-            <div class="sub-name">
-                DAA-Data Analysis & Algoritham
-            </div>
-            <div class="time-div">
-                Time:4:00 PM
-            </div>
-            <div class="duration-div">
-                Duration:90 Mins
-            </div>
-            <div class="no-ques-div">
-                No Of Question:50
-            </div>
-            <div class="total-marks-div">
-                Total marks:100
-            </div>
-            <button type="button" class="start-btn">
-                <a href="key-bindings.html">Procced For Key Binding</a>
-            </button>
-        </div> -->
-    </div>
+       
+        <?php
+
+            }
+            }
+        ?>    
+</div>
 </body>
+
+<script>
+    function change()
+    {
+       console.log(document.getElementsById('nm').name);
+    }
+</script>
 
 </html>

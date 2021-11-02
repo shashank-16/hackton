@@ -1,3 +1,26 @@
+<?php 
+
+session_start();
+include 'connective.php';
+
+
+if(isset($_POST["submit"]))
+{
+    $_SESSION["table_name"]=$_POST["subject"];
+    $_SESSION["no_question"]=$_POST["question_no"];
+
+   
+    $table_name="online_test_".$_SESSION["table_name"];
+
+    
+    $sql_username_insertion_in_online_test= "INSERT INTO `$table_name` (Username_test,score) VALUES('{$_SESSION["username"]}','{$_SESSION["score"]}') ";
+    $putting_name= mysqli_query($connection,$sql_username_insertion_in_online_test) or die($username);
+    
+}
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -138,5 +161,7 @@
 
 
        </script>
+
+     
 </body>
 </html>
