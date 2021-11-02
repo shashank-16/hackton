@@ -5,13 +5,9 @@ session_start(); // session is god
 
 <script>
        var  where = 1;
-<<<<<<< HEAD
       
       var  total_question= '<?=$_SESSION["no_question"]?>'; // need this thing god like power
         console.log(total_question);
-=======
-       var  total_question=10;
->>>>>>> 470aa93ad8cdf4c493ee0cba8eb20b84fbeeac0d
 </script>
 
 
@@ -305,7 +301,6 @@ session_start(); // session is god
                         })
                         if(where==total_question)
                         {
-<<<<<<< HEAD
                             $.ajax({
                                 type: 'POST',
                                 url: 'exam_end.php', 
@@ -316,17 +311,6 @@ session_start(); // session is god
 
                       
                             setTimeout(function(){ window.location.href="index.html";},10000);
-=======
-
-                    
-                        $.ajax({
-                            type: 'POST',
-                            url: 'exam_end.php', 
-                            
-                        })
-                        document.getElementById("man").style.display="none";
-                        document.getElementById("finish").style.display="block";
->>>>>>> 470aa93ad8cdf4c493ee0cba8eb20b84fbeeac0d
                         }
                     }
                     
@@ -583,7 +567,6 @@ session_start(); // session is god
         //     }
         // });
     </script>
-<<<<<<< HEAD
     <script>
         
         var warning=4;
@@ -608,12 +591,6 @@ session_start(); // session is god
                 setTimeout(function(){ window.location.href="index.html";},10000);
             }
         });
-=======
-    <!-- <script>
-        
-
-
->>>>>>> 470aa93ad8cdf4c493ee0cba8eb20b84fbeeac0d
       </script>
 
       <script>
