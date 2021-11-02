@@ -34,7 +34,7 @@ $table="online_test_".$_SESSION["table_name"]; //table name change here for furt
                 $query_column=mysqli_query($connection,$columns) or die("columns didn't created ");
             }
 
-        $sql_subject= "INSERT INTO subject_info VALUES('{$tablename}','{$number_of_question}','{$time}')";
+        $sql_subject= "INSERT INTO subject_info VALUES('{$tablename}','{$time}','{$number_of_question}')";
         $query_subject=mysqli_query($connection,$sql_subject);
         header("Location:Question_upload.php");
     

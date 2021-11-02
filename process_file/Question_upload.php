@@ -98,29 +98,46 @@
     <div class="container">
         <form action="<?php echo $_SERVER['PHP_SELF']; ?>" id="nm" name="form-a" method="POST">
         
+        <?php
+
+        session_start();
+        include 'connective.php';
+
+        $count=$_SESSION["number_question"];
+        
+
+        for($i=0;$i<$count ; $i++)
+        {
+
+        ?>
+
+
             <div class="Question form-group">
                 <h1>Upload Question</h1>
                 <hr>
-                <textarea name="paperdata[0][question]" style="border: 2px solid black;
+                <textarea name="paperdata[<?php echo $i ?>][question]" style="border: 2px solid black;
                 margin-top: 50px;" id="question"></textarea>
                 <ul>
                     <label for="option-1">Options</label>
-                    <li><input type="text" name="paperdata[0][option_1]" id="" placeholder="Option-1"></li>
+                    <li><input type="text" name="paperdata[<?php echo $i ?>][option_1]" id="" placeholder="Option-1"></li>
                     <br>
-                    <li><input type="text" name="paperdata[0][option_2]" id="" placeholder="Option-2"></li>
+                    <li><input type="text" name="paperdata[<?php echo $i ?>][option_2]" id="" placeholder="Option-2"></li>
                     <br>
-                    <li><input type="text" name="paperdata[0][option_3]" id="" placeholder="Option-3"></li>
+                    <li><input type="text" name="paperdata[<?php echo $i ?>][option_3]" id="" placeholder="Option-3"></li>
                     <br>
-                    <li><input type="text" name="paperdata[0][option_4]" id="" placeholder="Option-4"></li>
+                    <li><input type="text" name="paperdata[<?php echo $i ?>][option_4]" id="" placeholder="Option-4"></li>
                     <label for="Answer">Answer</label>
-                    <li><input type="text" name="paperdata[0][answer]" id="" placeholder="Corect Answer"></li>
+                    <li><input type="text" name="paperdata[<?php echo $i ?>][answer]" id="" placeholder="Corect Answer"></li>
                 </ul>
-                <!-- <button type="submit" name="submit" class="btn btn-lg btn-primary" onclick="change(), formSubmit()" >Next</button> -->
+                
             </div>
 
-
+        <?php    
+        }
+        ?>
+        <button type="submit" name="submit" class="btn btn-lg btn-primary" >Upload</button>
             
-            <div class="Question form-group">
+            <!-- <div class="Question form-group">
                 <h1>Upload Question</h1>
                 <hr>
                 <textarea name="paperdata[1][question]" style="border: 2px solid black;
@@ -138,7 +155,7 @@
                     <li><input type="text" name="paperdata[1][answer]" id="" placeholder="Corect Answer"></li>
                 </ul>
                 <button type="submit" name="submit" class="btn btn-lg btn-primary" >Next</button>
-            </div>
+            </div> -->
         
         </form>
         

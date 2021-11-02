@@ -5,6 +5,10 @@ body{
 }
 
 
+select{
+}
+
+
 a{
     text-decoration: none;
     color: white;
@@ -14,6 +18,7 @@ nav{
     background-image: url('wallppr.jpg');
     background-position: center;
     background-repeat: no-repeat;
+    background-size: cover;
 }
 
 
@@ -32,8 +37,8 @@ nav{
 
 .main{
     height:100%;
-    width:100%;
-    padding:100px;
+    /* width:100%; */
+    /* padding:100px; */
     display:flex;
     flex-wrap:wrap;
 }
@@ -53,6 +58,7 @@ nav{
 }
 .time-div,.duration-div,.no-ques-div,.total-marks-div{
     padding:5px;
+    margin: 10px;
 }
 .start-btn{
     background-color:rgb(17, 207, 191);
