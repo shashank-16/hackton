@@ -110,7 +110,7 @@ if(isset($_POST["submit"]))
                 return false;
             }
              keycode1 = `Key pressed: ${String.fromCharCode(e.keyCode)} \ncharCode: ${e.keyCode}`;
-            document.getElementById("op1").innerHTML=keycode1;
+            // document.getElementById("op1").innerHTML=keycode1;
             console.log(keycode1);
             sessionStorage.setItem("option-1", e.keyCode);
             console.log(sessionStorage.getItem("option-1"));
@@ -124,7 +124,7 @@ if(isset($_POST["submit"]))
                 return false;
             }
             keycode2 = `Key pressed: ${String.fromCharCode(e.keyCode)} \ncharCode: ${e.keyCode}`;
-            document.getElementById("op2").innerHTML=keycode2;
+            // document.getElementById("op2").innerHTML=keycode2;
             console.log(keycode2);
             sessionStorage.setItem("option-2", e.keyCode);
             console.log(sessionStorage.getItem("option-2"));
@@ -138,7 +138,7 @@ if(isset($_POST["submit"]))
                 return false;
             }
             keycode3 = `Key pressed: ${String.fromCharCode(e.keyCode)} \ncharCode: ${e.keyCode}`;
-            document.getElementById("op3").innerHTML=keycode3;
+            // document.getElementById("op3").innerHTML=keycode3;
             console.log(keycode3);
             sessionStorage.setItem("option-3", e.keyCode);
             console.log(sessionStorage.getItem("option-3"));
@@ -152,7 +152,7 @@ if(isset($_POST["submit"]))
                 return false;
             }
             keycode4 = `Key pressed: ${String.fromCharCode(e.keyCode)} \ncharCode: ${e.keyCode}`;
-            document.getElementById("op4").innerHTML=keycode4;
+            // document.getElementById("op4").innerHTML=keycode4;
             console.log(keycode4);
             sessionStorage.setItem("option-4", e.keyCode);
             console.log(sessionStorage.getItem("option-4"));

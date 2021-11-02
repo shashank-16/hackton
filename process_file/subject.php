@@ -1,8 +1,16 @@
+<<<<<<< HEAD:process_file/subject.php
 <?php 
 
 session_start();
 
 ?>
+=======
+<!-- <?php
+    // session_start();
+
+?> -->
+
+>>>>>>> 470aa93ad8cdf4c493ee0cba8eb20b84fbeeac0d:process_file/subject.html
 
 <!DOCTYPE html>
 <html lang="en">
@@ -60,8 +68,35 @@ session_start();
         </ul>
     </div>
 
+<<<<<<< HEAD:process_file/subject.php
     <?php 
     include('connective.php');
+=======
+    
+    <div class="main">
+        <div class="sub-div">
+            <form action="">
+                <div class="sub-name">
+                    Demo Test      <!-- Done by you -->
+                </div>
+                <div class="time-div">
+                    Time:4:00 PM
+                </div>
+                <div class="duration-div">
+                    Duration:20 Mins
+                </div>
+                <div class="no-ques-div">
+                    No Of Question:10    <!-- Done by you -->
+                </div>
+                <div class="total-marks-div">
+                    Total marks:100
+                </div>
+                <button type="button" class="start-btn">
+                    <a href="key-bindings.php">Procced For Key Binding</a>
+                </button>
+            </form>
+        </div>
+>>>>>>> 470aa93ad8cdf4c493ee0cba8eb20b84fbeeac0d:process_file/subject.html
 
     $show_subject="SELECT *FROM subject_info";
     $query_subject=mysqli_query($connection,$show_subject) or die("cannot show subject");

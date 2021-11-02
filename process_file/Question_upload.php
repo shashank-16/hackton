@@ -97,44 +97,26 @@
 
     <div class="container">
         <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
-        <div class="Question form-group">
-            <h1>Upload Question</h1>
-            <hr>
-            <textarea name="question" style="border: 2px solid black;
-            margin-top: 50px;" id="question"></textarea>
-            <ul>
-                <label for="option-1">Options</label>
-                <li><input type="text" name="option_1" id="" placeholder="Option-1"></li>
-                <br>
-                <li><input type="text" name="option_2" id="" placeholder="Option-2"></li>
-                <br>
-                <li><input type="text" name="option_3" id="" placeholder="Option-3"></li>
-                <br>
-                <li><input type="text" name="option_4" id="" placeholder="Option-4"></li>
-                <label for="Answer">Answer</label>
-                <li><input type="text" name="answer" id="" placeholder="Corect Answer"></li>
-            </ul>
-            <!-- <button type="submit" name="submit" class="btn btn-lg btn-primary">Upload</button> -->
-        </div>
-        <div class="Question form-group">
-            <h1>Upload Question</h1>
-            <hr>
-            <textarea name="question" style="border: 2px solid black;
-            margin-top: 50px;" id="question"></textarea>
-            <ul>
-                <label for="option-1">Options</label>
-                <li><input type="text" name="option_1" id="" placeholder="Option-1"></li>
-                <br>
-                <li><input type="text" name="option_2" id="" placeholder="Option-2"></li>
-                <br>
-                <li><input type="text" name="option_3" id="" placeholder="Option-3"></li>
-                <br>
-                <li><input type="text" name="option_4" id="" placeholder="Option-4"></li>
-                <label for="Answer">Answer</label>
-                <li><input type="text" name="answer" id="" placeholder="Corect Answer"></li>
-            </ul>
-            <button type="submit" name="submit" class="btn btn-lg btn-primary">Upload</button>
-        </div>
+        
+            <div class="Question form-group">
+                <h1>Upload Question</h1>
+                <hr>
+                <textarea name="question" style="border: 2px solid black;
+                margin-top: 50px;" id="question"></textarea>
+                <ul>
+                    <label for="option-1">Options</label>
+                    <li><input type="text" name="option_1" id="" placeholder="Option-1"></li>
+                    <br>
+                    <li><input type="text" name="option_2" id="" placeholder="Option-2"></li>
+                    <br>
+                    <li><input type="text" name="option_3" id="" placeholder="Option-3"></li>
+                    <br>
+                    <li><input type="text" name="option_4" id="" placeholder="Option-4"></li>
+                    <label for="Answer">Answer</label>
+                    <li><input type="text" name="answer" id="" placeholder="Corect Answer"></li>
+                </ul>
+                <button type="submit" name="submit" class="btn btn-lg btn-primary">Next</button>
+            </div>
         
         </form>
         
@@ -162,11 +144,11 @@
     $sql="INSERT INTO optionsheet(`question_id`,`option1`,`option2`,`option3`,`option4`) 
     values('{$Question}','{$option_1}','{$option_2}','{$option_3}','{$option_4}')";
 
+    $query= mysqli_query($connection,$sql) or die("question nhi gya");
+
     $sql2="INSERT INTO test(question,answer) VALUE('{$Question}','{$Answer}')";
     
-    $query= mysqli_query($connection,$sql) or die("nhi gya"); 
-    
-    $query2= mysqli_query($connection,$sql2) or die("nhi gya");
+    $query2= mysqli_query($connection,$sql2) or die("answer nhi gya");
     }
 
 ?>
