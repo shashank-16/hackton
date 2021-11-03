@@ -14,10 +14,12 @@ $current_quesition="question".$_POST["count"];
 
 $table_name= "online_test_".$_SESSION["table_name"];
 
+$test="test_".$_SESSION["table_name"];
+
 $answer=$_POST["answer"];
 $question=$_POST["question"]; 
 
-$sql=" SELECT *  FROM test where question='{$question}' AND answer='{$answer}'";
+$sql=" SELECT *  FROM `$test` where question='{$question}' AND answer='{$answer}'";
 $correct_query= mysqli_query($connection,$sql) or die("error");
 
 if(mysqli_num_rows($correct_query)>0)

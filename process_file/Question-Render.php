@@ -1,10 +1,16 @@
 <?php
   
+    session_start();
     
     include 'connective.php';
-    // $count=1;
+
+    $optionsheet="optionsheet_".$_SESSION["table_name"];
+
+
+    //wait for second 
+
     $count=$_POST['count'];
-    $query = "SELECT question_id FROM optionsheet where question_no ='{$count}' ";
+    $query = "SELECT question_id FROM `$optionsheet` where question_no ='{$count}' ";
 
     $result = mysqli_query($connection, $query) or die("database cant load");
     if (mysqli_num_rows($result) > 0) {

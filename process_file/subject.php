@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 <?php 
-=======
-<?php
->>>>>>> 7dbf1c018007cfc012a912f2a5ca94d120e3c6d7
 
 session_start();
 
@@ -61,14 +57,9 @@ session_start();
 
     <?php
     include('connective.php');
-<<<<<<< HEAD
 
     $show_subject="SELECT * FROM subject_info";
     $query_subject=mysqli_query($connection,$show_subject) or die("cannot show subject");
-=======
-    $show_subject = "SELECT *FROM subject_info";
-    $query_subject = mysqli_query($connection, $show_subject) or die("cannot show subject");
->>>>>>> 7dbf1c018007cfc012a912f2a5ca94d120e3c6d7
 
     if (mysqli_num_rows($query_subject) > 0) {
         while ($row = mysqli_fetch_assoc($query_subject)) {

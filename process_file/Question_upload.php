@@ -168,15 +168,18 @@
 
 <?php
 
-    if(isset($_POST["submit"]))
+session_start();
+
+if(isset($_POST["submit"]))
+{
+    
+    // $c = $_POST['paperdata'];
+    // print_r($c);
+    
+    function insertData($data)
     {
-
-        // $c = $_POST['paperdata'];
-        // print_r($c);
-
-        function insertData($data)
-        {
-
+        
+        include 'connective.php';
         print_r($data);
         $Question = $data['question'];
         $option_1 = $data['option_1'];
@@ -185,10 +188,13 @@
         $option_4 = $data['option_4'];
         $Answer= $data['answer'];
 
-        include 'connective.php';
+
+        $optionsheet="optionsheet_".$_SESSION["table_name"];
+        $test="test_".$_SESSION["table_name"];
 
 
-        $sql="INSERT INTO optionsheet(`question_id`,`option1`,`option2`,`option3`,`option4`) 
+
+        $sql="INSERT INTO `$optionsheet`(`question_id`,`option1`,`option2`,`option3`,`option4`) 
         values('{$Question}','{$option_1}','{$option_2}','{$option_3}','{$option_4}')";
 
         print_r($sql);
@@ -197,7 +203,7 @@
 
 
 
-        $sql2="INSERT INTO test(question,answer) VALUE('{$Question}','{$Answer}')";
+        $sql2="INSERT INTO `$test`(question,answer) VALUE('{$Question}','{$Answer}')";
         mysqli_query($connection,$sql2) or die("answer nhi gya");
         }
         array_map("insertData", $_POST['paperdata']);
