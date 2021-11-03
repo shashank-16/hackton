@@ -3,8 +3,8 @@ session_start();
 
 require 'connective.php';
 
-$table=$_SESSION["table_name"];
-echo($_SESSION["score"].$_SESSION["username"]);
+$table="online_test_".$_SESSION["table_name"];
+// echo($_SESSION["score"].$_SESSION["username"]);
 
 $checking_existing="SELECT `user_name` FROM exam_record WHERE `user_name` = '{$_SESSION["username"]}'";
 $query_existing=mysqli_query($connection,$checking_existing) or die("cannot check the exist id");

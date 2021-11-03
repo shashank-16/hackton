@@ -1,4 +1,3 @@
-
 <?php 
 
 session_start();
@@ -63,7 +62,8 @@ session_start();
 
     <?php 
     include('connective.php');
-    $show_subject="SELECT *FROM subject_info";
+
+    $show_subject="SELECT * FROM subject_info";
     $query_subject=mysqli_query($connection,$show_subject) or die("cannot show subject");
 
     if(mysqli_num_rows($query_subject)>0)

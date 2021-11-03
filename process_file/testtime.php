@@ -21,7 +21,6 @@ if(isset($_POST["submit"]))
 
     if(mysqli_num_rows($finally)>0)
     {
-
         header("Location: subject.php");
 
     }
