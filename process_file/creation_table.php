@@ -8,10 +8,6 @@ include('connective.php');
 if(isset($_POST['submit']))
 {
 
-    
-  
-
-
 $_SESSION["number_question"]= $_POST["no_of_question"]; 
 $time=90;
 
@@ -48,6 +44,13 @@ $table="online_test_".$_SESSION["table_name"]; //table name change here for furt
         $sql_subject= "INSERT INTO subject_info VALUES('{$tablename}','{$number_of_question}','{$time}')";
         $query_subject=mysqli_query($connection,$sql_subject);
 
+        //insert it there in unaux.com 
+
+        $exam_record="ALTER TABLE exam_record ADD `$tablename` int(11)  NULL DEFAULT NULL";
+        mysqli_query($connection,$exam_record) or die("exam_record failed to upload");
+
+        //put here
+
 
         $sql_optionsheet="CREATE TABLE `$optionsheet`(question_id varchar(1000),option1 varchar(1000),option2 varchar(1000),option3 varchar(1000),option4 varchar(1000), question_no int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY)";
         $sql_test=" CREATE TABLE `$test`(question varchar(1000),answer varchar(1000))";
@@ -63,9 +66,15 @@ $table="online_test_".$_SESSION["table_name"]; //table name change here for furt
         $sql_deletion="DROP TABLE {$table}";
         $sql_optionsheet="DROP TABLE {$optionsheet}";
         $sql_test="DROP TABLE {$test}";
+        $sql_subject_record ="DELETE FROM subject_info where `subject` = '{$tablename}'";
+        $sql_exam_record= "ALTER TABLE exam_record DROP `$tablename` ";
 
-mysqli_query($connection,$sql_optionsheet);
-mysqli_query($connection,$sql_test);
+        
+        mysqli_query($connection,$sql_optionsheet);
+        mysqli_query($connection,$sql_test);
+        mysqli_query($connection,$sql_exam_record);
+        mysqli_query($connection,$sql_subject_record);
+
         $query_deletion=mysqli_query($connection,$sql_deletion) or die("cannot delete the table");
 
         header("Location: after_teacherlogin.php");
