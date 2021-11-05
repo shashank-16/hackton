@@ -1,120 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Proctor Login</title>
+    <title>CheatMe</title>
+    
+    <link rel="stylesheet" href="f-page.css">
 
-    <link rel="preconnect" href="https://fonts.gstatic.com" />
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet" />
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
-
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-
-    <link rel="stylesheet" href="indexx.css">
-    <script>
-        var canvas = document.createElement('canvas');
-        var gl = canvas.getContext('webgl');
-        var debugInfo = gl.getExtension('WEBGL_debug_renderer_info');
-        var vendor = gl.getParameter(debugInfo.UNMASKED_VENDOR_WEBGL);
-        var renderer = gl.getParameter(debugInfo.UNMASKED_RENDERER_WEBGL);
-        var width = screen.width;
-        var height = screen.height;
-        var color_depth = screen.colorDepth;
-        
-
-
-        console.log('<p><strong>Renderer:</strong> '+renderer.toLowerCase()+'</p>');
-        var l=renderer.toLowerCase();
-        console.log(l);
-        // document.write('<p><strong>Width: </strong> '+width+'</p>');
-        // document.write('<p><strong>Height: </strong> '+height+'</p>');
-        // document.write('<p><strong>Color Depth: </strong> '+color_depth+'</p>');
-
-        
-        </script>
-        <script defer="" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon="{&quot;rayId&quot;:&quot;6a4e7a4f6db52e7d&quot;,&quot;token&quot;:&quot;20bbc1a5db504592b44ff5662b975c56&quot;,&quot;version&quot;:&quot;2021.10.0&quot;,&quot;si&quot;:100}"></script>
-        
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+        integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 </head>
-<body id="bdy">
-    <nav>
-        <div class="navbar">
-            <ul>
-                <li><a href="">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="107.604" height="66.099" viewBox="0 0 107.604 66.099">
-                        <g id="Group_2" data-name="Group 2" transform="translate(-60.482 -170.341)">
-                          <path id="Path_197" data-name="Path 197" d="M29.207,55.339V7.686L1.537,0,21.816,3.191,15.792,0H45.347V66.1H15.792l6.023-3.226L0,66.1ZM52.265,0H76.091a43.551,43.551,0,0,1,12.3,1.537c4.612.769,7.686,3.074,10.76,6.149s4.612,6.149,6.149,10.76A46.22,46.22,0,0,1,107.6,33.818,37.233,37.233,0,0,1,105.3,47.653a28.942,28.942,0,0,1-6.917,11.529c-2.306,2.306-5.38,3.843-9.223,5.38A46.519,46.519,0,0,1,77.628,66.1H52.265Zm0,0V66.1l23.058-10.76c3.843,0,6.149,0,7.686-.769a12.388,12.388,0,0,0,5.38-3.074c1.537-1.537,2.306-3.074,3.843-6.149s1.537-6.917,1.537-12.3a37.444,37.444,0,0,0-1.537-11.529,16.736,16.736,0,0,0-3.843-6.149c-1.537-1.537-3.843-2.306-6.149-3.074-1.537-.769-5.38-.769-10.76-.769L52.265,0Z" transform="translate(168.086 236.44) rotate(180)" fill="#ffffff"/>
-                        </g>
-                      </svg>
-                      
-                </a></li>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="">About</a></li>
-                <li><a href="">Contact</a></li>
-                <li><a href="">Carrer</a></li>
-            </ul>
 
-            <ul>
-                <a href="proctor-signup.php"><li>Proctor SignUp</li></a>
-                <a href="candidate-signup.php"><li>Candidate SignUp</li></a>
-            </ul>
-        </div>
-    </nav>
-
-    <div class="main">
-        <div class="write-up">
-            <svg xmlns="http://www.w3.org/2000/svg" width="229.089" height="140.726" viewBox="0 0 229.089 140.726">
-                <g id="Group_2" data-name="Group 2" transform="translate(-60.482 -170.341)">
-                  <path id="Path_197" data-name="Path 197" d="M62.181,117.817V16.364L3.273,0,46.446,6.794,33.622,0H96.545V140.726H33.622l12.823-6.867L0,140.726ZM111.272,0H162c11.454,0,21.273,1.636,26.182,3.273C198,4.909,204.544,9.818,211.089,16.364s9.818,13.091,13.091,22.909S229.089,58.909,229.089,72q0,17.182-4.909,29.454A61.617,61.617,0,0,1,209.453,126c-4.909,4.909-11.454,8.182-19.636,11.454a99.039,99.039,0,0,1-24.545,3.273h-54Zm0,0V140.726l49.091-22.909c8.182,0,13.091,0,16.363-1.636,4.909-1.636,8.182-3.273,11.454-6.545s4.909-6.545,8.182-13.091,3.273-14.727,3.273-26.182S198,50.727,196.362,45.818a35.63,35.63,0,0,0-8.182-13.091c-3.273-3.273-8.182-4.909-13.091-6.545-3.273-1.636-11.454-1.636-22.909-1.636L111.272,0Z" transform="translate(289.571 311.067) rotate(180)" fill="#ffffff"/>
-                </g>
-              </svg>
-
-              <!-- <pre> -->
-                <h1 style="margin-top: 50px;text-align:center;">
-                Let's Do Exam <br>
-                And Make Future Secure
-                </h1>
-              <!-- </pre> -->
-              
-              
-        </div>
-        <div class="log">
-                <div class="login">
-                    <a href="proctor-login.php"><div class="proctor">
-                        <img src="avtart.png" style="border-radius: 50%;">
-                        <h1>
-                            Proctor
-                        </h1>
-                    </div>
+<body>
+    <div class="row">
+        <div class="col-1 side-nav-bar" >
+            <div id="togg">
+                <span class="colaps">
+                    <i class="fa fa-bars" aria-hidden="true"></i>
+                </span>
+            </div>
+            <span class="Explore">Explore</span>
+            <span class="dot">
+                <a href="https://en-gb.facebook.com/login.php">
+                    <i id="fb" class="fa fa-facebook" aria-hidden="true"></i>
                 </a>
-                    <a href="candidate-login.php">
-                        <div class="candidate" >
-                        <h1>
-                            Candidate
-                        </h1>
-                        <img src="avtart.png" style="border-radius: 50%;">
-                    </div>
+            </span>
+            <span class="dot">
+                <a href="https://twitter.com/login">
+                    <i class="fa fa-twitter" aria-hidden="true"></i>
                 </a>
-                </div>
+            </span>
+            <span class="dot">
+                <a href="https://www.instagram.com/">
+                    <i class="fa fa-instagram" aria-hidden="true"></i>
+                </a>
+            </span>
+            <hr style="color: white; width: 50%; height: 3px; margin-left: 28px;">
+            <span class="dot">
+                <a href="#"><i class="fa fa-share-alt" aria-hidden="true"></i></a>
+            </span>
+            <span class="dot">
+                <a href="#"><i class="fa fa-question-circle" aria-hidden="true"></i></a>
+            </span>
         </div>
+
+
+
+
+        <div class="col-10 offset-2 head">
+
+            <div class="p-4 m-3" style="text-align: right;">
+                <a href="Login.php" style="text-decoration: none; color: white;"><span class="px-4 py-1" id="signup">Login</span></a>
+                <a href="signup.php" style="text-decoration: none; color: white;"><span class="px-4 py-1" id="signup">SignUp</span></a>
+            </div>
+            <h2 id="wel">Welcome To</h2>
+            <br>
+            <!-- <div class="webnart"> -->
+                <h1 id="webnart">CheatMe</h1>
+            <!-- </div> -->
+            <pre>
+<h2>
+Let's Do Exam
+And Make Future Secure
+</h2>
+            </pre>
+            
+            <div class="" style="font-size:20px; color: white; font-family: Cursive;">
+                <h1>CheatMe Examination Web-Portal.</h2>
+            </div>
+            <br>
+            <h1 style="font-family: cursive; color: white;">
+                Webnart Parent of This Web-Potral
+            </h2>
+            <br>
+            <!-- <span id="letsgo" class="px-4">Let's Go</span> -->
+            <br><br><br>
+            <hr style="color: white; width: 90%;">
+        </div>
+
     </div>
-    <script>
-        if(l=="generic renderer")
-        {
-            document.getElementById("bdy").style.display="none";
-            alert("Please Get out from Vm!");
-        }
-
-        // if(width<1536)
-        // {
-        //     $(document).ready(function(){
-        //         $("#bdy").css({"display":"none"})
-        //     })
-        // }
-    </script>
+    
 </body>
+
 </html>

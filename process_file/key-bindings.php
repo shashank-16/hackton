@@ -98,7 +98,7 @@ if(isset($_POST["submit"]))
         <hr>
         <div class="main form-group">
             <div id="head" style="background-color: royalblue;">
-                <p>Enter your own Choise Key for Selection of Option.</p>
+                <p>Enter your own Choice Key for Selection of Option.</p>
             </div>
             <hr>
             <label for="option"><b>Option-1</b><input id="option-1" class="form-control" type="text" name="opt-key-1" autofocus ></label>
@@ -110,7 +110,9 @@ if(isset($_POST["submit"]))
             <label for="option"><b>Option-4</b><input id="option-4" class="form-control" type="text" name="opt-key-4"></label>
             <span id="op4"></span>
             <br>
-            <a class="btn btn-primary btn-lg" style="margin-top: 50px; margin-left: 200px;" href="Question-paper.php">Lock</a>
+            <div style="display: flex;">
+                <a class="btn btn-primary btn-lg" style="margin-top: 50px; margin-left: 200px;" href="Question-paper.php">Lock</a>
+            </div>
         </div>
         
     </div>

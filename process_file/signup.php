@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SignUp</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet" />
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Font+Name">
+    <link rel="stylesheet" href="signup.css">
+</head>
+
+
+
+
+<body>
+
+    <div id="background-wrap">
+        <div class="bubble x1"></div>
+        <div class="bubble x2"></div>
+        <div class="bubble x3"></div>
+        <div class="bubble x2"></div>
+        <div class="bubble x4"></div>
+        <div class="bubble x10"></div>
+        <div class="bubble x5"></div>
+        <div class="bubble x10"></div>
+        <div class="bubble x2"></div>
+        <div class="bubble x6"></div>
+        <div class="bubble x7"></div>
+        <div class="bubble x2"></div>
+        <div class="bubble x10"></div>
+        <div class="bubble x8"></div>
+        <div class="bubble x3"></div>
+        <div class="bubble x9"></div>
+        <div class="bubble x10"></div>
+        <div class="bubble x3"></div>
+        <div class="bubble x10"></div>
+    </div>
+
+
+    <div class="main container">
+
+
+        <div class="both">
+
+                <div class="container Teachers">
+                    <div class="avatar">
+                        <!-- <a href="https://codepen.io/MarioDesigns/"> -->
+                            <img src="avtart.png" alt="Avtar" />
+                        <!-- </a> -->
+                    </div>
+                    <div class="content">
+                        <h1>Teacher's SignUp</h1>
+                    </div>
+                </div>
+                
+
+                <div class="container candidates">
+                    <div class="avatar2">
+                        <!-- <a href="https://codepen.io/MarioDesigns/"> -->
+                            <img src="avtart.png" alt="Avtar" />
+                        <!-- </a> -->
+                    </div>
+                    <div class="content">
+                        <h1>Candidate 
+                            SignUp</h1>
+                    </div>
+                </div>
+        </div>
+
+
+
+        <div class="candidate col-7 gradient-border" style="margin-top: 0%;">
+            <div class="head" style="display:flex; justify-content: space-around;">
+                <div class="before"></div>
+                <div class="head2 linear-wipe">Candidate SignUp</div>
+                <div class="after"></div>
+            </div>
+            <form action="candidate-signup.php" method="POST">
+                
+                <hr style="color: white !important;">
+                <div class="fields row">
+                    <div class="col">
+                        <label for="ID">Student ID</label>
+                        <input type="text"  name ="student_id"class="form-control" placeholder="Student ID" required>
+                    </div>
+                    <div class="col">
+                        <label for="ID">Branch</label>
+                        <input type="text" name ="branch" class="form-control" placeholder="Branch" required>
+                    </div>
+                </div>
+                <div class=" fields row">
+                    <div class="col">
+                        <label for="Name">First Name</label>
+                        <input type="text" name ="F_name" class="form-control" autocomplete="First-name" placeholder="First Name" required>
+                        
+                    </div>
+                    <div class="col">
+                        <label for="Name">Last Name</label>
+                        <input type="text" name = "L_name" class="form-control" autocomplete="Last-name" placeholder="Last Name" required>
+                    </div>
+                </div>
+                <div class="eppb"> 
+                    <label for="Email">Email</label>
+                    <input type="email" class="form-control" id="Usermail" name = "Email" autocomplete="Email" required placeholder="Email" required>
+                </div>
+                <div class="eppb"> 
+                    <label for="Password">Password</label>
+                    <input type="password" autocomplete="current-password" name="" class="form-control" minlength="8" maxlength="16" required placeholder="Password">
+                </div>
+                <div class="eppb"> 
+                    <label for="Password">Confirm Password</label>
+                    <input type="password" autocomplete="current-password"  name = "password" class="form-control" minlength="8" maxlength="16" required placeholder="Password">
+                    <p>Password must be same as Above </p>
+                </div>
+                <div class="eppb"> 
+                    <button type="submit" style="margin-left: 44%;" onclick="signup()" name="submit" class="btn-sm btnn btn-primary" >Register</button>
+                </div>
+                <div class="login">
+                    <p>Registered Candidate <a href="Login.php">Login</a> here.</p>
+                </div>
+
+            </form>
+        </div>
+
+        <!-- <hr style="rotate: 90deg;" color="black"> -->
+
+        <div class="proctor col-8 gradient-border">
+            <div class="head" style="display:flex; justify-content: space-around;">
+                <div class="before"></div>
+                <div class="head2" >Teacher SignUp</div>
+                <div class="after"></div>
+                </div>
+                <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
+                    
+                    <hr style="color: white !important;">
+                    <div class="fields row">
+                        <div class="col">
+                            <label for="institute" class="inputs">Institute Name:</label>
+                            <input type="text" name= "Institute_Name" style="outline: none;" class="form-control" autocomplete="Institute Name" placeholder="Institute Name">
+                        </div>
+                        <div class="col">
+                            <label for="ID">Branch</label>
+                            <input type="text" name ="branch" class="form-control" placeholder="Branch" required>
+                        </div>
+                    </div>
+                    <div class=" fields row">
+                        <div class="col">
+                            <label for="Name">First Name</label>
+                            <input type="text" name ="F_name" class="form-control" autocomplete="First-name" placeholder="First Name" required>
+                            
+                        </div>
+                        <div class="col">
+                            <label for="Name">Last Name</label>
+                            <input type="text" name = "L_name" class="form-control" autocomplete="Last-name" placeholder="Last Name" required>
+                        </div>
+                    </div>
+                    <div class="eppb"> 
+                        <label for="Email" class="inputs">E-Mail</label>
+                        <input type="email" name= "email" style="outline: none;" class="form-control" autocomplete="Email" placeholder="Email">
+                    </div>
+                    <div class="eppb"> 
+                        <label for="Password">Password</label>
+                        <input type="password" autocomplete="current-password" name="" class="form-control" minlength="8" maxlength="16" required placeholder="Password">
+                    </div>
+                    <div class="eppb"> 
+                        <label for="Password">Confirm Password</label>
+                        <input type="password" autocomplete="current-password"  name = "Confirm_password" class="form-control" minlength="8" maxlength="16" required placeholder="Password">
+                        <p>Password must be same as Above </p>
+                    </div>
+                    <div class="eppb"> 
+                        <button type="submit" style="margin-left: 44%;" onclick="signup()" name="Register" class="btn-lg btnn btn-primary" >Register</button>
+                    </div>
+                    <div class="login">
+                        <p>Registered Teacher <a href="Login.php">Login</a> here.</p>
+                    </div>
+                </form>
+
+        </div>
+
+    </div>
+
+
+    <script>
+        $(document).ready(function(){
+            $(".Teachers").click(function(){
+                $(".Teachers,.candidates").hide();
+                $(".proctor").show();
+            })
+
+            $(".candidates").click(function(){
+                $(".Teachers,.candidates").hide();
+                $(".candidate").show();
+            })
+        })
+
+
+        function signup()
+        {
+            alert("sucessfully! Signed-up")
+        }
+    </script>
+</body>
+</html>
+
+
+
+<?php 
+          
+        include 'connective.php';
+
+
+        if(isset($_POST["Register"]))
+        {
+            $Institution=$_POST["Institute_Name"];
+            $branch=$_POST['branch'];
+            $F_name=$_POST['F_name'];
+            $L_name=$_POST['L_name'];
+            $username_teacher=$_POST["email"];
+            $password_teacher=$_POST["Confirm_password"];
+
+            $sql_teacher="INSERT INTO teacher_info(`Institute_name`,`Branch`,`F_Name`,`L_Name`,`Username`,`Password`) 
+            VALUES('{$Institution}','{$branch}','{$F_name}','{$L_name}','{$username_teacher}','{$password_teacher}')";
+
+            mysqli_query($connection,$sql_teacher) or die("failed");
+
+        }
+?>
+
+
+
+
