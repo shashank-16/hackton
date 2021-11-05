@@ -65,8 +65,8 @@ session_start(); // session is god
                 <li>Name of Institute/University</li>
             </ul>
             <ul>
-                <li>Student Name</li>
-                <li>Roll Number</li>
+                <li><?php echo $_SESSION["username"]?></li>
+                <li>  190029   </li>
                 <li><span style="font-size: 40px;" class="material-icons orange600">face</span></li>
             </ul>
         </div>

@@ -25,13 +25,33 @@
 </head>
 
 
+<style>
+    .side-nav{
+        width: 120px;
+        height: 100%;
+        background-color: #475058;
+        position: fixed;
+    }
+
+    .side-nav ul{
+        display: flex;
+        flex-direction: column;
+        margin-left: 10px;
+        margin-top: 50px;
+    }
+
+    ul li{
+        list-style: none;
+    }
+</style>
+
 
 
 <body>
 
-    <nav class="nav navbar">
-        <ul style="display: flex;">
-            <li>
+    <div class="side-nav">
+        <ul>
+            <!-- <li>
                 <a href="">
                 <svg xmlns="http://www.w3.org/2000/svg" width="190.089" height="60.726" viewBox="0 0 229.089 140.726">
                 <g id="Group_2" data-name="Group 2" transform="translate(-60.482 -170.341)">
@@ -39,13 +59,13 @@
                 </g>
               </svg>
                 </a>
-            </li>
+            </li> -->
             <li><a href="index.html">Home</a></li>
             <li><a href="">About</a></li>
             <li><a href="">Carrer</a></li>
             <li><a href="">Contact</a></li>
         </ul>
-    </nav>
+    </div>
 
     <div id="background-wrap">
         <div class="bubble x1"></div>
@@ -105,6 +125,7 @@
         
 
         <!-- <hr style="rotate: 90deg;" color="black"> -->
+        <!-- Teacher -->
 
         <div class="proctor col-5 gradient-border" style="margin-top: 100px;">
             <div class="head" style="display:flex; justify-content: space-around;">
@@ -112,7 +133,7 @@
                 <div class="head2" >Teacher Login</div>
                 <div class="after"></div>
                 </div>
-                <form action="<?php echo $_SERVER['PHP_SELF'];?>" method="POST">
+                <form action="teacher-login.php" method="POST">
                     
                     <hr style="color: white !important;">
 
@@ -124,18 +145,20 @@
                     </div>
                     <div class="eppb"> 
                         <label for="Password">Password</label>
-                        <input type="password" autocomplete="current-password" name="password" class="form-control"  required placeholder="Password">
+                        <input type="password" autocomplete="current-password" name="password" class="form-control" required placeholder="Password">
                     </div>
                     <div class="eppb" style="display: flex;"> 
-                        <button type = "submit" id="sub" name = "Teacher-login" class="btn btn-lg btn-primary">Login</button>
+                        <button type = "submit" id="sub" name = "login" class="btn btn-lg btn-primary">Login</button>
                     </div>
                     <div class="login">
-                        <p>Not Registered Yet <a href="signup.php">Register</a> here.</p>
+                        <p>Not Registered Yet <a href="signup.php" style="color: blue;" >Register</a> here.</p>
                     </div>
                 </form>
 
         </div>
 
+
+        <!-- Candidate -->
 
         <div class="candidate col-5 gradient-border" style="margin-top:100px;">
             <div class="head" style="display:flex; justify-content: space-around;">
@@ -147,7 +170,6 @@
             <form action="testtime.php" method="POST">
                 
                 <hr style="color: white !important;">
-                
                 <div class="eppb"> 
                     <label for="Email" class="inputs">E-Mail</label>
                     <input type="email" name= "username" style="outline: none;" class="form-control" autocomplete="Email" placeholder="Email" autofocus>
@@ -158,7 +180,7 @@
                     <input type="password" name = "password" class="form-control" autocomplete="current-password" placeholder="Password">
                 </div>
                 <div class="eppb" style="display: flex;"> 
-                    <button type ="submit" id="login" name ="login" class="btn btn-lg btn-primary">Login</button>
+                    <button type ="submit" id="login" name ="candidate-login" class="btn btn-lg btn-primary">Login</button>
                 </div>
             </form>
         </div>
@@ -183,30 +205,3 @@
 </html>
 
 
-<?php
-          
-    include('connective.php');
-
-
-    if(isset($_POST["Teacher-login"]))
-        {
-           
-            $username=$_POST["username"];
-            $password=$_POST["password"];
-            $sql="SELECT *FROM teacher_info where `Username`= '{$username}' and `Password`='{$password}'";
-            
-            $query1=mysqli_query($connection,$sql) or die("didnt login");
-
-            if(mysqli_num_rows($query1)>0)
-            {
-                header("Location: after_teacherlogin.php");
-            }
- 
-            else{
-                echo '<div class="alert alert-danger">check your username Or Password.</div>';
-                header("Location: proctor-login.php");
-                // header("Location: detect.html");
-            }
-
-        }
-?>
