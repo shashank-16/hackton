@@ -115,6 +115,8 @@
                 <form action="<?php echo $_SERVER['PHP_SELF'];?>" method="POST">
                     
                     <hr style="color: white !important;">
+
+
                    
                     <div class="eppb"> 
                         <label for="UserName" class="inputs"> Registered_Email</label>
@@ -122,7 +124,7 @@
                     </div>
                     <div class="eppb"> 
                         <label for="Password">Password</label>
-                        <input type="password" autocomplete="current-password" name="password" class="form-control" minlength="8" maxlength="16" required placeholder="Password">
+                        <input type="password" autocomplete="current-password" name="password" class="form-control"  required placeholder="Password">
                     </div>
                     <div class="eppb" style="display: flex;"> 
                         <button type = "submit" id="sub" name = "Teacher-login" class="btn btn-lg btn-primary">Login</button>
@@ -146,10 +148,6 @@
                 
                 <hr style="color: white !important;">
                 
-                <div class="eppb"> 
-                    <label for="Registered-ID" class="inputs">Registered ID:</label>
-                    <input type="text" name= "Registered_ID" style="outline: none;" class="form-control" autocomplete="Registered ID" placeholder="Registered ID" autofocus>
-                </div>
                 <div class="eppb"> 
                     <label for="Email" class="inputs">E-Mail</label>
                     <input type="email" name= "username" style="outline: none;" class="form-control" autocomplete="Email" placeholder="Email" autofocus>
@@ -188,25 +186,26 @@
 <?php
           
     include('connective.php');
+
+
     if(isset($_POST["Teacher-login"]))
         {
-            $institute=$_POST["Registered_ID"];
+           
             $username=$_POST["username"];
             $password=$_POST["password"];
-            $sql="SELECT *FROM teacher_info where Username= '{$username}' and Password='{$password}'";
+            $sql="SELECT *FROM teacher_info where `Username`= '{$username}' and `Password`='{$password}'";
             
             $query1=mysqli_query($connection,$sql) or die("didnt login");
 
             if(mysqli_num_rows($query1)>0)
             {
-                echo(10);
                 header("Location: after_teacherlogin.php");
-
             }
  
             else{
                 echo '<div class="alert alert-danger">check your username Or Password.</div>';
                 header("Location: proctor-login.php");
+                // header("Location: detect.html");
             }
 
         }
