@@ -226,11 +226,14 @@
             $branch=$_POST['branch'];
             $F_name=$_POST['F_name'];
             $L_name=$_POST['L_name'];
+
+            $full_name=$F_name." ".$L_name;
+
             $username_teacher=$_POST["email"];
             $password_teacher=$_POST["Confirm_password"];
 
-            $sql_teacher="INSERT INTO teacher_info(`Institute_name`,`Branch`,`F_Name`,`L_Name`,`Username`,`Password`) 
-            VALUES('{$Institution}','{$branch}','{$F_name}','{$L_name}','{$username_teacher}','{$password_teacher}')";
+            $sql_teacher="INSERT INTO teacher_info(`Institute_name`,`branch`,`teacher_name`,`Username`,`Password`) 
+            VALUES('{$Institution}','{$branch}','{$full_name}','{$username_teacher}','{$password_teacher}')";  //apne according big kr lo branch ko ;
 
             mysqli_query($connection,$sql_teacher) or die("failed");
 

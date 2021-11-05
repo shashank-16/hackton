@@ -1,33 +1,8 @@
-<!-- <?php
-          
-    // include('connective.php');
-
-    // if(isset($_POST["Teacher-Login"]))
-    //     {
-    //         $institute=$_POST["Registered_ID"];
-    //         $username=$_POST["username"];
-    //         $password=$_POST["password"];
-    //         $sql="SELECT *FROM teacher_info where Username= '{$username}' and Password='{$password}'";
-            
-    //         $query1=mysqli_query($connection,$sql) or die("didnt login");
-
-    //         if(mysqli_num_rows($query1)>0)
-    //         {
-    //             echo(10);
-    //             header("Location: after_teacherlogin.php");
-
-    //         }
- 
-    //         else{
-                
-    //         }
-
-    //     }
-?> -->
 
 
 <?php
-          
+          session_start();
+
           include('connective.php');
 
           if(isset($_POST["login"]))
@@ -42,7 +17,8 @@
 
                 if(mysqli_num_rows($query1)>0)
                 {
-                     echo(10);
+                    $_SESSION["teacher_name"]=$username;
+                    
                     header("Location: after_teacherlogin.php");
 
                 }
@@ -56,4 +32,4 @@
             }
 
           
-          ?>
+?>

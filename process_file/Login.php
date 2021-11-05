@@ -93,7 +93,7 @@
     <div class="main container">
 
 
-        <div class="both">
+        <div class="both" style= "width:600px">
 
                 <div class="container Teachers">
                     <div class="avatar">
@@ -102,7 +102,7 @@
                         <!-- </a> -->
                     </div>
                     <div class="content">
-                        <h1>Teacher's Login</h1>
+                        <h1 style="font-weight:600">Teacher's Login</h1>
                     </div>
                 </div>
                 
@@ -114,8 +114,7 @@
                         <!-- </a> -->
                     </div>
                     <div class="content">
-                        <h1>Candidate 
-                            Login</h1>
+                        <h1 style="font-weight:600">Candidate Login</h1>
                     </div>
                 </div>
         </div>
