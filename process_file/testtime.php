@@ -9,7 +9,7 @@ $_SESSION["score"]=0;
 
 include 'connective.php';
 
-if(isset($_POST["login"]))
+if(isset($_POST["candidate-login"]))
 {
 
     $username=$_SESSION["username"] ; // will change
