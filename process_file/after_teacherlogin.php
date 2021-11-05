@@ -18,11 +18,18 @@
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Font+Name">
 
+
     <style>
         *{
             margin: 0%;
             padding: 0%;
             box-sizing: border-box;
+        }
+
+        body{
+            background-color: #112322;
+
+            background-color: rgb(13,37,35);
         }
 
 
@@ -34,7 +41,7 @@
             color: white;
         }
         nav{
-            background-image: url('wallppr.jpg');
+            background-color: black;
             background-position: center;
         }
 
@@ -65,13 +72,32 @@
         }
 
 
+        .fields
+        {
+            display: flex;
+            padding: 10px 30px 10px 30px;
+        }
+
+        input{
+            color: #b9b9bd!important;
+            background: transparent;
+            border-bottom: 5px solid black;
+            outline: none !important;
+            border-radius: 0% !important;
+            border-width: 0 0 2px 0 !important;
+            font-size: 30px;
+        }
+
 
 
         form{
+            margin: auto;
             width: 600px;
             border: 2px solid black;
             border-radius: 10px;
             padding: 30px;
+            background-color: white;
+            box-shadow: 1px -1px 20px white;
         }
 
         h2{
@@ -81,7 +107,6 @@
 
         label{
             font-size: 20px;
-            
         }
 
         .button-sub{
@@ -96,7 +121,7 @@
 <body>
     
     <nav>
-        <div class="navbar">
+        <div class="navbar position-stickey">
             <ul>
                 <li><a href="">
                     <svg xmlns="http://www.w3.org/2000/svg" width="107.604" height="66.099" viewBox="0 0 107.604 66.099">
@@ -108,39 +133,153 @@
                 </a></li>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="">About</a></li>
-                <li>Name of Institute/University</li>
+                <li style="color: white;">Name of Institute/University</li>
             </ul>
             <li style="font-size: 30px; margin-right: 10px; color: white; list-style: none;">Teacher Name</li>
         </div>
     </nav>
 
-    <div class="main" >
+    <div class="container">
 
-        <form action="creation_table.php" class="form-group" method="POST">
-            <h2>Create or Delete</h2>
-  
-            <hr>
-  
-            <input type="radio" name="check" value="createTable">
-            <label for="create">Create Test paper</label><br>
-  
-            <input type="radio" name="check" value="DeleteTable">
-            <label for="delete">Delete Test paper:</label><br>
-            
-            <label for="Password" class="inputs">Enter table Name:</label>
-            <input type="text" name = "Table_name" class="form-control" autocomplete="table_name" placeholder="Enter Table Name">
-            
-            <label for="Password" class="inputs">Enter Total No. of Question:</label>
-            <input type="text" name = "no_of_question" class="form-control" autocomplete="num-of-question" placeholder="Enter Total No. of Question">
-            
-            <div class="button-sub">
-              <button type = "submit" id="sub" name = "submit" class="btn btn-lg btn-primary">Go For Upload Question</button>
-              
-              <button style="margin: 4px;" type = "submit" id="sub" name = "submit" class="btn btn-lg btn-primary">Delete Table</button>
-            </div>
-        </form>
+    
+        <div class="col-6 main" style="margin-top:100px;" >
+
+            <form action="creation_table.php" class="form-group" method="POST">
+                <h2>Create or Delete</h2>
+    
+                <hr>
+
+                <input type="radio" name="check" value="createTable">
+                <label for="create">Create Test paper</label>
+                <br>
+
+                <input type="radio" name="check" value="DeleteTable">
+                <label for="delete">Delete Test paper</label>
+
+                <div class="fields">
+                <label for="table name" class="inputs">Enter table Name:</label>
+                <input type="text" name = "Table_name" class="form-control" autocomplete="table_name" placeholder="Enter Table Name">
+                </div>
+                
+                
+                <div class="fields">
+                <label for="no_of_question" class="inputs">Enter Total No. of Question:</label>
+                <input type="text" name = "no_of_question" class="form-control" autocomplete="num-of-question" placeholder="Enter Total No. of Question">
+                
+                </div>
+                
+                <div class="button-sub">
+                <button type = "submit" id="sub" name = "submit" class="btn btn-lg btn-success">Go For Upload Question</button>
+                
+                </div>
+                <div class="button-sub">
+                <button style="margin: 4px;" type = "submit" id="sub" name = "submit" class="btn btn-lg btn-primary">Delete Paper</button>
+
+                </div>
+
+                
+            </form>
+
+            <form action="" class="form-group" method="POST" style="height: 520px;">
+                <h2>Create or Delete</h2>
+
+                <select name="subject" id="subjects" class="form-control" style="padding:20px">
+                    <option value="Select">Select</option>
+                    <option value="Hindi">Hindi</option>
+                    <option value="English">English</option>
+                    <option value="Maths">Maths</option>
+                    <option value="DSA">DSA</option>
+                    <option value="TAFL">TAFL</option>
+                </select>
+                
+                <div class="fields" style="padding: 20px;">
+                    <label for="no_of_question" class="inputs">Enter Total No. of Question:</label>
+                    <input type="text" name = "no_of_question" class="form-control" autocomplete="num-of-question" placeholder="Enter Total No. of Question">
+                </div>
+                
+                <div class="button-sub">
+                <button type = "submit" id="sub" name = "submit" class="btn btn-lg btn-success">SHOW</button>
+                </div>
+                
+            </form>
+        </div>
     </div>
 
+
+
+
+
+
+
+    <div class="record">
+        <table>
+            <tr>
+
+                <!-- Done by you -->
+
+                <th>Candidate-Name</th>
+                <th>Subject Name</th>
+                <th>Score</th>
+                <th>Subject Name</th>
+                <th>Score</th>
+                <th>Subject Name</th>
+                <th>Score</th>
+                <th>Subject Name</th>
+                <th>Score</th>  
+                <th>Subject Name</th>
+                <th>Score</th>
+                <th>Subject Name</th>
+                <th>Score</th> 
+
+            </tr>
+            <tr>
+                <!-- done by you -->
+                <td>Alfreds Futterkiste</td>
+                <td>Maria Anders</td>
+                <td>Germany</td>
+                <td>Maria Anders</td>
+                <td>Germany</td>
+                <td>Maria Anders</td>
+                <td>Germany</td>
+            </tr>
+            
+            <!-- <th>Candidate Name</th> -->
+        </table>
+    </div>
+
+    <style>
+
+        .record{
+            margin-top: 100px;
+            display: flex;
+        }
+
+
+
+        table{
+            box-shadow: 1px -1px 20px white;
+            align-self: center;
+            /* margin-left: 2%; */
+            margin: auto;
+            background-color: white;
+            border-radius: 20px 20px 0 0 ;
+            
+        }
+
+        th{
+            border: 1px solid black;
+            /* border-radius: 20px 20px 0 0 ; */
+        }
+
+        tr,th,td{
+            padding: 10px;
+            /* border: 2px solid black; */
+            width: fit-content;
+            text-align: center;
+            color: black;
+            font-size: 20px;
+        }
+    </style>
 
 </body>
 </html>
