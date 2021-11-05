@@ -117,11 +117,12 @@
                     <hr style="color: white !important;">
                    
                     <div class="eppb"> 
-                        <label for="UserName" class="inputs"> ID/Roll Number:</label>
-                        <input type="text" name= "username" style="outline: none;" class="form-control" autocomplete="Roll-Number" placeholder="Reg ID/ Roll Num." autofocus>                    </div>
+                        <label for="UserName" class="inputs"> Registered_Email</label>
+                        <input type="email" name= "username" style="outline: none;" class="form-control" autocomplete="Roll-Number" placeholder="Registred Email" autofocus>               
+                    </div>
                     <div class="eppb"> 
                         <label for="Password">Password</label>
-                        <input type="password" autocomplete="current-password" name="" class="form-control" minlength="8" maxlength="16" required placeholder="Password">
+                        <input type="password" autocomplete="current-password" name="password" class="form-control" minlength="8" maxlength="16" required placeholder="Password">
                     </div>
                     <div class="eppb" style="display: flex;"> 
                         <button type = "submit" id="sub" name = "Teacher-login" class="btn btn-lg btn-primary">Login</button>
@@ -159,7 +160,7 @@
                     <input type="password" name = "password" class="form-control" autocomplete="current-password" placeholder="Password">
                 </div>
                 <div class="eppb" style="display: flex;"> 
-                    <button type = "submit" id="login" name ="login" class="btn btn-lg btn-primary">Login</button>
+                    <button type ="submit" id="login" name ="login" class="btn btn-lg btn-primary">Login</button>
                 </div>
             </form>
         </div>

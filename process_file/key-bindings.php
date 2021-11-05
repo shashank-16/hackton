@@ -96,7 +96,9 @@ if(isset($_POST["submit"]))
             <label for="option"><b>Option-4</b><input id="option-4" class="form-control" type="text" name="opt-key-4"></label>
             <span id="op4"></span>
             <br>
-            <a class="btn btn-primary btn-lg" style="margin-top: 50px; margin-left: 200px;" href="Question-paper.php">Lock</a>
+            <div style="display: flex;">
+                <a class="btn btn-primary btn-lg" style="margin-top: 50px; margin-left: 200px;" href="Question-paper.php">Lock</a>
+            </div>
         </div>
         
     </div>

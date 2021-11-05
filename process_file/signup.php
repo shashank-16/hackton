@@ -182,7 +182,7 @@
                         <button type="submit" style="margin-left: 44%;" onclick="signup()" name="Register" class="btn-lg btnn btn-primary" >Register</button>
                     </div>
                     <div class="login">
-                        <p>Registered Teacher <a href="Login.php">Signup</a> here.</p>
+                        <p>Registered Teacher <a href="Login.php">Login</a> here.</p>
                     </div>
                 </form>
 

@@ -9,7 +9,7 @@ $_SESSION["score"]=0;
 
 include 'connective.php';
 
-if(isset($_POST["submit"]))
+if(isset($_POST["login"]))
 {
 
     $username=$_SESSION["username"] ; // will change
@@ -27,7 +27,7 @@ if(isset($_POST["submit"]))
     else 
     {
         echo '<div class="alert alert-danger">check your username Or Password.</div>';
-        header("Location: candidate-login.php");
+        header("Location: Login.php");
     }
 }
 else {
