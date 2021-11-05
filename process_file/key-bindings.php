@@ -84,7 +84,7 @@ if(isset($_POST["submit"]))
         <hr>
         <div class="main form-group">
             <div id="head" style="background-color: royalblue;">
-                <p>Enter your own Choise Key for Selection of Option.</p>
+                <p>Enter your own Choice Key for Selection of Option.</p>
             </div>
             <hr>
             <label for="option"><b>Option-1</b><input id="option-1" class="form-control" type="text" name="opt-key-1" autofocus ></label>
