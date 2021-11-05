@@ -122,10 +122,10 @@
             <hr>
   
             <input type="radio" name="check" value="createTable">
-            <label for="create">Create Table:</label><br>
+            <label for="create">Create Test paper</label><br>
   
             <input type="radio" name="check" value="DeleteTable">
-            <label for="delete">Delete Table:</label><br>
+            <label for="delete">Delete Test paper:</label><br>
             
             <label for="Password" class="inputs">Enter table Name:</label>
             <input type="text" name = "Table_name" class="form-control" autocomplete="table_name" placeholder="Enter Table Name">
