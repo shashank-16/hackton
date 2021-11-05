@@ -87,7 +87,7 @@
 
             $sql_teacher="INSERT INTO teacher_info(`Username`,`Password`,`Institute_name`) VALUES('{$username_teacher}','{$password_teacher}','{$Institution}')";
 
-            mysqli_query($connection,$sql_teacher) or die("failed");
+            mysqli_query($connection,$sql_teacher) or die("please use different username .this already exist");
 
             // mysqli_close($connection);
 

@@ -103,6 +103,7 @@ $sql="INSERT INTO user_info(`student_Id`,`branch`,`name_student`,`user_name`,`pa
 
 $query= mysqli_query($connection,$sql) or die("FAIL TO UPLOAD");
 
+
 }
 
 ?>

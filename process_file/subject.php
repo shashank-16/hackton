@@ -59,6 +59,8 @@ session_start();
     include('connective.php');
 
     $show_subject="SELECT * FROM subject_info";
+    
+
     $query_subject=mysqli_query($connection,$show_subject) or die("cannot show subject");
 
     if (mysqli_num_rows($query_subject) > 0) {
@@ -67,13 +69,22 @@ session_start();
 
             <div class="main">
                 <div class="sub-div">
+
+                
                     <form id="nm" action="key-bindings.php" method="POST" class="form-group" name="<?php echo ($row["subject"]); ?>">
                         <div class="sub-name">
                             <select name="subject" style="display: none;">
                                 <option value="<?php echo ($row["subject"]); ?>"></option>
                             </select>
 
-                            <?php echo ($row["subject"]); ?>
+                           Subject : <?php  echo ($row["subject"]); 
+                           
+                           require 'connective.php';
+                           $subject=$row["subject"];
+                           $sql_existing="SELECT `user_name` FROM `user_info` WHERE `user_name`= '{$_SESSION["username"]}' AND `$subject`=True ";
+                           $existing=mysqli_query($connection,$sql_existing) or die("cannot disable button");
+
+                           ?>
                         </div>
 
 
@@ -86,7 +97,7 @@ session_start();
                             <select name="duration" style="display: none;">
                                 <option value="<?php echo ($row["duration"]); ?>"></option>
                             </select>
-                            <?php echo ($row["duration"]); ?>
+                           Duration :  <?php echo ($row["duration"]); ?>
                         </div>
 
 
@@ -94,14 +105,23 @@ session_start();
                             <select name="question_no" style="display: none;">
                                 <option value="<?php echo ($row["no_question"]); ?>"></option>
                             </select>
-                            <?php echo ($row["no_question"]); ?>
+                           Number of question : <?php echo ($row["no_question"]); ?>
                         </div>
 
 
                         <div class="total-marks-div">
                             Total marks:100
                         </div>
-                        <button type="submit" style="margin-left: 50px;" name="submit" class="btn btn-lg btn-primary" onclick="change()">Test Time</button>
+                        <?php
+                        if(mysqli_num_rows($existing)>0)
+                        {
+                           echo '<div class="already_given">
+                            Already given the test 
+                        </div>';
+                        }
+                        else{
+                       echo ' <button type="submit" style="margin-left: 50px;" name="submit" class="btn btn-lg btn-primary" onclick="change()">Test Time</button>';
+                        }?>
 
 
                     </form>
