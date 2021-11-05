@@ -51,10 +51,14 @@ $table="online_test_".$_SESSION["table_name"]; //table name change here for furt
 
         //put here
 
+        $sql_existing_test ="ALTER TABLE user_info ADD `$tablename` BOOLEAN NULL DEFAULT NULL";
+        mysqli_query($connection,$sql_existing_test);
+
 
         $sql_optionsheet="CREATE TABLE `$optionsheet`(question_id varchar(1000),option1 varchar(1000),option2 varchar(1000),option3 varchar(1000),option4 varchar(1000), question_no int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY)";
         $sql_test=" CREATE TABLE `$test`(question varchar(1000),answer varchar(1000))";
 
+     
         mysqli_query($connection,$sql_optionsheet) or die("optionsheet error");
         mysqli_query($connection,$sql_test) or die("test table error");
 
@@ -68,11 +72,18 @@ $table="online_test_".$_SESSION["table_name"]; //table name change here for furt
         $sql_test="DROP TABLE {$test}";
         $sql_subject_record ="DELETE FROM subject_info where `subject` = '{$tablename}'";
         $sql_exam_record= "ALTER TABLE exam_record DROP `$tablename` ";
+      
+      //add 
+        $sql_subject="ALTER TABLE user_info DROP `$tablename`";
 
-        
+//till here
+
+
+
+        mysqli_query($connection,$sql_subject);
         mysqli_query($connection,$sql_optionsheet);
         mysqli_query($connection,$sql_test);
-        mysqli_query($connection,$sql_exam_record);
+mysqli_query($connection,$sql_exam_record);
         mysqli_query($connection,$sql_subject_record);
 
         $query_deletion=mysqli_query($connection,$sql_deletion) or die("cannot delete the table");

@@ -16,6 +16,20 @@ if(isset($_POST["submit"]))
     $sql_username_insertion_in_online_test= "INSERT INTO `$table_name` (Username_test,score) VALUES('{$_SESSION["username"]}','{$_SESSION["score"]}') ";
     $putting_name= mysqli_query($connection,$sql_username_insertion_in_online_test) or die($username);
     
+    $checking_existing="SELECT `user_name` FROM exam_record WHERE `user_name` = '{$_SESSION["username"]}'";
+    $checking=mysqli_query($connection,$checking_existing);
+    
+    if(mysqli_num_rows($checking)>0)
+    {
+
+    }
+    else{
+        $exam_record="INSERT INTO exam_record(`user_name`) values('{$_SESSION["username"]}')";
+        mysqli_query($connection,$exam_record);
+
+    }
+
+
 }
 
 ?>
