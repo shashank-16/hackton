@@ -19,11 +19,6 @@
 
     $query= mysqli_query($connection,$sql) or die("FAIL TO UPLOAD");
 
-<<<<<<< HEAD
-
-}
-=======
     }
->>>>>>> 5df448ed1d27e4c6524cc1de72c086201be3e2b6
 
 ?>
