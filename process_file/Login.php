@@ -26,22 +26,24 @@
 
 
 <style>
-    .side-nav{
-        width: 120px;
-        height: 100%;
-        background-color: #475058;
-        position: fixed;
+    .button{
+            height: 100px;
+            display: flex;
     }
-
-    .side-nav ul{
+    .bck{
+        background-color: white;
+        height: 80px;
+        width: 80px;
+        border: 2px solid transparent;
+        border-radius: 50%;
+        align-self: center;
         display: flex;
-        flex-direction: column;
-        margin-left: 10px;
-        margin-top: 50px;
+        margin: auto;
     }
 
-    ul li{
-        list-style: none;
+    .bck span{
+        margin: auto;
+
     }
 </style>
 
@@ -49,23 +51,6 @@
 
 <body>
 
-    <div class="side-nav">
-        <ul>
-            <!-- <li>
-                <a href="">
-                <svg xmlns="http://www.w3.org/2000/svg" width="190.089" height="60.726" viewBox="0 0 229.089 140.726">
-                <g id="Group_2" data-name="Group 2" transform="translate(-60.482 -170.341)">
-                  <path id="Path_197" data-name="Path 197" d="M62.181,117.817V16.364L3.273,0,46.446,6.794,33.622,0H96.545V140.726H33.622l12.823-6.867L0,140.726ZM111.272,0H162c11.454,0,21.273,1.636,26.182,3.273C198,4.909,204.544,9.818,211.089,16.364s9.818,13.091,13.091,22.909S229.089,58.909,229.089,72q0,17.182-4.909,29.454A61.617,61.617,0,0,1,209.453,126c-4.909,4.909-11.454,8.182-19.636,11.454a99.039,99.039,0,0,1-24.545,3.273h-54Zm0,0V140.726l49.091-22.909c8.182,0,13.091,0,16.363-1.636,4.909-1.636,8.182-3.273,11.454-6.545s4.909-6.545,8.182-13.091,3.273-14.727,3.273-26.182S198,50.727,196.362,45.818a35.63,35.63,0,0,0-8.182-13.091c-3.273-3.273-8.182-4.909-13.091-6.545-3.273-1.636-11.454-1.636-22.909-1.636L111.272,0Z" transform="translate(289.571 311.067) rotate(180)" fill="#ffffff"/>
-                </g>
-              </svg>
-                </a>
-            </li> -->
-            <li><a href="index.html">Home</a></li>
-            <li><a href="">About</a></li>
-            <li><a href="">Carrer</a></li>
-            <li><a href="">Contact</a></li>
-        </ul>
-    </div>
 
     <div id="background-wrap">
         <div class="bubble x1"></div>
@@ -126,7 +111,7 @@
         <!-- <hr style="rotate: 90deg;" color="black"> -->
         <!-- Teacher -->
 
-        <div class="proctor col-5 gradient-border" style="margin-top: 100px;">
+        <div class="proctor col-5 gradient-border">
             <div class="head" style="display:flex; justify-content: space-around;">
                 <div class="before"></div>
                 <div class="head2" >Teacher Login</div>
@@ -159,7 +144,7 @@
 
         <!-- Candidate -->
 
-        <div class="candidate col-5 gradient-border" style="margin-top:100px;">
+        <div class="candidate col-5 gradient-border">
             <div class="head" style="display:flex; justify-content: space-around;">
                 
                 <div class="before"></div>
@@ -181,7 +166,28 @@
                 <div class="eppb" style="display: flex;"> 
                     <button type ="submit" id="login" name ="candidate-login" class="btn btn-lg btn-primary">Login</button>
                 </div>
+                <div class="login">
+                        <p>Not Registered Yet <a href="signup.php" style="color: blue;" >Register</a> here.</p>
+                </div>
             </form>
+        </div>
+
+        <div class="button">
+            <div class="bck" >
+                <span>
+                    <a id="bck" href="index.html"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="30" height="30" viewBox="0 0 16 16">
+            <defs>
+                <clipPath id="clip-path">
+                <rect width="16" height="16" fill="none"/>
+                </clipPath>
+            </defs>
+            <g id="Backward_arrow" data-name="Backward arrow" clip-path="url(#clip-path)">
+                <path id="Path_10" data-name="Path 10" d="M8,0,6.545,1.455l5.506,5.506H0V9.039H12.052L6.545,14.545,8,16l8-8Z" transform="translate(16 16) rotate(180)" fill="#00b4ff"/>
+            </g>
+            </svg>
+            </a>
+            </span>
+        </div>
         </div>
 
     </div>
@@ -190,13 +196,17 @@
     <script>
         $(document).ready(function(){
             $(".Teachers").click(function(){
-                $(".both").hide();
+                // $(".both").hide();
+                // $("#bck").removeAttr("href");
                 $(".proctor").show();
+                $(".candidate").hide();
             })
 
             $(".candidates").click(function(){
-                $(".both").hide();
+                // $(".both").hide();
+                // $("#bck").removeAttr("href");
                 $(".candidate").show();
+                $(".proctor").hide();
             })
         })
     </script>

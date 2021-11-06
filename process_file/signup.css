@@ -36,6 +36,12 @@
         margin: auto;
     }
 
+
+
+
+
+     /* container */
+
     .main
     {
         margin-top: 50px;
@@ -207,7 +213,7 @@
         overflow: hidden;
         box-shadow: 0 5px 15px 0px rgba(0,0,0,0.6);
         transform: translatey(0px);
-        animation: float 3s ease-in-out infinite;
+        animation: float 2s ease-in-out infinite;
     }
 
 
@@ -227,6 +233,31 @@
     }
 
 
+    /* back button */
+
+
+    .button{
+        height: 100px;
+        display: flex;
+    }
+    .bck{
+        background-color: white;
+        height: 80px;
+        width: 80px;
+        border: 2px solid transparent;
+        border-radius: 50%;
+        align-self: center;
+        display: flex;
+        margin: auto;
+    }
+
+    .bck span{
+        margin: auto;
+    }
+
+
+
+    /* Gradient Border */
 
     .gradient-border {
         --borderWidth: 7px;
@@ -245,7 +276,7 @@
         border-radius: calc(2 * var(--borderWidth));
         z-index: -1;
         animation: animatedgradient 3s ease alternate infinite;
-        background-size: 300% 300%;
+        background-size: 200% 200%;
         }
 
 
