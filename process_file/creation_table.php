@@ -41,7 +41,7 @@ $table="online_test_".$_SESSION["table_name"]; //table name change here for furt
     
 
 
-        $sql_subject= "INSERT INTO subject_info VALUES('{$tablename}','{$number_of_question}','{$time}')";
+        $sql_subject= "INSERT INTO subject_info(`subject`,`no_question`,`duration` )VALUES('{$tablename}','{$number_of_question}','{$time}')";
         $query_subject=mysqli_query($connection,$sql_subject);
 
         //insert it there in unaux.com 

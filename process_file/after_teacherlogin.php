@@ -13,7 +13,11 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Creation-Deletion</title>
     <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
@@ -28,32 +32,30 @@ session_start();
 
 </head>
 <body>
-    
+    <div class="side-nav2 vis2">
+        <div class="nav-con2" id="cool">
+            <a href="index.php"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
+            <a href="#"><i class="fa fa-info" aria-hidden="true"></i> About</a>
+            <a href="#"><i class="fa fa-address-card" aria-hidden="true"></i> Student-ID</a>
+            <a href="#"><i class="fa fa-phone" aria-hidden="true"></i> Contact</a>
+            <a href="finalportfolio.php"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a>
+
+        </div>
+    </div>
+
+
     <nav>
         <div class="navbar position-stickey">
-            <ul>
-                <!-- <li><a href="">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="107.604" height="66.099" viewBox="0 0 107.604 66.099">
-                        <g id="Group_2" data-name="Group 2" transform="translate(-60.482 -170.341)">
-                          <path id="Path_197" data-name="Path 197" d="M29.207,55.339V7.686L1.537,0,21.816,3.191,15.792,0H45.347V66.1H15.792l6.023-3.226L0,66.1ZM52.265,0H76.091a43.551,43.551,0,0,1,12.3,1.537c4.612.769,7.686,3.074,10.76,6.149s4.612,6.149,6.149,10.76A46.22,46.22,0,0,1,107.6,33.818,37.233,37.233,0,0,1,105.3,47.653a28.942,28.942,0,0,1-6.917,11.529c-2.306,2.306-5.38,3.843-9.223,5.38A46.519,46.519,0,0,1,77.628,66.1H52.265Zm0,0V66.1l23.058-10.76c3.843,0,6.149,0,7.686-.769a12.388,12.388,0,0,0,5.38-3.074c1.537-1.537,2.306-3.074,3.843-6.149s1.537-6.917,1.537-12.3a37.444,37.444,0,0,0-1.537-11.529,16.736,16.736,0,0,0-3.843-6.149c-1.537-1.537-3.843-2.306-6.149-3.074-1.537-.769-5.38-.769-10.76-.769L52.265,0Z" transform="translate(168.086 236.44) rotate(180)" fill="#ffffff"/>
-                        </g>
-                      </svg>
-                      
-                </a></li> -->
-                <li><a href="index.html">Home</a></li>
-                <li><a href="">About</a></li>
-            
-            </ul>
-            <li style="font-size: 30px; margin-right: 10px; color: white; list-style: none;"><?php echo $_SESSION["teacher_name"];?></li>
+            <li><?php echo $_SESSION["teacher_name"];?></li>
         </div>
     </nav>
 
     <div class="container">
 
     
-        <div class="col-6 main" style="margin-top:100px;" >
+        <div class="col-12 offset-1 main" style="margin-top:100px;" >
 
-            <form action="creation_table.php" class="form-group" method="POST">
+            <form action="creation_table.php" style="z-index: 1;" class="form-group" method="POST">
                 <h2>Create or Delete</h2>
     
                 <hr>
@@ -72,8 +74,8 @@ session_start();
                 
                 
                 <div class="fields">
-                <label for="no_of_question" class="inputs">Enter Total No. of Question:</label>
-                <input type="text" name = "no_of_question" class="form-control" autocomplete="num-of-question" placeholder="Enter Total No. of Question">
+                <label for="no_of_question" class="inputs">Enter No. of Question:</label>
+                <input type="text" name = "no_of_question" class="form-control" autocomplete="num-of-question" placeholder="Enter No. of Question">
                 
                 </div>
                 
@@ -90,9 +92,10 @@ session_start();
             </form>
 
             
-        
+            
 
-            <form action="<?php echo $_SERVER['PHP_SELF']; ?>" class="form-group" method="POST" >
+            <form action="<?php echo $_SERVER['PHP_SELF']; ?>" id="ecord" onclick="show()" style="margin-left:-42%" class="form-group" method="POST" >
+                
                 <h2>Exam Record</h2>
 
                 <select name="subject" id="subjects"  class="form-control" style="padding:20px">
@@ -119,89 +122,156 @@ session_start();
                 </div>
                 
             </form>
+
+            <div class="record custom-table">
+
+    
+                <table>
+                    <?php
+                    require 'connective.php';
+
+                    if(isset($_POST["show"]))
+                    {
+
+                    $subject_choosen= $_POST["subject"];
+                    $sql_show_record="SELECT `user_name`,`$subject_choosen` FROM exam_record";
+                    $query_show_record=mysqli_query($connection,$sql_show_record) or die("exam record error");
+
+                        if(mysqli_num_rows($query_show_record)>0)
+                        {   
+                    ?>
+                    <tr>
+            
+                        <th>Student Name</th>
+
+                        <th><?php echo $subject_choosen; ?></th>
+                    
+                    </tr>
+                    <tr>
+                        <?php 
+                    while($row_subject=mysqli_fetch_assoc($query_show_record))
+                        {   ?>
+                    
+                        <td><?php echo $row_subject["user_name"];?></td>
+                        <td> <?php echo $row_subject[$subject_choosen];?></td>
+            
+                    </tr>
+
+                    <?php
+                        }
+                    }
+                    }
+                ?>            
+                </table>
+            </div>
+        </div>
+
+        <div class="button">
+            <div class="bck" >
+                <span><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="30" height="30" viewBox="0 0 16 16">
+            <defs>
+                <clipPath id="clip-path">
+                <rect width="16" height="16" fill="none"/>
+                </clipPath>
+            </defs>
+            <g id="Backward_arrow" data-name="Backward arrow" clip-path="url(#clip-path)">
+                <path id="Path_10" data-name="Path 10" d="M8,0,6.545,1.455l5.506,5.506H0V9.039H12.052L6.545,14.545,8,16l8-8Z" transform="translate(16 16) rotate(180)" fill="#112322"/>
+            </g>
+            </svg>
+            </span></div>
         </div>
     </div>
 
+    <style>
+        .button{
+            height: 100px;
+            /* max-width: 100px; */
+            display: flex;
+            /* background-color: red; */
+            /* border-radius: 50%; */
+        }
+        .bck{
+            background-color: white;
+            height: 80px;
+            width: 80px;
+            border: 2px solid transparent;
+            border-radius: 50%;
+            align-self: center;
+            display: flex;
+            margin: auto;
+        }
+
+        .bck span{
+            margin: auto;
+        }
+    </style>
 
 
 
 
 
-
-    <div class="record">
 
     
-        <table>
-            <?php
-            require 'connective.php';
-
-            if(isset($_POST["show"]))
-            {
-
-            $subject_choosen= $_POST["subject"];
-            $sql_show_record="SELECT `user_name`,`$subject_choosen` FROM exam_record";
-            $query_show_record=mysqli_query($connection,$sql_show_record) or die("exam record error");
-
-                if(mysqli_num_rows($query_show_record)>0)
-                {   
-            ?>
-            <tr>
-       
-                <th>Student Name</th>
-
-                <th><?php echo $subject_choosen; ?></th>
-             
-            </tr>
-            <tr>
-                <?php 
-            while($row_subject=mysqli_fetch_assoc($query_show_record))
-                 {   ?>
-               
-                <td><?php echo $row_subject["user_name"];?></td>
-                <td> <?php echo $row_subject[$subject_choosen];?></td>
-    
-            </tr>
-
-            <?php
-                 }
-             }
-            }
-        ?>            
-            <!-- <th>Candidate Name</th> -->
-        </table>
-    </div>
 
     <style>
 
-        .record{
-            margin-top: 100px;
-            display: flex;
-        }
-
-
-
-        table{
-            box-shadow: 1px -1px 20px white;
-            align-self: center;
-            /* margin-left: 2%; */
-            margin: auto;
+        .custom-table{margin:30px;}
+        table {
+            border-collapse: separate;
+            border-spacing: 0;
+            min-width: 350px;
             background-color: white;
-            border-radius: 20px 20px 0 0 ;
             
         }
+        table tr th,
+        table tr td {
+            border-right: 1px solid #bbb;
+            border-bottom: 1px solid #bbb;
+            padding: 5px;
 
-        th{
-            border: 1px solid black;
-            /* border-radius: 20px 20px 0 0 ; */
         }
-
-        tr,th,td{
-            padding: 10px;
-            /* border: 2px solid black; */
-            width: fit-content;
-            text-align: center;
-            color: black;
-            font-size: 20px;
+        table tr th:first-child, table tr th:last-child{
+        border-top:solid 1px      #bbb;}
+        table tr th:first-child,
+        table tr td:first-child {
+            border-left: 1px solid #bbb;
+            
+        }
+        table tr th:first-child,
+        table tr td:first-child {
+            border-left: 1px solid #bbb;
+        }
+        table tr th {
+            background: #eee;
+            text-align: left;
+        }
+        
+        table.Info tr th,
+        table.Info tr:first-child td
+        {
+            border-top: 1px solid #bbb;
+        }
+        
+        /* top-left border-radius */
+        table tr:first-child th:first-child,
+        table.Info tr:first-child td:first-child {
+            border-top-left-radius: 6px;
+        }
+        
+        /* top-right border-radius */
+        table tr:first-child th:last-child,
+        table.Info tr:first-child td:last-child {
+            border-top-right-radius: 6px;
+        }
+        
+        /* bottom-left border-radius */
+        table tr:last-child td:first-child {
+            border-bottom-left-radius: 6px;
+        }
+        
+        /* bottom-right border-radius */
+        table tr:last-child td:last-child {
+            border-bottom-right-radius: 6px;
         }
     </style>
 
@@ -219,6 +289,39 @@ session_start();
         }
 
 
+        .side-nav2 {
+            width: 170px;
+            background-color: #000000;
+            height: 100%;
+            position: fixed;
+        }
+
+
+        .nav-con2 {
+            display: flex;
+            flex-direction: column;
+            margin-left: 10px;
+            margin-top: 50px;
+        }
+
+        .nav-con2 > a {
+            font-size: 18px;
+            color: white;
+            margin-top: 10px;
+            text-decoration: none;
+            padding: 10px;
+        }
+
+        .nav-con2 > a:hover {
+            color: white;
+            background-color: rgba(241, 238, 238, 0.3);
+        }
+
+        .nav-con2 > a > i {
+            font-size: 26px;
+        }
+
+
         a{
             text-decoration: none;
             color: white;
@@ -226,30 +329,28 @@ session_start();
         a:hover{
             color: white;
         }
-        nav{
-            background-color: black;
-            background-position: center;
-        }
-
-
-        .navbar ul li{
+        
+        .navbar li{
+            font-size: 18px;
+            color: white;
             list-style: none;
-            display: inline-block;
-            margin: 0px 20px 0 20px;
-            font-size: 30px;
-        }
-        .navbar ul li a:hover{
-            /* background-color: rgba(0, 0, 0, 0.6); */
-            color: seashell;
+            align-self: center;
+            margin: auto;
+        } 
 
-        }
+
 
 
         .main{
 
             width: 100%;
             display: flex;
-            justify-content: center;
+            justify-content: space-evenly;
+            left: 0%;
+        }
+
+        .main :nth-child(2){
+            align-self: center;
         }
 
         .heading{
@@ -261,7 +362,7 @@ session_start();
         .fields
         {
             display: flex;
-            padding: 10px 30px 10px 30px;
+            /* padding: 10px 30px 10px 30px; */
         }
 
         input{
@@ -277,8 +378,8 @@ session_start();
 
 
         form{
-            margin: auto;
-            width: 600px;
+            /* margin: auto; */
+            width: 400px;
             border: 2px solid black;
             border-radius: 10px;
             padding: 30px;
@@ -302,6 +403,27 @@ session_start();
             margin-top: 30px;
         }
     </style>
+
+    <script>
+
+            $(document).ready(function(){
+                $("#ecord").click(function(){
+                    $("#ecord").animate({"margin-left":"0%"},600);
+                    // $("#ecord").animate()
+                })
+                $("#ecord").mouseenter(function(){
+                    $("#ecord").animate({"margin-left":"-40%"},400);
+                    $("#ecord").animate({"margin-left":"-42%"},400);
+                })
+
+                
+
+                $("#ecord").mouseleave(function(){
+                    $("#ecord").animate({"margin-left":"-42%"},600);
+                })
+            })
+
+    </script>
 
 </body>
 </html>
