@@ -14,7 +14,11 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Creation-Deletion</title>
     <link rel="preconnect" href="https://fonts.gstatic.com" />
+
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400" rel="stylesheet">
+
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -26,18 +30,19 @@ session_start();
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Font+Name">
+    <link rel="stylesheet" href="after_login.css">
 
 
 </head>
 
 <body>
-    <div class="side-nav2 vis2">
-        <div class="nav-con2" id="cool">
-    
-            <div>
-                <link rel="stylesheet" href="profile.css">
+    <nav>
+            <span id="profile-pic" style="display: flex; padding:20px; z-index:1;">
                 <img src="https://images.unsplash.com/photo-1499557354967-2b2d8910bcca?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=7d5363c18112a02ce22d0c46f8570147&auto=format&fit=crop&w=635&q=80%20635w" alt="profile-pic" class="profile" id="pic" onclick="click()">
+            </span>
+    </nav>
 
+<<<<<<< HEAD
             </div>
 
 
@@ -72,12 +77,13 @@ session_start();
   z-index: 10;
 }
     </style> -->
+=======
+>>>>>>> a2c0e6f9d09ebdf1c3988ebb50763dfb2173ff16
 
 
-    <div class="container" style="top:0" id="boom-bitch">
+    <div class="container" style="position: absolute;">
 
-
-        <div class="col-12 offset-1 main" style="margin-top:100px;">
+        <div class="col-12 offset-1 main">
 
             <form action="creation_table.php" style="z-index: 1;" class="form-group" method="POST">
                 <h2>Create or Delete</h2>
@@ -188,6 +194,7 @@ session_start();
 
         <div class="button">
             <div class="bck">
+                <a href="index.html">
                 <span><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="30" height="30" viewBox="0 0 16 16">
                         <defs>
                             <clipPath id="clip-path">
@@ -199,9 +206,12 @@ session_start();
                         </g>
                     </svg>
                 </span>
+                </a>
             </div>
         </div>
+    </div>
 
+<<<<<<< HEAD
         <!-- playercard -->
 
         <div id= "profile-card" style="margin:auto ; display:none"  >
@@ -265,238 +275,39 @@ session_start();
     
     
 
+=======
+    <div class="profile-card" style="margin-left: -400px;">
+        <!-- Arrow button -->
+        <div class="first">
+        <span>
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20" height="20" viewBox="0 0 16 16">
+            <defs>
+                <clipPath id="clip-path">
+                <rect width="16" height="16" fill="none"/>
+                </clipPath>
+            </defs>
+            <g id="Backward_arrow" data-name="Backward arrow" clip-path="url(#clip-path)">
+                <path id="Path_10" data-name="Path 10" d="M8,0,6.545,1.455l5.506,5.506H0V9.039H12.052L6.545,14.545,8,16l8-8Z" transform="translate(16 16) rotate(180)" fill="#ffffff"/>
+            </g>
+            </svg>
+            </span>
+        </div>
+        <div class="second">
+            <img src="https://images.unsplash.com/photo-1499557354967-2b2d8910bcca?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=7d5363c18112a02ce22d0c46f8570147&auto=format&fit=crop&w=635&q=80%20635w" alt="profile-pic" class="profile" id="pic">
+        </div>
+        <div class="details">
+            <h3>user_ID</h3>
+            <div class="name"><p>Name</p></div>
+            <div class="designation"><p>Designation</p></div>
+            <div class="branch"><p>Branch</p></div>
+            <div class="phone"><p>Phone Number</p></div>
+            <div class="" style="display: flex;">
+                <button class="btn btn-primary" id="logout">Logout</button>
+            </div>
+        </div>
+>>>>>>> a2c0e6f9d09ebdf1c3988ebb50763dfb2173ff16
     </div>
 
-
-    <style>
-        .button {
-            height: 100px;
-            /* max-width: 100px; */
-            display: flex;
-            /* background-color: red; */
-            /* border-radius: 50%; */
-        }
-
-        .bck {
-            background-color: white;
-            height: 80px;
-            width: 80px;
-            border: 2px solid transparent;
-            border-radius: 50%;
-            align-self: center;
-            display: flex;
-            margin: auto;
-        }
-
-        .bck span {
-            margin: auto;
-        }
-    </style>
-
-
-
-
-
-
-
-
-    <style>
-        .custom-table {
-            margin: 30px;
-        }
-
-        table {
-            border-collapse: separate;
-            border-spacing: 0;
-            min-width: 350px;
-            background-color: white;
-
-        }
-
-        table tr th,
-        table tr td {
-            border-right: 1px solid #bbb;
-            border-bottom: 1px solid #bbb;
-            padding: 5px;
-
-        }
-
-        table tr th:first-child,
-        table tr th:last-child {
-            border-top: solid 1px #bbb;
-        }
-
-        table tr th:first-child,
-        table tr td:first-child {
-            border-left: 1px solid #bbb;
-
-        }
-
-        table tr th:first-child,
-        table tr td:first-child {
-            border-left: 1px solid #bbb;
-        }
-
-        table tr th {
-            background: #eee;
-            text-align: left;
-        }
-
-        table.Info tr th,
-        table.Info tr:first-child td {
-            border-top: 1px solid #bbb;
-        }
-
-        /* top-left border-radius */
-        table tr:first-child th:first-child,
-        table.Info tr:first-child td:first-child {
-            border-top-left-radius: 6px;
-        }
-
-        /* top-right border-radius */
-        table tr:first-child th:last-child,
-        table.Info tr:first-child td:last-child {
-            border-top-right-radius: 6px;
-        }
-
-        /* bottom-left border-radius */
-        table tr:last-child td:first-child {
-            border-bottom-left-radius: 6px;
-        }
-
-        /* bottom-right border-radius */
-        table tr:last-child td:last-child {
-            border-bottom-right-radius: 6px;
-        }
-    </style>
-
-    <style>
-        * {
-            margin: 0%;
-            padding: 0%;
-            box-sizing: border-box;
-        }
-
-        body {
-            background-color: #112322;
-
-            background-color: rgb(13, 37, 35);
-        }
-
-
-        .side-nav2 {
-            width: 170px;
-            height: 100%;
-            position: fixed;
-        }
-
-
-        .nav-con2 {
-            display: flex;
-            flex-direction: column;
-            margin-left: 10px;
-            margin-top: 50px;
-        }
-
-        .nav-con2>a {
-            font-size: 18px;
-            color: white;
-            margin-top: 10px;
-            text-decoration: none;
-            padding: 10px;
-        }
-
-        .nav-con2>a:hover {
-            color: white;
-            background-color: rgba(241, 238, 238, 0.3);
-        }
-
-        .nav-con2>a>i {
-            font-size: 26px;
-        }
-
-
-        a {
-            text-decoration: none;
-            color: white;
-        }
-
-        a:hover {
-            color: white;
-        }
-
-        .navbar li {
-            font-size: 18px;
-            color: white;
-            list-style: none;
-            align-self: center;
-            margin: auto;
-        }
-
-
-
-
-        .main {
-
-            width: 100%;
-            display: flex;
-            justify-content: space-evenly;
-            left: 0%;
-        }
-
-        .main :nth-child(2) {
-            align-self: center;
-        }
-
-        .heading {
-            text-align: center;
-            font-size: 40px;
-        }
-
-
-        .fields {
-            display: flex;
-            /* padding: 10px 30px 10px 30px; */
-        }
-
-        input {
-            color: #b9b9bd !important;
-            background: transparent;
-            border-bottom: 5px solid black;
-            outline: none !important;
-            border-radius: 0% !important;
-            border-width: 0 0 2px 0 !important;
-            font-size: 30px;
-        }
-
-
-
-        form {
-            /* margin: auto; */
-            width: 400px;
-            border: 2px solid black;
-            border-radius: 10px;
-            padding: 30px;
-            background-color: white;
-            box-shadow: 1px -1px 20px white;
-        }
-
-        h2 {
-            color: black;
-            text-align: center;
-        }
-
-        label {
-            font-size: 20px;
-        }
-
-        .button-sub {
-            margin: auto;
-            display: flex;
-            justify-content: center;
-            margin-top: 30px;
-        }
-    </style>
 
     <script>
         $(document).ready(function() {
@@ -523,24 +334,17 @@ session_start();
                 }, 600);
             })
 
-            $("#cool").click(function() {
-                $("#boom-bitch").css({"opacity":"0.4"});
-                // $(".profile").hide();
-                $("#profile-card").show();
-                $("#profile-card").addClass('element-animation');
-                $("#profile-card").removeClass('element-animation-exit');
+            $("#profile-pic").click(function() {
+                $("body").css({"opacity":"0.5"});
+                $(".profile-card").animate({"margin-left":"10px"},300);
 
             })
 
-            $("#arrow-button").click(function() {
-                $("#boom-bitch").css({"opacity":"1"});
-                // $("#profile-card").css({"display":"none"});
-                $(".pic").show();
-                $("#profile-card").addClass('element-animation-exit');
-                $("#profile-card").removeClass('element-animation');
-
-                // $("#profile-card").hide();m
+            $(".first span").click(function(){
+                $("body").css({"opacity":"1"});
+                $(".profile-card").animate({"margin-left":"-400px"},300);
             })
+        })
 
             $("#logout").click(function(){
                 $.ajax({
@@ -557,7 +361,6 @@ session_start();
 
 
 
-        })
     </script>
 
 </body>

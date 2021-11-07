@@ -44,6 +44,8 @@ if(isset($_POST["submit"]))
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet" />
 
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
@@ -52,31 +54,63 @@ if(isset($_POST["submit"]))
 
     <title>Key-Bindings</title>
     <style>
+
+
+        @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+
+
+
+        body{
+            /* background-color: rgba(0, 0, 0,0.9); */
+            background-image: url('backkk.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            color: white;
+        }
+
+
         .container{
             display: block;
         }
         h1{
-            text-align: center;
-            background-color: green;
+            text-align: center; 
             padding-bottom: 10px;
+            font-family: 'Lobster', cursive;
         }
         .main{
-            height: 500px;
-            width: 500px;
-            border: 2px solid black;
+            color: black;
+            /* height: 500px;
+            width: 500px; */
+            border: 1px solid black;
             border-radius: 10px;
             margin: auto;
-            box-shadow: 1px -1px 7px grey;
+            box-shadow: -1px -1px 10px white;
+            background-color: whitesmoke ;
         }
+
+
+        input{
+            width: 100%;
+            padding-left: 30px;
+            border-radius: 20px !important;
+            background: #111111 !important;
+            color: white !important;
+            text-transform:lowercase;
+        }
+
         #head p{
             font-size: 20px;
             text-align: center;
-            color: rgb(255, 255, 255);
         }
         label{
             font-size: 20px;
-            margin-top: 20px;
-            margin-left: 20px;
+            padding: 15px;
+        }
+
+        @media screen and (max-width: 1200px) {
+            label{
+                font-size: 16px;
+            }
         }
 
         ul li{
@@ -85,6 +119,7 @@ if(isset($_POST["submit"]))
     </style>
 </head>
 <body>
+
     <div class="container">
         <h1>
             All The Very Best For Your Exam!
@@ -95,27 +130,66 @@ if(isset($_POST["submit"]))
             <li>You can choose only once for this exam.</li>
             <li>You can't <strong>Alter</strong> it, once you lock.</li>
         </ul>
-        <hr>
-        <div class="main form-group">
-            <div id="head" style="background-color: royalblue;">
-                <p>Enter your own Choice Key for Selection of Option.</p>
-            </div>
-            <hr>
-            <label for="option"><b>Option-1</b><input id="option-1" class="form-control" type="text" name="opt-key-1" autofocus ></label>
-            <span id="op1"></span>
-            <label for="option"><b>Option-2</b><input id="option-2" class="form-control" type="text" name="opt-key-2"></label>
-            <span id="op2"></span>
-            <label for="option"><b>Option-3</b><input id="option-3" class="form-control" type="text" name="opt-key-3"></label>
-            <span id="op3"></span>
-            <label for="option"><b>Option-4</b><input id="option-4" class="form-control" type="text" name="opt-key-4"></label>
-            <span id="op4"></span>
-            <br>
-            <div style="display: flex;">
-                <a class="btn btn-primary btn-lg" style="margin-top: 50px; margin-left: 200px;" href="Question-paper.php">Lock</a>
-            </div>
+        <div id="head">
+                    <p>Enter your own Choice Key for Selection of Option.</p>
+                </div>
+        <div class="main col-4 col-lg-3 col-sm-3 form-group">
+            <!-- <form action="" class="form-group"> -->
+
+                <label for="option">
+                <b>Option-1</b>
+                <input id="option-1" class="form-control" type="text" name="opt-key-1" autofocus maxlength="1" ></label>
+                <span id="op1"></span>
+
+                <label for="option">
+                <b>Option-2</b>
+                <input id="option-2" class="form-control" type="text" name="opt-key-2" maxlength="1"></label>
+                <span id="op2"></span>
+
+                <label for="option">
+                <b>Option-3</b>
+                <input id="option-3" class="form-control" type="text" name="opt-key-3" maxlength="1"></label>
+                <span id="op3"></span>
+                
+                <label for="option">
+                <b>Option-4</b>
+                <input id="option-4" class="form-control" type="text" name="opt-key-4" maxlength="1"></label>
+                <span id="op4"></span>
+                <br>
+                <br>
+                
+            <!-- </form> -->
+                <div style="display: flex; margin-bottom:10px">
+                    <button id="lock" class="btn btn-primary btn-lg" style="margin: auto;" disabled><a style="color:white; text-decoration:none" href="">LOCK</a></button>
+                </div>
         </div>
         
     </div>
+
+
+    <script>
+                var a = 1;
+                                
+                    $(document).ready(function() {
+                        $('#lock').attr('disabled');
+                        $('#option-1,#option-2,#option-3,#option-4').change(function() {
+                            if ($(this).val != '') {
+                                a++;
+                                console.log(a);
+                                console.log('1' + this.value);
+                                $('#lock').attr('disabled');
+                                if (a == 4 || a==1) {
+                                    $('#lock').removeAttr('disabled');
+                                    $("a").attr('href','Question-paper.php');
+                                    console.log('button is active now');
+                                }
+                            }
+                            else{
+                                $('#lock').attr('disabled');
+                            }
+                        });
+                    });
+    </script>
        <script>
 
            var keycode1,keycode2,keycode3,keycode4

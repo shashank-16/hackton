@@ -4,7 +4,7 @@ session_start(); // session is god
 ?>
 
 <script>
-       var  where = 1;
+       let where = 1;
       
       var  total_question= '<?=$_SESSION["no_question"]?>'; // need this thing god like power
         console.log(total_question);
@@ -60,7 +60,7 @@ session_start(); // session is god
 <body id="bdy" onmouseleave="mouseLeave()" style="visibility: visible;">
     <div class="">
     <nav>
-        <div class="navbar">
+        <div class="navbar" style="color: white;">
             <ul>
                 <li>Name of Institute/University</li>
             </ul>
@@ -103,7 +103,13 @@ session_start(); // session is god
                         <div class="table" style="display: flex; flex-grow: initial; justify-content: space-sround">
                             <ul id="horizontal-list" style="margin: 8px; margin-bottom: 10px">
                                 <!-- Question panel -->
+<<<<<<< HEAD
                                
+=======
+                                <div style="height: fit-content; font-size:40px">
+                                    <p id="qmo">1</p>
+                                </div>
+>>>>>>> a2c0e6f9d09ebdf1c3988ebb50763dfb2173ff16
                             </ul>
                         </div>
                     </div>
@@ -208,7 +214,7 @@ session_start(); // session is god
                                 }
                             }
                         }
-                    });        
+                    });  
         });
 
 
