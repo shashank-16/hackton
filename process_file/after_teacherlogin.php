@@ -47,7 +47,31 @@ session_start();
         </div>
     </div>
 
-<!-- <div style="background-color:rgba(0,0,0,0.4);height:100vh ; width:100wh; z-index:1;"> </div> -->
+    <!-- <div id="container">
+  <div id="navi">a</div>
+  <div id="infoi">
+    <img src="https://appharbor.com/assets/images/stackoverflow-logo.png" height="20" width="32" />b
+  </div>
+</div>m
+<style>
+
+#container {
+  width: 100px;
+  height: 100px;
+  position: relative;
+}
+#navi,
+#infoi {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+#infoi {
+  z-index: 10;
+}
+    </style> -->
 
 
     <div class="container" style="top:0" id="boom-bitch">
@@ -180,14 +204,12 @@ session_start();
 
         <!-- playercard -->
 
-
-    
-     <div id= "profile-card" style="margin:auto ; display:none"  >
+        <div id= "profile-card" style="margin:auto ; display:none"  >
             <link rel="stylesheet" href="profile.css">
             <div class="grid-7">
           
-                <!-- element-animation-exit -->
-            <!--card-1-->
+                
+           
             <div class="card color-card"> 
                 <ul>
                 <li id = "arrow-button"><i class="fas fa-arrow-left i-l w" ></i></li>
@@ -200,7 +222,9 @@ session_start();
                 <div class="desc top">
                 <p>Javascript is god but C is grandpa</p>
                 </div>
-                <button class="btn color-a top"> Logout</button>
+                    <button class="btn color-a top" name ="logout" id ="logout"> Logout</button>
+            
+                
         
                 <hr>
                 <div class="desc top">
@@ -208,7 +232,7 @@ session_start();
 
                 <p> CSE </p>
                 </div>
-                <!-- <div class="container">
+                 <div class="container">
                 <div class="content">
                     <div class="grid-2">
                     <button class="color-b circule"> <i class="fab fa-dribbble fa-2x"></i></button>
@@ -226,7 +250,7 @@ session_start();
                     <p class="followers">Followers</p>
                     </div>
                 </div>
-                </div> -->
+                </div>
             
             </div>
             </div>
@@ -234,7 +258,9 @@ session_start();
       
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
       <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
-      <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400" rel="stylesheet"> 
+
+    
     
     
     
@@ -516,6 +542,19 @@ session_start();
                 // $("#profile-card").hide();m
             })
 
+            $("#logout").click(function(){
+                $.ajax({
+                            type: 'POST',
+                            url: 'logout.php',
+                            data: { logout: "1111" },
+                            
+                            // do these thing 
+                            success: function(response) {
+                                window.location.href="Login.php";
+                            }
+                        })
+            })
+
 
 
         })
@@ -524,3 +563,4 @@ session_start();
 </body>
 
 </html>
+

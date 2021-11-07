@@ -46,6 +46,7 @@ else{ // no record
 $deleting_username="DELETE FROM $table WHERE `Username_test`='{$_SESSION["username"]}'";
 $deleting_qeury=mysqli_query($connection,$deleting_username) or die("cannot delete from $table");
 mysqli_close($connection);
+session_destroy();
 
 
 ?>

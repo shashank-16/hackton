@@ -103,16 +103,7 @@ session_start(); // session is god
                         <div class="table" style="display: flex; flex-grow: initial; justify-content: space-sround">
                             <ul id="horizontal-list" style="margin: 8px; margin-bottom: 10px">
                                 <!-- Question panel -->
-                                <li id="q-1" class="no">1</li>
-                                <li id="q-2" class="no">2</li>
-                                <li id="q-3" class="no">3</li>
-                                <li id="q-3" class="no">4</li>
-                                <li id="q-1" class="no">5</li>
-                                <li id="q-2" class="no">6</li>
-                                <li id="q-3" class="no">7</li>
-                                <li id="q-3" class="no">8</li>
-                                <li id="q-1" class="no">9</li>
-                                <li id="q-2" class="no">10</li>
+                               
                             </ul>
                         </div>
                     </div>

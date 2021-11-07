@@ -1,6 +1,7 @@
 <?php
 
 session_start();
+// session_destroy();
 ?>
 
 <!DOCTYPE html>
@@ -81,8 +82,9 @@ session_start();
 
 <?php 
 
-// if(empty($_SESSION["username"]))
-// {
+
+if(empty($_SESSION["username"]) && empty($_SESSION["teacher_name"]))
+{
 
 
 ?>
@@ -116,12 +118,17 @@ session_start();
         </div>
 <?php
 
-// }
+}
+else if(!empty($_SESSION["username"])){
+    header("Location: subject.php");
+}
+else if(!empty($_SESSION["teacher_name"])){
+    header("Location: after_teacherlogin.php");
+}
 
-// else{
-//     header("Location: subject.php");
-
-// }
+else{
+    echo ("plz dont login teacher id massage for student;;;; teacher plz dont login student id plz ma am you teacher dont do that");
+}
 ?>
 
 
