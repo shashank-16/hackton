@@ -15,8 +15,10 @@ a{
 }
 
 nav{
-    background-image: url('wallppr.jpg');
+    background-image: url(backkk.jpg);
     background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 
