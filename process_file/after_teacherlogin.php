@@ -42,43 +42,6 @@ session_start();
             </span>
     </nav>
 
-<<<<<<< HEAD
-            </div>
-
-
-                <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-                <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
-                <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400" rel="stylesheet">
-        </div>
-    </div>
-
-    <!-- <div id="container">
-  <div id="navi">a</div>
-  <div id="infoi">
-    <img src="https://appharbor.com/assets/images/stackoverflow-logo.png" height="20" width="32" />b
-  </div>
-</div>m
-<style>
-
-#container {
-  width: 100px;
-  height: 100px;
-  position: relative;
-}
-#navi,
-#infoi {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-#infoi {
-  z-index: 10;
-}
-    </style> -->
-=======
->>>>>>> a2c0e6f9d09ebdf1c3988ebb50763dfb2173ff16
 
 
     <div class="container" style="position: absolute;">
@@ -211,71 +174,6 @@ session_start();
         </div>
     </div>
 
-<<<<<<< HEAD
-        <!-- playercard -->
-
-        <div id= "profile-card" style="margin:auto ; display:none"  >
-            <link rel="stylesheet" href="profile.css">
-            <div class="grid-7">
-          
-                
-           
-            <div class="card color-card"> 
-                <ul>
-                <li id = "arrow-button"><i class="fas fa-arrow-left i-l w" ></i></li>
-                <li><i class="fas fa-ellipsis-v i-r w"></i></li>
-                </ul>
-
-                <img src="https://images.unsplash.com/photo-1499557354967-2b2d8910bcca?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=7d5363c18112a02ce22d0c46f8570147&auto=format&fit=crop&w=635&q=80%20635w" alt="profile-pic" class="profile">
-                <h1 class="title"><?php echo $_SESSION["teacher_name"]?></h1>
-                <p class="job-title"> Teacher</p>
-                <div class="desc top">
-                <p>Javascript is god but C is grandpa</p>
-                </div>
-                    <button class="btn color-a top" name ="logout" id ="logout"> Logout</button>
-            
-                
-        
-                <hr>
-                <div class="desc top">
-                <p> India Instutite of Technology Dehli</p>
-
-                <p> CSE </p>
-                </div>
-                 <div class="container">
-                <div class="content">
-                    <div class="grid-2">
-                    <button class="color-b circule"> <i class="fab fa-dribbble fa-2x"></i></button>
-                    <h2 class="title">12.3k</h2>
-                    <p class="followers">Followers</p>
-                    </div>
-                    <div class="grid-2">
-                    <button class="color-c circule"><i class="fab fa-behance fa-2x"></i></button>
-                    <h2 class="title">16k</h2>
-                    <p class="followers">Followers</p>
-                    </div>
-                    <div class="grid-2">
-                    <button class="color-d circule"><i class="fab fa-github-alt fa-2x"></i></button>
-                    <h2 class="title">17.8k</h2>
-                    <p class="followers">Followers</p>
-                    </div>
-                </div>
-                </div>
-            
-            </div>
-            </div>
-      </div>
-      
-      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-      <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
-      <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400" rel="stylesheet"> 
-
-    
-    
-    
-    
-
-=======
     <div class="profile-card" style="margin-left: -400px;">
         <!-- Arrow button -->
         <div class="first">
@@ -296,16 +194,15 @@ session_start();
             <img src="https://images.unsplash.com/photo-1499557354967-2b2d8910bcca?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=7d5363c18112a02ce22d0c46f8570147&auto=format&fit=crop&w=635&q=80%20635w" alt="profile-pic" class="profile" id="pic">
         </div>
         <div class="details">
-            <h3>user_ID</h3>
-            <div class="name"><p>Name</p></div>
+            <h3><?php echo $_SESSION["teacher_name"];?></h3>
+            <div class="name"><p>DIDI</p></div>
             <div class="designation"><p>Designation</p></div>
             <div class="branch"><p>Branch</p></div>
             <div class="phone"><p>Phone Number</p></div>
             <div class="" style="display: flex;">
-                <button class="btn btn-primary" id="logout">Logout</button>
+                <button class="btn btn-primary"  id="logout">Logout</button>
             </div>
         </div>
->>>>>>> a2c0e6f9d09ebdf1c3988ebb50763dfb2173ff16
     </div>
 
 
@@ -344,8 +241,6 @@ session_start();
                 $("body").css({"opacity":"1"});
                 $(".profile-card").animate({"margin-left":"-400px"},300);
             })
-        })
-
             $("#logout").click(function(){
                 $.ajax({
                             type: 'POST',
@@ -358,6 +253,9 @@ session_start();
                             }
                         })
             })
+        })
+
+         
 
 
 

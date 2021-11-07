@@ -1,7 +1,6 @@
 <?php 
 
 session_start();
-session_destroy();
 
 ?>
 
@@ -29,6 +28,48 @@ session_destroy();
 </head>
 
 <body>
+    <nav>
+            <span id="profile-pic" style="display: flex; padding:20px; z-index:1;">
+                <img src="https://images.unsplash.com/photo-1499557354967-2b2d8910bcca?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=7d5363c18112a02ce22d0c46f8570147&auto=format&fit=crop&w=635&q=80%20635w" alt="profile-pic" class="profile" id="pic" onclick="click()">
+            </span>
+    </nav>
+
+    <div class="profile-card" style="margin-left: -400px;">
+        <!-- Arrow button -->
+        <div class="first" style="display:flex; justify-content:end;">
+        <span>
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20" height="20" viewBox="0 0 16 16">
+            <defs>
+                <clipPath id="clip-path">
+                <rect width="16" height="16" fill="none"/>
+                </clipPath>
+            </defs>
+            <g id="Backward_arrow" data-name="Backward arrow" clip-path="url(#clip-path)">
+                <path id="Path_10" data-name="Path 10" d="M8,0,6.545,1.455l5.506,5.506H0V9.039H12.052L6.545,14.545,8,16l8-8Z" transform="translate(16 16) rotate(180)" fill="#ffffff"/>
+            </g>
+            </svg>
+            </span>
+        </div>
+        <div class="second">
+            <img src="https://images.unsplash.com/photo-1499557354967-2b2d8910bcca?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=7d5363c18112a02ce22d0c46f8570147&auto=format&fit=crop&w=635&q=80%20635w" alt="profile-pic" class="profile" id="pic">
+        </div>
+        <div class="details">
+            <h3><?php echo $_SESSION["username"];?></h3>
+            <div class="name"><p>DIDI</p></div>
+            <div class="designation"><p>Designation</p></div>
+            <div class="branch"><p>Branch</p></div>
+            <div class="phone"><p>Phone Number</p></div>
+            <div class="" style="display: flex;">
+                <button class="btn btn-primary"  id="logout">Logout</button>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <div >
 
     <div class="instruction">
         <p style="color: white;">Please Read The Instruction care fully.</p>
@@ -37,21 +78,6 @@ session_destroy();
             <li>Choose Key wisely according to your comfort.</li>
         </ul>
     </div>
-
-
-    <!-- <div class="background">
-        <div class="file">
-            <div class="page page1">
-            <h4>Item 1</h4>
-            </div>
-            <div class="page page2">
-            <h4>Item 2</h4>
-            </div>
-            <div class="page page3">
-            <h4>Item 3</h4>
-            </div>
-        </div>
-    </div> -->
 
 
     <div class="file">
@@ -136,6 +162,8 @@ session_destroy();
             </div>
 
     </div>
+    </div>
+
 </body>
 
 <script>
@@ -150,6 +178,32 @@ session_destroy();
         $(".file").mouseleave(function(){
             $(".sub-div").animate({"margin-left":"20px"},200);
         })
+
+
+        $("#profile-pic").click(function() {
+                $("body").css({"opacity":"0.5"});
+                $(".profile-card").animate({"margin-right":"450px"},300);
+
+            })
+
+            $(".first span").click(function(){
+                $("body").css({"opacity":"1"});
+                $(".profile-card").animate({"margin-right":"-400px"},300);
+            })
+
+
+            $("#logout").click(function(){
+                $.ajax({
+                            type: 'POST',
+                            url: 'logout.php',
+                            data: { logout: "111" },
+                            
+                            // do these thing 
+                            success: function(response) {
+                                window.location.href="Login.php";
+                            }
+                        })
+            })
     })
 </script>
 

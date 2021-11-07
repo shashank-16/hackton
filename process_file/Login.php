@@ -72,21 +72,14 @@ session_start();
         <div class="bubble x7"></div>
         <div class="bubble x2"></div>
         <div class="bubble x10"></div>
-        <div class="bubble x8"></div>
-        <div class="bubble x3"></div>
-        <div class="bubble x9"></div>
-        <div class="bubble x10"></div>
-        <div class="bubble x3"></div>
-        <div class="bubble x10"></div>
+
     </div>
 
 <?php 
 
 
-if(empty($_SESSION["username"]) && empty($_SESSION["teacher_name"]))
+if( empty($_SESSION["username"]) && empty($_SESSION["teacher_name"]))
 {
-
-
 ?>
     <div class="main container">
 
@@ -128,6 +121,8 @@ else if(!empty($_SESSION["teacher_name"])){
 
 else{
     echo ("plz dont login teacher id massage for student;;;; teacher plz dont login student id plz ma am you teacher dont do that");
+header("Location: index.html");
+
 }
 ?>
 

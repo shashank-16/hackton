@@ -2,7 +2,6 @@
 session_start();
 $_SESSION["username"]=$_POST["username"];
 
-$_SESSION["score"]=0;
 
 // $question_no=5;
 
@@ -21,6 +20,8 @@ if(isset($_POST["candidate-login"]))
 
     if(mysqli_num_rows($finally)>0)
     {
+
+        $_SESSION["score"]=0;
         header("Location: subject.php");
 
     }

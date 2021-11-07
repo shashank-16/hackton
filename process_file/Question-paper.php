@@ -103,13 +103,9 @@ session_start(); // session is god
                         <div class="table" style="display: flex; flex-grow: initial; justify-content: space-sround">
                             <ul id="horizontal-list" style="margin: 8px; margin-bottom: 10px">
                                 <!-- Question panel -->
-<<<<<<< HEAD
-                               
-=======
                                 <div style="height: fit-content; font-size:40px">
                                     <p id="qmo">1</p>
                                 </div>
->>>>>>> a2c0e6f9d09ebdf1c3988ebb50763dfb2173ff16
                             </ul>
                         </div>
                     </div>

@@ -1,3 +1,7 @@
+*{
+    overflow-x: hidden;
+}
+
 body{
     background-color: rgba(0,0,0,1);
     margin:0;
@@ -98,4 +102,74 @@ a{
      border-top-right-radius: 6px;
  }
 
- 
+ /* Profile-card */
+
+ .profile{
+    border-radius:100%;
+    width:64px;
+    height:60px;
+    z-index: 1;
+    right:0;
+    margin-left: 96%;
+    /* margin-left: -400px; */
+}
+
+.profile-card{
+    right: -420px;
+    height: fit-content;
+    width: 300px;
+    border-radius: 16px;
+    position: absolute;
+    z-index: 1;
+    background-color: purple;
+}
+
+.first  span{
+    padding: 0px 20px 20px 0px;
+   margin-right :20px;
+   transform: rotate(180deg);
+}
+
+
+.second{
+    display: flex;
+
+}
+.second #pic{
+    border-radius:100%;
+    width:138px;
+    height:128px;
+    margin: auto;
+}
+
+.details{
+    /* display: inline-block; */
+    width: 100%;
+}
+
+.details h3{
+    color: white; 
+    padding-left:20px;
+    display: flex;
+    justify-content: center;
+}
+
+.details p{
+    color: white;
+    padding-left: 20px;
+    font-size: 21px;
+    font-weight: 300;
+    display: flex;
+    justify-content: center;
+}
+
+.details button{
+    border-radius: 30px !important;
+    margin: auto;
+    margin-bottom: 20px;
+}
+
+#logout{
+    min-width: 100px;
+    min-height: 40px;
+}
