@@ -1,3 +1,8 @@
+<?php
+
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -74,7 +79,13 @@
         <div class="bubble x10"></div>
     </div>
 
+<?php 
 
+// if(empty($_SESSION["username"]))
+// {
+
+
+?>
     <div class="main container">
 
 
@@ -103,7 +114,15 @@
                     </div>
                 </div>
         </div>
+<?php
 
+// }
+
+// else{
+//     header("Location: subject.php");
+
+// }
+?>
 
 
         
