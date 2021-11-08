@@ -467,7 +467,7 @@ if(!empty($_SESSION["username"]))
                 }
                 else if(e.keyCode==122 || e.keyCode==123){      //F11 or F12
                     console.log("f11 || f12");
-                    return true;
+                    return false;
                 }
                 else if(e.keyCode==27){     // for escape
                     console.log("i will not, I am escape!");

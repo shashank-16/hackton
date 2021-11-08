@@ -29,7 +29,7 @@ session_start();
 
 <body>
     <nav>
-            <span id="profile-pic" style="display: flex; padding:20px; z-index:1;">
+            <span id="profile-pic">
                 <img src="https://images.unsplash.com/photo-1499557354967-2b2d8910bcca?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=7d5363c18112a02ce22d0c46f8570147&auto=format&fit=crop&w=635&q=80%20635w" alt="profile-pic" class="profile" id="pic" onclick="click()">
             </span>
     </nav>
@@ -54,7 +54,7 @@ session_start();
             <img src="https://images.unsplash.com/photo-1499557354967-2b2d8910bcca?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=7d5363c18112a02ce22d0c46f8570147&auto=format&fit=crop&w=635&q=80%20635w" alt="profile-pic" class="profile" id="pic">
         </div>
         <div class="details">
-            <h3><?php echo $_SESSION["username"];?></h3>
+            <div><p><?php echo $_SESSION["username"];?></p></div>
             <div class="name"><p>DIDI</p></div>
             <div class="designation"><p>Designation</p></div>
             <div class="branch"><p>Branch</p></div>
@@ -69,10 +69,11 @@ session_start();
 
 
 
-    <div >
+
+    <div>
 
     <div class="instruction">
-        <p style="color: white;">Please Read The Instruction care fully.</p>
+        <p style="color: black;">Please Read The Instruction care fully.</p>
         <ul>
             <li>Procced for key binding.</li>
             <li>Choose Key wisely according to your comfort.</li>
@@ -81,8 +82,9 @@ session_start();
 
 
     <div class="file">
-    
-    <?php
+    <div class="main">
+
+            <?php
     include('connective.php');
 
     $show_subject="SELECT * FROM subject_info";
@@ -93,9 +95,7 @@ session_start();
     if (mysqli_num_rows($query_subject) > 0) {
         while ($row = mysqli_fetch_assoc($query_subject)) {
     ?>
-
-            <div class="main">
-                <div class="sub-div">
+                <div class="sub-div remove">
 
                 
                     <form id="nm" action="key-bindings.php" method="POST" class="form-group" name="<?php echo ($row["subject"]); ?>">
@@ -153,12 +153,14 @@ session_start();
 
                     </form>
                 </div>
+            
 
         <?php
 
     }
     }
         ?>
+        </div>  
             </div>
 
     </div>
@@ -166,29 +168,34 @@ session_start();
 
 </body>
 
+
+
 <script>
     function change() {
         console.log(document.getElementsById('nm').name);
     }
     $(document).ready(function(){
-        $(".file").mouseenter(function(){
-            $(".sub-div").animate({"margin-left":"320px"},500);
-            // $(".sub-div").animate({"margin-left":"640px"},500);
+        $(".file").click(function(){
+            $(".main").animate({"margin-left":"320px"},600);
+            // $(".main").animate({"margin-left":"320px"},600);
+            $(".sub-div").removeClass('remove');
         })
-        $(".file").mouseleave(function(){
-            $(".sub-div").animate({"margin-left":"20px"},200);
-        })
+        
 
 
-        $("#profile-pic").click(function() {
-                $("body").css({"opacity":"0.5"});
+
+
+            $("#profile-pic").click(function() {
                 $(".profile-card").animate({"margin-right":"450px"},300);
-
+                $(".main,.instruction,.sub-div,.file::before,.file::after").addClass("blurr");
             })
 
             $(".first span").click(function(){
                 $("body").css({"opacity":"1"});
                 $(".profile-card").animate({"margin-right":"-400px"},300);
+                // document.getElementsByClassName('.main,.instruction,.sub-div').removeProp("filter");
+                // document.getele
+                $(".main,.instruction,.sub-div").removeClass("blurr");
             })
 
 

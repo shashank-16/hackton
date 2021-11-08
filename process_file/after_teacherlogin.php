@@ -232,14 +232,14 @@ session_start();
             })
 
             $("#profile-pic").click(function() {
-                $("body").css({"opacity":"0.5"});
                 $(".profile-card").animate({"margin-left":"10px"},300);
-
+                $(".container").addClass("blurr");
             })
 
             $(".first span").click(function(){
                 $("body").css({"opacity":"1"});
                 $(".profile-card").animate({"margin-left":"-400px"},300);
+                $(".container").removeClass("blurr");
             })
             $("#logout").click(function(){
                 $.ajax({
