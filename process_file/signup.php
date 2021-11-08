@@ -192,7 +192,7 @@
         </div>
 
         <div class="button">
-            <div class="bck" >
+            <div class="bck">
                     <span>
                     <a href="index.html">
                         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="30" height="30" viewBox="0 0 16 16">
@@ -241,8 +241,6 @@
 <?php 
           
         include 'connective.php';
-
-
         if(isset($_POST["Register"]))
         {
             $Institution=$_POST["Institute_Name"];
