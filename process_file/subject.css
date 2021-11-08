@@ -29,7 +29,13 @@ a{
     height:350px;
     margin:20px;
     background-color: whitesmoke;
+    
 }
+
+.remove{
+    position: absolute;
+}
+
 .sub-name{
     width:100%;
     background-color:orange;
@@ -69,7 +75,8 @@ a{
 
 .file{
     /* background-color: green; */
-    width: fit-content;
+    /* width: fit-content; */
+    display: flex;
 }
 
 
@@ -82,7 +89,7 @@ a{
      background:#16A085;
      position: absolute;
      left:1%;
-     top: 200px;
+     top: 300px;
      border-radius: 6px;
      z-index: 5;
      box-shadow: 3px -3px 5px rgba(0,0,0,0.5);
@@ -95,7 +102,7 @@ a{
      height:40px;
      background: #1E824C;
      position: absolute;
-     top:190px;
+     top:280px;
      left:1%;
      z-index:-1;
      border-top-left-radius: 6px;
@@ -104,19 +111,32 @@ a{
 
  /* Profile-card */
 
+ #profile-pic{
+    display: flex; 
+    padding:20px; 
+    justify-content: end;
+    z-index:1
+ }
+
+
+
  .profile{
     border-radius:100%;
     width:64px;
     height:60px;
     z-index: 1;
     right:0;
-    margin-left: 96%;
+    display: flex;
+    
+    /* margin-left: 96%; */
     /* margin-left: -400px; */
 }
 
 .profile-card{
+    /* visibility: hidden; */
     right: -420px;
     height: fit-content;
+    width: fit-content;
     width: 300px;
     border-radius: 16px;
     position: absolute;

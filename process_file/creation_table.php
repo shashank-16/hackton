@@ -86,8 +86,7 @@ $table="online_test_".$_SESSION["table_name"]; //table name change here for furt
 mysqli_query($connection,$sql_exam_record);
         mysqli_query($connection,$sql_subject_record);
 
-        $query_deletion=mysqli_query($connection,$sql_deletion) or die("cannot delete the table");
-
+        $query_deletion=mysqli_query($connection,$sql_deletion);
         header("Location: after_teacherlogin.php");
     }
 
