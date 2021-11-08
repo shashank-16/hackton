@@ -1,6 +1,10 @@
 <?php
 session_start(); // session is god
 
+if(!empty($_SESSION["username"]))
+{
+
+
 ?>
 
 <script>
@@ -595,5 +599,11 @@ session_start(); // session is god
         // }
       </script>
 </body>
-
+<?php
+}
+else{
+    session_destroy();
+    echo("trying to be oversmart plz do it proper then come to page hehehee...");
+}
+?>
 </html>

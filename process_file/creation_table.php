@@ -92,5 +92,9 @@ mysqli_query($connection,$sql_exam_record);
     }
 
 }
+else{
+    session_destroy();
+    header("Location : Login.php");
+}
 
 ?>

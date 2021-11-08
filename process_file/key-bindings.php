@@ -31,6 +31,10 @@ if(isset($_POST["submit"]))
 
 
 }
+else{
+    session_destroy();
+    header("Location :Login.php");
+}
 
 ?>
 

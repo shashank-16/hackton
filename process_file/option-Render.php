@@ -31,4 +31,8 @@ session_start();
         <?php }
    
     } 
+    else{
+        session_destroy();
+        header("Location :Login.php");
+    }
 ?>

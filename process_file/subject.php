@@ -196,7 +196,7 @@ session_start();
                 $.ajax({
                             type: 'POST',
                             url: 'logout.php',
-                            data: { logout: "111" },
+                            data: { logout: "1" },
                             
                             // do these thing 
                             success: function(response) {

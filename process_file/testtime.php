@@ -32,7 +32,8 @@ if(isset($_POST["candidate-login"]))
     }
 }
 else {
-    echo(10);
+    session_destroy();
+    header("Location :index.html");
 }
 
 

@@ -112,18 +112,18 @@ if( empty($_SESSION["username"]) && empty($_SESSION["teacher_name"]))
 <?php
 
 }
-else if(!empty($_SESSION["username"])){
+// else{
+//     session_destroy();
+//     header("Location : index.html");
+// }
+if(!empty($_SESSION["username"])){
     header("Location: subject.php");
 }
-else if(!empty($_SESSION["teacher_name"])){
+if(!empty($_SESSION["teacher_name"])){
     header("Location: after_teacherlogin.php");
 }
 
-else{
-    echo ("plz dont login teacher id massage for student;;;; teacher plz dont login student id plz ma am you teacher dont do that");
-header("Location: index.html");
 
-}
 ?>
 
 

@@ -24,5 +24,9 @@
     header("Location: Login.php");
 
     }
+    else{
+        session_destroy();
+        header("Location :signup.php");
+    }
 
 ?>

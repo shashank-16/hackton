@@ -211,7 +211,7 @@ if(isset($_POST["submit"]))
         mysqli_query($connection,$sql2) or die("answer nhi gya");
         }
         array_map("insertData", $_POST['paperdata']);
-    }
+}
 
 
 ?>

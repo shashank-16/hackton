@@ -20,7 +20,7 @@ $answer=$_POST["answer"];
 $question=$_POST["question"]; 
 
 $sql=" SELECT *  FROM `$test` where question='{$question}' AND answer='{$answer}'";
-$correct_query= mysqli_query($connection,$sql) or die("error");
+$correct_query= mysqli_query($connection,$sql) or die("heheheh");
 
 if(mysqli_num_rows($correct_query)>0)
 {
