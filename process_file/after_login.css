@@ -172,6 +172,10 @@ table tr:last-child td:last-child {
     margin: auto;
 }
 
+.blurr{
+    filter: blur(3px);
+}
+
 
 
 
@@ -189,15 +193,22 @@ table tr:last-child td:last-child {
 
     .profile-card{
         height: fit-content;
+        min-width: fit-content;
         width: 300px;
         border-radius: 16px;
         position: absolute;
         z-index: 1;
-        background-color: purple;
+        padding: 10px;
+        background-color: rgb(36, 88, 184);
+    }
+
+    .first{
+        margin-top: 5px;
     }
 
     .first  span{
-        padding: 20px 0px 0px 20px;
+        margin-top: 5px;
+        padding: 20px 20px 0px 20px;
     }
 
 

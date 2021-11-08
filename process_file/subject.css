@@ -3,7 +3,11 @@
 }
 
 body{
-    background-color: rgba(0,0,0,1);
+    /* background-color: rgba(0,0,0,1); */
+    background-image: url('Green-india.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-size: auto;
     margin:0;
     padding:0;
     box-sizing: border-box;
@@ -65,6 +69,11 @@ a{
     color: red;
     font-size: 20px;
 }
+
+.blurr{
+    filter: blur(3px);
+}
+
 
 
 
@@ -141,7 +150,7 @@ a{
     border-radius: 16px;
     position: absolute;
     z-index: 1;
-    background-color: purple;
+    background-color: rgb(116, 181, 207);
 }
 
 .first  span{

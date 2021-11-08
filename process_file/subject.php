@@ -69,10 +69,11 @@ session_start();
 
 
 
-    <div >
+
+    <div>
 
     <div class="instruction">
-        <p style="color: white;">Please Read The Instruction care fully.</p>
+        <p style="color: black;">Please Read The Instruction care fully.</p>
         <ul>
             <li>Procced for key binding.</li>
             <li>Choose Key wisely according to your comfort.</li>
@@ -81,10 +82,7 @@ session_start();
 
 
     <div class="file">
-    
-    
-
-            <div class="main">
+    <div class="main">
 
             <?php
     include('connective.php');
@@ -187,18 +185,17 @@ session_start();
 
 
 
-        $("#profile-pic").click(function() {
-                $("body").css({"background-color":"rgba(0,0,0, 0.2)"});
-                $(".profile-card").css({"opacity":"1"});
+            $("#profile-pic").click(function() {
                 $(".profile-card").animate({"margin-right":"450px"},300);
-                // $(".profile-card").animate({"visibility":"visible"},400);
-
+                $(".main,.instruction,.sub-div,.file::before,.file::after").addClass("blurr");
             })
 
             $(".first span").click(function(){
                 $("body").css({"opacity":"1"});
                 $(".profile-card").animate({"margin-right":"-400px"},300);
-                // $(".profile-card").animate({"visibility":"hidden"},400);
+                // document.getElementsByClassName('.main,.instruction,.sub-div').removeProp("filter");
+                // document.getele
+                $(".main,.instruction,.sub-div").removeClass("blurr");
             })
 
 
