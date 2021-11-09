@@ -205,10 +205,10 @@ if(mysqli_num_rows($query_profile)>0)
 
             ?>
             <h3><?php echo $_SESSION["teacher_name"];?></h3>
-            <div class="name"><p><?php echo $rowl["teacher_name"]; ?></p></div>
+            <!-- <div class="name"><p><?php echo $rowl["teacher_name"]; ?></p></div> -->
             <div class="phone"><p><?php echo $rowl["Institute_name"];?></p></div>
             <div class="designation"><p>Teacher</p></div>
-            <div class="branch"><p><?php echo $rowl["branch"];?></p></div>
+            <!-- <div class="branch"><p><?php echo $rowl["branch"];?></p></div> -->
             <div class="" style="display: flex;">
                 <button class="btn btn-primary"  id="logout">Logout</button>
             </div>

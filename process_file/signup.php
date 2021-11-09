@@ -254,11 +254,11 @@
             $username_teacher=$_POST["email"];
             $password_teacher=$_POST["Confirm_password"];
 
-            $sql_teacher="INSERT INTO teacher_info(`Institute_name`,`branch`,`teacher_name`,`Username`,`Password`) 
-            VALUES('{$Institution}','{$branch}','{$full_name}','{$username_teacher}','{$password_teacher}')";  //apne according big kr lo branch ko ;
+            // $sql_teacher="INSERT INTO teacher_info(`Institute_name`,`branch`,`teacher_name`,`Username`,`Password`) 
+            // VALUES('{$Institution}','{$branch}','{$full_name}','{$username_teacher}','{$password_teacher}')";  //apne according big kr lo branch ko ;
 
-            // $sql_teacher="INSERT INTO teacher_info(`Institute_name`,`branch`,`F_name`,`L_name`,`Username`,`Password`) 
-            // VALUES('{$Institution}','{$branch}','{$F_name}','{$L_name}','{$username_teacher}','{$password_teacher}')";   
+            $sql_teacher="INSERT INTO teacher_info(`Institute_name`,`branch`,`F_name`,`L_name`,`Username`,`Password`) 
+            VALUES('{$Institution}','{$branch}','{$F_name}','{$L_name}','{$username_teacher}','{$password_teacher}')";   
             mysqli_query($connection,$sql_teacher) or die("failed");
 
         }

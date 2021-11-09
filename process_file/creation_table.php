@@ -29,7 +29,7 @@ $table="online_test_".$_SESSION["table_name"]; //table name change here for furt
     if($checker=="createTable") //check box option will come here for the checking;
     {
         $sql_creation="CREATE TABLE `$table`(Username_test varchar(1000),score int)";
-        $query_creation=mysqli_query($connection,$sql_creation) or die("creation of table is not happen");
+        $query_creation=mysqli_query($connection,$sql_creation) or die(header("after_teacherlogin.php"));
         // $result = $mysqli->query("SHOW TABLES LIKE '".$table."'");
 
             for($i=1;$i<=$number_of_question;$i++)

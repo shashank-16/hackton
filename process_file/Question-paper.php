@@ -10,14 +10,14 @@ if(!empty($_SESSION["username"]))
 <script>
        let where = 1;
 
-      var  timer= '<?=$_SESSION["time"]?>'; 
-      setTimeout(function(){
+    //   var  timer= '<?=$_SESSION["time"]?>'; 
+    //   setTimeout(function(){
           
-        alert("Test is finished");
-                $.ajax({
-                    type: 'POST',
-                    url: 'exam_end.php'
-                });},60000*timer);
+    //     alert("Test is finished");
+    //             $.ajax({
+    //                 type: 'POST',
+    //                 url: 'exam_end.php'
+    //             });},60000*timer);
     
       var  total_question= '<?=$_SESSION["no_question"]?>'; // need this thing god like power
         console.log(total_question);
@@ -127,23 +127,31 @@ if(!empty($_SESSION["username"]))
 
                 <div class="number-of-question" style="width: 300px;">
                     <div id="menu-outer">
-                        <div class="table" style="display: flex; flex-grow: initial; justify-content: space-sround">
+                        <div id="tt" class="table" style="display: flex; flex-grow: initial; justify-content: space-sround">
                             <ul id="horizontal-list" style="margin: 8px; margin-bottom: 10px">
                                 <!-- Question panel -->
-                                <div style="height: fit-content; font-size:20px">
-                                    <!-- <p id="qmo"></p> -->
-                                    <ul style ="list-style:none;">
-                                        <li>Option-1:<script> sessionStorage.getItem('option-1')</script> </li>
-                                        <li>Option-2: <script> sessionStorage.getItem('option-2')</script></li>
-                                        <li>Option-3: <script> sessionStorage.getItem('option-3')</script></li>
-                                        <li>Option-4: <script> sessionStorage.getItem('option-4')</script></li>
-                                    </ul>
-                                </div>
+                                
+                                    <script>
+                                        var cont = document.getElementById('tt');
+                                        var ul = document.createElement('ul');
+                                        ul.setAttribute('style', 'padding: 0; margin: 0;');
+                                        ul.setAttribute('id', 'theList');
+
+                                        for (i = 0; i <= 20 - 1; i++) {
+                                            var li = document.createElement('li');
+                                            li.innerHTML = i;
+                                            li.setAttribute('style', 'display: inline-block; margin:8px; padding:9px; background-color:red; color:white;');
+
+                                            ul.appendChild(li);
+                                        }
+
+                                        cont.appendChild(ul);
+                                    </script>
                             </ul>
                         </div>
                     </div>
                 </div>
-                <!-- <button id=" full" class="btn btn-primary"> fullscreen</button> -->
+                
 
             </div>
         </div>
@@ -299,7 +307,7 @@ if(!empty($_SESSION["username"]))
                 }
 
 
-                // M button for next
+                // -> button for next
                 if ($key == 39) {
 
                     
@@ -395,7 +403,7 @@ if(!empty($_SESSION["username"]))
 
                 
 
-                //n button for previous
+                // <- button for previous
                 if ($key == 37) {
                     where--;
                     $.ajax({
