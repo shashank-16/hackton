@@ -22,7 +22,7 @@
 
     $query= mysqli_query($connection,$sql) or die("use different username ");
     
-    // header("Location: Login.php");
+    header("Location: Login.php");
 
     }
     else{
