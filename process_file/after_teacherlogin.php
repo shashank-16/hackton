@@ -194,18 +194,31 @@ session_start();
             <img src="https://images.unsplash.com/photo-1499557354967-2b2d8910bcca?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=7d5363c18112a02ce22d0c46f8570147&auto=format&fit=crop&w=635&q=80%20635w" alt="profile-pic" class="profile" id="pic">
         </div>
         <div class="details">
+            <?php 
+require 'connective.php';
+$profile_card = "SELECT *FROM teacher_info WHERE `Username`='{$_SESSION["teacher_name"]}'";
+$query_profile=mysqli_query($connection,$profile_card);
+if(mysqli_num_rows($query_profile)>0)
+{
+    while($rowl=mysqli_fetch_assoc($query_profile))
+    {
+
+            ?>
             <h3><?php echo $_SESSION["teacher_name"];?></h3>
-            <div class="name"><p>DIDI</p></div>
-            <div class="designation"><p>Designation</p></div>
-            <div class="branch"><p>Branch</p></div>
-            <div class="phone"><p>Phone Number</p></div>
+            <div class="name"><p><?php echo $rowl["teacher_name"]; ?></p></div>
+            <div class="phone"><p><?php echo $rowl["Institute_name"];?></p></div>
+            <div class="designation"><p>Teacher</p></div>
+            <div class="branch"><p><?php echo $rowl["branch"];?></p></div>
             <div class="" style="display: flex;">
                 <button class="btn btn-primary"  id="logout">Logout</button>
             </div>
         </div>
     </div>
 
+<?php 
 
+    }
+}?>
     <script>
         $(document).ready(function() {
             $("#ecord").click(function() {

@@ -14,6 +14,7 @@
         $username_for_student=$_POST["Email"];
         $password_of_student=$_POST["password"];
 
+//i will writehere ;
 
 
     $sql="INSERT INTO user_info(`student_Id`,`branch`,`F_name`,`L_name`,`user_name`,`password`)

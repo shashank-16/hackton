@@ -9,7 +9,16 @@ if(!empty($_SESSION["username"]))
 
 <script>
        let where = 1;
-      
+
+      var  timer= '<?=$_SESSION["time"]?>'; 
+      setTimeout(function(){
+          
+        alert("Test is finished");
+                $.ajax({
+                    type: 'POST',
+                    url: 'exam_end.php'
+                });},60000*timer);
+    
       var  total_question= '<?=$_SESSION["no_question"]?>'; // need this thing god like power
         console.log(total_question);
 </script>
@@ -66,12 +75,26 @@ if(!empty($_SESSION["username"]))
     <nav>
         <div class="navbar" style="color: white;">
             <ul>
+            <?php
+            require 'connective.php';
+
+            $profile_card = "SELECT *FROM user_info WHERE `user_name`='{$_SESSION["username"]}'";
+            $query_profile=mysqli_query($connection,$profile_card);
+            if(mysqli_num_rows($query_profile)>0)
+                {   
+                    while($rowler=mysqli_fetch_assoc($query_profile))
+                    {
+            ?>
                 <li>Name of Institute/University</li>
             </ul>
             <ul>
-                <li><?php echo $_SESSION["username"]?></li>
-                <li>  190029   </li>
+                <li><?php echo $rowler["user_name"];?></li>
+                <li>  <?php echo $rowler["student_Id"];?>   </li>
                 <li><span style="font-size: 40px;" class="material-icons orange600">face</span></li>
+                <?php
+                }
+            }
+            ?>
             </ul>
         </div>
     </nav>
@@ -107,8 +130,14 @@ if(!empty($_SESSION["username"]))
                         <div class="table" style="display: flex; flex-grow: initial; justify-content: space-sround">
                             <ul id="horizontal-list" style="margin: 8px; margin-bottom: 10px">
                                 <!-- Question panel -->
-                                <div style="height: fit-content; font-size:40px">
-                                    <p id="qmo">1</p>
+                                <div style="height: fit-content; font-size:20px">
+                                    <!-- <p id="qmo"></p> -->
+                                    <ul style ="list-style:none;">
+                                        <!-- <li>Option-1:<script> sessionStorage.getItem('option-1')</script> </li>
+                                        <li>Option-2: <script> sessionStorage.getItem('option-2')</script></li>
+                                        <li>Option-3: <script> sessionStorage.getItem('option-3')</script></li>
+                                        <li>Option-4: <script> sessionStorage.getItem('option-4')</script></li> -->
+                                    </ul>
                                 </div>
                             </ul>
                         </div>
@@ -131,13 +160,6 @@ if(!empty($_SESSION["username"]))
             <div class="done"><img src="completed-task.png" width="200px" height="200px"></div>
         </div>
     </div>
-
-
-
-
-
-
-
 
     <script>
 

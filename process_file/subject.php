@@ -54,15 +54,29 @@ session_start();
             <img src="https://images.unsplash.com/photo-1499557354967-2b2d8910bcca?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=7d5363c18112a02ce22d0c46f8570147&auto=format&fit=crop&w=635&q=80%20635w" alt="profile-pic" class="profile" id="pic">
         </div>
         <div class="details">
+            <?php
+            require 'connective.php';
+
+            $profile_card = "SELECT *FROM user_info WHERE `user_name`='{$_SESSION["username"]}'";
+            $query_profile=mysqli_query($connection,$profile_card);
+            if(mysqli_num_rows($query_profile)>0)
+                {   
+                    while($rowl=mysqli_fetch_assoc($query_profile))
+                    {
+            ?>
             <div><p><?php echo $_SESSION["username"];?></p></div>
-            <div class="name"><p>DIDI</p></div>
-            <div class="designation"><p>Designation</p></div>
-            <div class="branch"><p>Branch</p></div>
-            <div class="phone"><p>Phone Number</p></div>
+            <div class="name"><p><?php echo $rowl["name_student"]; ?></p></div>
+            <div class="designation"><p>Student</p></div>
+            <div class="branch"><p><?php echo $rowl["branch"]; ?></p></div>
+            <div class="phone"><p><?php echo $rowl["student_Id"]; ?></p></div>
             <div class="" style="display: flex;">
                 <button class="btn btn-primary"  id="logout">Logout</button>
+        
             </div>
+            <?php }
+    }?>
         </div>
+        
     </div>
 
 
@@ -105,6 +119,7 @@ session_start();
                             </select>
 
                            Subject : <?php  echo ($row["subject"]); 
+                           $_SESSION["time"]=$row["Duration"];
                            
                            require 'connective.php';
                            $subject=$row["subject"];
