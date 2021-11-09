@@ -208,8 +208,6 @@ session_start();
             $(".first span").click(function(){
                 $("body").css({"opacity":"1"});
                 $(".profile-card").animate({"margin-right":"-400px"},300);
-                // document.getElementsByClassName('.main,.instruction,.sub-div').removeProp("filter");
-                // document.getele
                 $(".main,.instruction,.sub-div").removeClass("blurr");
             })
 

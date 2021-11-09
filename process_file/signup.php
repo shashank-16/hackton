@@ -41,9 +41,10 @@
         <div class="bubble x7"></div> -->
         <div class="bubble x2"></div>
         <div class="bubble x10"></div>
-     <div class="bubble x9"></div>
+        <div class="bubble x9"></div>
         <div class="bubble x10"></div>
-        <div class="bubble x3"></div>    <div class="bubble x8"></div>
+        <div class="bubble x3"></div>    
+        <div class="bubble x8"></div>
         <div class="bubble x3"></div>
        
         <div class="bubble x10"></div>
@@ -52,7 +53,7 @@
     
 
     <div class="main container">
-z
+
 
         <div class="both">
 
@@ -159,7 +160,7 @@ z
                     </div>
                     <div class=" fields row">
                         <div class="col">
-                            <label for="Name">First Name</label>
+                            <label for="Name">Full Name</label>
                             <input type="text" name ="F_name" class="form-control" autocomplete="First-name" placeholder="First Name" required>
                             
                         </div>
@@ -228,10 +229,10 @@ z
 
 
 
-        function signup()
-        {
-            alert("sucessfully! Signed-up")
-        }
+        // function signup()
+        // {
+        //     alert("sucessfully! Signed-up")
+        // }
     </script>
 </body>
 </html>

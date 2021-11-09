@@ -133,10 +133,10 @@ if(!empty($_SESSION["username"]))
                                 <div style="height: fit-content; font-size:20px">
                                     <!-- <p id="qmo"></p> -->
                                     <ul style ="list-style:none;">
-                                        <!-- <li>Option-1:<script> sessionStorage.getItem('option-1')</script> </li>
+                                        <li>Option-1:<script> sessionStorage.getItem('option-1')</script> </li>
                                         <li>Option-2: <script> sessionStorage.getItem('option-2')</script></li>
                                         <li>Option-3: <script> sessionStorage.getItem('option-3')</script></li>
-                                        <li>Option-4: <script> sessionStorage.getItem('option-4')</script></li> -->
+                                        <li>Option-4: <script> sessionStorage.getItem('option-4')</script></li>
                                     </ul>
                                 </div>
                             </ul>
