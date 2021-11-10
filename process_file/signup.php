@@ -119,7 +119,7 @@ z
                 </div>
                 <div class="eppb"> 
                     <label for="Password">Password</label>
-                    <input type="password" autocomplete="current-password" name="" class="form-control" minlength="8" maxlength="16" required placeholder="Password">
+                    <input type="password" autocomplete="current-password" class="form-control" minlength="8" maxlength="16" required placeholder="Password">
                 </div>
                 <div class="eppb"> 
                     <label for="Password">Confirm Password</label>

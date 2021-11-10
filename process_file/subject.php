@@ -119,7 +119,7 @@ session_start();
                             </select>
 
                            Subject : <?php  echo ($row["subject"]); 
-                           $_SESSION["time"]=$row["Duration"];
+                           $_SESSION["time"]=$row["duration"];
                            
                            require 'connective.php';
                            $subject=$row["subject"];
