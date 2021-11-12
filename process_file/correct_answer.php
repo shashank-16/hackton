@@ -71,7 +71,7 @@ else{
     }
      if(mysqli_num_rows($checking_query_NULL)>0)
     {
-        $NULL="UPDATE `$table_name` SET `$current_quesition` =false  WHERE `Username_test`='{$_SESSION["username"]}'";
+        $NULL="UPDATE `$table_name` SET `$current_quesition` =NULL  WHERE `Username_test`='{$_SESSION["username"]}'";
         $NULL_query=mysqli_query($connection,$NULL) or die(1000);
 
     }

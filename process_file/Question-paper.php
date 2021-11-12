@@ -20,7 +20,7 @@ if(!empty($_SESSION["username"]))
                 });},60000*timer);
     
       var  total_question= '<?=$_SESSION["no_question"]?>'; // need this thing god like power
-        console.log(total_question);
+    
 </script>
 
 
@@ -121,29 +121,38 @@ if(!empty($_SESSION["username"]))
             <div class="proter-region">
                 <div class="video">
                     <p>VIDEO-VIEW</p>
+                    <p id ="counter"><p> /3</p></p>
                 </div>
                 <hr>
 
 
                 <div class="number-of-question" style="width: 300px;">
                     <div id="menu-outer">
-                        <div class="table" style="display: flex; flex-grow: initial; justify-content: space-sround">
+                        <div id="tt" class="table" style="display: flex; flex-grow: initial; justify-content: space-sround">
                             <ul id="horizontal-list" style="margin: 8px; margin-bottom: 10px">
                                 <!-- Question panel -->
-                                <div style="height: fit-content; font-size:20px">
-                                    <!-- <p id="qmo"></p> -->
-                                    <ul style ="list-style:none;">
-                                        <!-- <li>Option-1:<script> sessionStorage.getItem('option-1')</script> </li>
-                                        <li>Option-2: <script> sessionStorage.getItem('option-2')</script></li>
-                                        <li>Option-3: <script> sessionStorage.getItem('option-3')</script></li>
-                                        <li>Option-4: <script> sessionStorage.getItem('option-4')</script></li> -->
-                                    </ul>
-                                </div>
+                                
+                                    <script>
+                                        var cont = document.getElementById('tt');
+                                        var ul = document.createElement('ul');
+                                        ul.setAttribute('style', 'padding: 0; margin: 0;');
+                                        ul.setAttribute('id', 'theList');
+                                        
+                                        for (i = 1; i <= total_question; i++) {
+                                            var li = document.createElement('li');
+                                            li.innerHTML = i;
+                                            li.setAttribute('style', 'display: inline-block; margin:8px; padding:9px; background-color:red; color:white;');
+                                            li.setAttribute('id','thelist'+i);
+                                            ul.appendChild(li);
+                                        }
+
+                                        cont.appendChild(ul);
+                                    </script>
                             </ul>
                         </div>
                     </div>
                 </div>
-                <!-- <button id=" full" class="btn btn-primary"> fullscreen</button> -->
+                
 
             </div>
         </div>
@@ -190,7 +199,7 @@ if(!empty($_SESSION["username"]))
             document.cookie = name +'=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
         }
         
-
+        document.getElementById('counter').innerText=where;
 
         window.addEventListener("load",()=>{
             $.ajax({
@@ -299,13 +308,25 @@ if(!empty($_SESSION["username"]))
                 }
 
 
-                // M button for next
+                // -> button for next
                 if ($key == 39) {
 
                     
                     if(where<=total_question)
                     {
-                        // console.log(where<=total_question);
+                        // // console.log(where<=total_question);
+                        //     $.ajax({
+                        //         type:'POST',
+                        //         url:'color_chaning.php',
+                        //         data:{count:where },
+                        //         success:function(data)
+                        //         {
+                                
+
+                        //         }
+
+                        //     })
+
 
                             $.ajax({
                             type: 'POST',
@@ -334,6 +355,7 @@ if(!empty($_SESSION["username"]))
                     }
                     
                     where++;
+                    document.getElementById('counter').innerText=where;
                     
                     
                     $.ajax({
@@ -395,9 +417,11 @@ if(!empty($_SESSION["username"]))
 
                 
 
-                //n button for previous
+                // <- button for previous
                 if ($key == 37) {
                     where--;
+                    document.getElementById('counter').innerText=where;
+
                     $.ajax({
                         url: "Question-Render.php",
                         type: "POST",

@@ -18,7 +18,7 @@
 
 
     $sql="INSERT INTO user_info(`student_Id`,`branch`,`name_student`,`user_name`,`password`)
-    values('{$student_ID}','{$branch}','{$full_name},'{$username_for_student}','{$password_of_student}')";
+    values('{$student_ID}','{$branch}','{$full_name}','{$username_for_student}','{$password_of_student}')";
 
     $query= mysqli_query($connection,$sql) or die($full_name);
     

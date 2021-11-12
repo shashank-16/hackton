@@ -128,6 +128,21 @@
         }
             ?>
             </ul>
+            <div class="bck" style="margin-right: 50px;">
+                <a href="after_teacherlogin.php">
+                <span><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="30" height="30" viewBox="0 0 16 16">
+                        <defs>
+                            <clipPath id="clip-path">
+                                <rect width="16" height="16" fill="none" />
+                            </clipPath>
+                        </defs>
+                        <g id="Backward_arrow" data-name="Backward arrow" clip-path="url(#clip-path)">
+                            <path id="Path_10" data-name="Path 10" d="M8,0,6.545,1.455l5.506,5.506H0V9.039H12.052L6.545,14.545,8,16l8-8Z" transform="translate(16 16) rotate(180)" fill="#111111" />
+                        </g>
+                    </svg>
+                </span>
+                </a>
+            </div>
         </div>
     </nav>
 
@@ -224,7 +239,7 @@ if(isset($_POST["submit"]))
 
         $sql2="INSERT INTO `$test`(question,answer) VALUE('{$Question}','{$Answer}')";
         mysqli_query($connection,$sql2) or die("answer nhi gya");
-        header("Location: after_login.php");
+        // header("Location: after_login.php");
         }
         array_map("insertData", $_POST['paperdata']);
 }

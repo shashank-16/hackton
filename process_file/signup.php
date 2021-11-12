@@ -41,9 +41,10 @@
         <div class="bubble x7"></div> -->
         <div class="bubble x2"></div>
         <div class="bubble x10"></div>
-     <div class="bubble x9"></div>
+        <div class="bubble x9"></div>
         <div class="bubble x10"></div>
-        <div class="bubble x3"></div>    <div class="bubble x8"></div>
+        <div class="bubble x3"></div>    
+        <div class="bubble x8"></div>
         <div class="bubble x3"></div>
        
         <div class="bubble x10"></div>
@@ -52,7 +53,7 @@
     
 
     <div class="main container">
-z
+
 
         <div class="both">
 
@@ -159,7 +160,7 @@ z
                     </div>
                     <div class=" fields row">
                         <div class="col">
-                            <label for="Name">First Name</label>
+                            <label for="Name">Full Name</label>
                             <input type="text" name ="F_name" class="form-control" autocomplete="First-name" placeholder="First Name" required>
                             
                         </div>
@@ -228,10 +229,10 @@ z
 
 
 
-        function signup()
-        {
-            alert("sucessfully! Signed-up")
-        }
+        // function signup()
+        // {
+        //     alert("sucessfully! Signed-up")
+        // }
     </script>
 </body>
 </html>
@@ -253,11 +254,11 @@ z
             $username_teacher=$_POST["email"];
             $password_teacher=$_POST["Confirm_password"];
 
-            $sql_teacher="INSERT INTO teacher_info(`Institute_name`,`branch`,`teacher_name`,`Username`,`Password`) 
-            VALUES('{$Institution}','{$branch}','{$full_name}','{$username_teacher}','{$password_teacher}')";  //apne according big kr lo branch ko ;
+            // $sql_teacher="INSERT INTO teacher_info(`Institute_name`,`branch`,`teacher_name`,`Username`,`Password`) 
+            // VALUES('{$Institution}','{$branch}','{$full_name}','{$username_teacher}','{$password_teacher}')";  //apne according big kr lo branch ko ;
 
-            // $sql_teacher="INSERT INTO teacher_info(`Institute_name`,`branch`,`F_name`,`L_name`,`Username`,`Password`) 
-            // VALUES('{$Institution}','{$branch}','{$F_name}','{$L_name}','{$username_teacher}','{$password_teacher}')";   
+            $sql_teacher="INSERT INTO teacher_info(`Institute_name`,`branch`,`F_name`,`L_name`,`Username`,`Password`) 
+            VALUES('{$Institution}','{$branch}','{$F_name}','{$L_name}','{$username_teacher}','{$password_teacher}')";   
             mysqli_query($connection,$sql_teacher) or die("failed");
 
         }
