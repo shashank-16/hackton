@@ -8,16 +8,17 @@ if(!empty($_SESSION["username"]))
 ?>
 
 <script>
+      var warning=4; // data will come from html side not from php 
        let where = 1;
 
-      var  timer= '<?=$_SESSION["time"]?>'; 
-      setTimeout(function(){
+
+    //   var  timer= '<?=$_SESSION["time"]?>'; 
+    //   setTimeout(function(){
           
-        alert("Test is finished");
-                $.ajax({
-                    type: 'POST',
-                    url: 'exam_end.php'
-                });},60000*timer);
+    //             $.ajax({
+    //                 type: 'POST',
+    //                 url: 'exam_end.php'
+    //             });},60000*timer);
     
       var  total_question= '<?=$_SESSION["no_question"]?>'; // need this thing god like power
     
@@ -121,7 +122,9 @@ if(!empty($_SESSION["username"]))
             <div class="proter-region">
                 <div class="video">
                     <p>VIDEO-VIEW</p>
-                    <p id ="counter"><p> /3</p></p>
+                    
+                    <p id ="counter"></p>
+                    <br>
                 </div>
                 <hr>
 
@@ -199,9 +202,13 @@ if(!empty($_SESSION["username"]))
             document.cookie = name +'=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
         }
         
-        document.getElementById('counter').innerText=where;
+        document.getElementById('counter').innerText=where+"/"+total_question;
 
         window.addEventListener("load",()=>{
+
+        
+
+
             $.ajax({
                         url: "Question-Render.php",
                         type: "POST",
@@ -248,6 +255,8 @@ if(!empty($_SESSION["username"]))
                     });  
         });
 
+       
+           
 
         $(document).ready(function() {
             $(document).keydown(function(e) {
@@ -261,6 +270,7 @@ if(!empty($_SESSION["username"]))
                 console.log("key1: " + key1)
                 if ($key == key1-32) {
                     // console.log();
+
                     
                     document.getElementById("opt-1").checked = true;
                     $op1=$('input[name="select"]:checked').val();
@@ -274,6 +284,8 @@ if(!empty($_SESSION["username"]))
                 }
 
                 if ($key == key2-32) {
+
+
                     document.getElementById("opt-2").checked = true;
                     document.getElementById("opt-1").checked = false;
                     document.getElementById("opt-3").checked = false;
@@ -284,7 +296,10 @@ if(!empty($_SESSION["username"]))
                     console.log("option-b selected");
                 }
 
+
                 if ($key == key3-32) {
+ 
+
                     document.getElementById("opt-3").checked = true;
                     document.getElementById("opt-1").checked = false;
                     document.getElementById("opt-2").checked = false;
@@ -297,6 +312,7 @@ if(!empty($_SESSION["username"]))
 
                 if ($key == key4-32) {
 
+
                     document.getElementById("opt-4").checked = true;
                     document.getElementById("opt-1").checked = false;
                     document.getElementById("opt-3").checked = false;
@@ -306,28 +322,13 @@ if(!empty($_SESSION["username"]))
                     setCookie(where,"opt-4",2);
                     console.log("option-d selected");
                 }
-
+              
 
                 // -> button for next
                 if ($key == 39) {
 
-                    
                     if(where<=total_question)
                     {
-                        // // console.log(where<=total_question);
-                        //     $.ajax({
-                        //         type:'POST',
-                        //         url:'color_chaning.php',
-                        //         data:{count:where },
-                        //         success:function(data)
-                        //         {
-                                
-
-                        //         }
-
-                        //     })
-
-
                             $.ajax({
                             type: 'POST',
                             url: 'correct_answer.php',
@@ -339,6 +340,7 @@ if(!empty($_SESSION["username"]))
                             $('#result').html(response);
                             }
                         })
+                        
                         if(where==total_question)
                         {
                             $.ajax({
@@ -352,10 +354,27 @@ if(!empty($_SESSION["username"]))
                       
                             setTimeout(function(){ window.location.href="index.html";},10000);
                         }
+                            
+                          $.ajax({
+                            type:'POST',
+                            url:'color_changing.php',
+                            data:{count:where },
+                      
+                            success:function(data)
+                            {
+                                numb=where-1;
+                                // console.log("these"+numb+where+data);
+                                $('#thelist'+numb).html(data);
+                              
+                            }
+
+                         })
+                                           
+                   
                     }
                     
                     where++;
-                    document.getElementById('counter').innerText=where;
+                    document.getElementById('counter').innerText=where +"/"+ total_question;
                     
                     
                     $.ajax({
@@ -419,78 +438,83 @@ if(!empty($_SESSION["username"]))
 
                 // <- button for previous
                 if ($key == 37) {
-                    where--;
-                    document.getElementById('counter').innerText=where;
+                    if(where>=1)
+                    {
+                        where--;
+                        if(where!=0)
+                        {
+                        
+                        
+                        document.getElementById('counter').innerText=where +"/"+ total_question;
 
-                    $.ajax({
-                        url: "Question-Render.php",
-                        type: "POST",
-                        data: {
-                            count: where
-                        },
-                        success: function(data) {
-                            $(".question-box").html(data);
-                        }
-                    })
+                        $.ajax({
+                            url: "Question-Render.php",
+                            type: "POST",
+                            data: {
+                                count: where
+                            },
+                            success: function(data) {
+                                $(".question-box").html(data);
+                            }
+                        })
 
-            
+                
 
-                    $.ajax({
-                        url: "option-Render.php",
-                        type: "POST",
-                        data: {
-                            count: where
-                        },
-                        success: function(data) {
-                            $(".options").html(data);
-                            var ans1 = getCookie(where);
-                            var ans2 = getCookie(where);
-                            var ans3 = getCookie(where);
-                            var ans4 = getCookie(where);
-                            
-                            
-                            if(ans1 || ans2 || ans3 || ans4){
-                                if(ans1=='opt-1'){
-                                    document.getElementById("opt-1").checked = true;
-                                    console.log(ans1);
-                                }
-                                if(ans2=='opt-2'){
-                                    document.getElementById("opt-2").checked = true;
-                                    console.log(ans2);
-                                }
-                                if(ans3=='opt-3'){
-                                    document.getElementById("opt-3").checked = true;
-                                    console.log(ans3);
-                                }
-                                if(ans4=='opt-4'){
-                                    document.getElementById("opt-4").checked = true;
-                                    console.log(ans4);
+                        $.ajax({
+                            url: "option-Render.php",
+                            type: "POST",
+                            data: {
+                                count: where
+                            },
+                            success: function(data) {
+                                $(".options").html(data);
+                                var ans1 = getCookie(where);
+                                var ans2 = getCookie(where);
+                                var ans3 = getCookie(where);
+                                var ans4 = getCookie(where);
+                                
+                                
+                                if(ans1 || ans2 || ans3 || ans4){
+                                    if(ans1=='opt-1'){
+                                        document.getElementById("opt-1").checked = true;
+                                        console.log(ans1);
+                                    }
+                                    if(ans2=='opt-2'){
+                                        document.getElementById("opt-2").checked = true;
+                                        console.log(ans2);
+                                    }
+                                    if(ans3=='opt-3'){
+                                        document.getElementById("opt-3").checked = true;
+                                        console.log(ans3);
+                                    }
+                                    if(ans4=='opt-4'){
+                                        document.getElementById("opt-4").checked = true;
+                                        console.log(ans4);
+                                    }
                                 }
                             }
-                        }
-                    })
+                        })
 
-                    getCookie();
+                        getCookie();
+                     }
+                     else{
+                         where++;
+                     }
+                    }
+
                 } 
 
 
 
                 //keys locked
-
-                else if(e.keyCode==38 || e.keyCode==40){
-                    return true;
+                else if(e.keycode ==44) //screen shot 
+                {
+                    return false;
                 }
 
-                // else if(e.keyCode==13){
-                //     $.ajax({
-                //             type: 'POST',
-                //             url: 'exam_end.php', 
-                            
-                //         })
-                //     document.getElementById("man").style.display="none";
-                //     document.getElementById("finish").style.display="block";
-                //     eraseCookie();
-                // }
+                else if(e.keyCode==38 || e.keyCode==40){ //arrow button;
+                    return true;
+                }
 
                 else if(e.escape){     //Esc key
                     console.log( "escape");
@@ -589,30 +613,11 @@ if(!empty($_SESSION["username"]))
             toggleFullScreen();
         })
 
-        // var i=4;
-        // $(window).on('focus', function () {
-        //     function mouseLeave() {
-        //     alert("warning! Don't Do this again");
-        // }
-
-        // });
-        // $(window).on('blur', function () {
-
-        //     i--;
-        //     alert("This is your"+" "+ i +" "+"Warning")
-        //     if(i==0){
-        //         $.ajax({
-        //             type: 'POST',
-        //             url: 'exam_end.php'
-        //         });
-        //         document.getElementById("man").style.display="none";
-        //         document.getElementById("finish").style.display="block";
-        //     }
-        // });
+       
     </script>
     <script>
         
-        var warning=4;
+      
         $(window).on('focus', function () {
             function mouseLeave() {
             alert("warning! Don't Do this again");
@@ -637,12 +642,7 @@ if(!empty($_SESSION["username"]))
       </script>
 
       <script>
-        //     function mouseLeave() {
-        //     alert("warning! Don't Do this again");
-        // }
-        // else{
-
-        // }
+       
       </script>
 </body>
 <?php
