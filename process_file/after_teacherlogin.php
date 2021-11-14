@@ -53,31 +53,31 @@ session_start();
 
                 <hr>
 
-                <input type="radio" name="check" value="createTable">
+                <input id="cre" type="radio" name="check" value="createTable">
                 <label for="create">Create Test paper</label>
                 <br>
 
-                <input type="radio" name="check" value="DeleteTable">
+                <input id="del" type="radio" name="check" value="DeleteTable">
                 <label for="delete">Delete Test paper</label>
 
                 <div class="fields">
                     <label for="table name" class="inputs">Enter table Name:</label>
-                    <input type="text" name="Table_name" class="form-control" autocomplete="table_name" placeholder="Enter Table Name">
+                    <input id="ppr_name" type="text" name="Table_name" class="form-control" autocomplete="table_name" placeholder="Enter Paper Name">
                 </div>
 
 
                 <div class="fields">
                     <label for="no_of_question" class="inputs">Enter No. of Question:</label>
-                    <input type="text" name="no_of_question" class="form-control" autocomplete="num-of-question" placeholder="Enter No. of Question">
+                    <input id="question_num" type="text" name="no_of_question" class="form-control" autocomplete="num-of-question" placeholder="Enter No. of Question">
 
                 </div>
 
                 <div class="button-sub">
-                    <button type="submit" id="sub" name="submit" class="btn btn-lg btn-success">Go For Upload Question</button>
+                    <button id="create" type="submit" id="sub" name="submit" class="btn btn-lg btn-success" disabled>Go For Upload Question</button>
 
                 </div>
                 <div class="button-sub">
-                    <button style="margin: 4px;" type="submit" id="sub" name="submit" class="btn btn-lg btn-danger">Delete Paper</button>
+                    <button id="delete" style="margin: 4px;" type="submit" id="sub" name="submit" class="btn btn-lg btn-danger" disabled>Delete Paper</button>
 
                 </div>
 
@@ -205,10 +205,10 @@ if(mysqli_num_rows($query_profile)>0)
 
             ?>
             <h3><?php echo $_SESSION["teacher_name"];?></h3>
-            <div class="name"><p><?php echo $rowl["teacher_name"]; ?></p></div>
+            <!-- <div class="name"><p><?php echo $rowl["teacher_name"]; ?></p></div> -->
             <div class="phone"><p><?php echo $rowl["Institute_name"];?></p></div>
             <div class="designation"><p>Teacher</p></div>
-            <div class="branch"><p><?php echo $rowl["branch"];?></p></div>
+            <!-- <div class="branch"><p><?php echo $rowl["branch"];?></p></div> -->
             <div class="" style="display: flex;">
                 <button class="btn btn-primary"  id="logout">Logout</button>
             </div>
@@ -273,6 +273,49 @@ if(mysqli_num_rows($query_profile)>0)
 
 
     </script>
+
+
+        <script>
+                var a = 1;
+                                
+                    $(document).ready(function() {
+                        $('#create').attr('disabled');
+                        $('#cre,#ppr_name,#question_num').change(function() {
+                            if ($(this).val != '') {
+                                a++;
+                                $('#create').attr('disabled');
+                                if (a == 3) {
+                                    $('#create').removeAttr('disabled');
+                                    $('#delete').attr('disabled');
+                                }
+                            }
+                            else{
+                                $('#create').attr('disabled');
+                            }
+                        });
+                    });
+                
+                var b=1
+                    $(document).ready(function(){
+                        $('#delete').attr('disabled');
+                        $('#del,#ppr_name').change(function() {
+                            if ($(this).val != '') {
+                                b++;
+                                $('#create').attr('disabled');
+                                if (b == 2) {
+                                    $('#delete').removeAttr('disabled');
+                                    $('#create').attr('disabled');
+                                    
+                                }
+                            }
+                            else{
+                                $('#delete').attr('disabled');
+                            }
+                        });
+
+                    })
+                    
+        </script>
 
 </body>
 

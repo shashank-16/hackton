@@ -12,15 +12,29 @@ if(!empty($_SESSION["username"]))
        let where = 1;
 
 
-    //   var  timer= '<?=$_SESSION["time"]?>'; 
-    //   setTimeout(function(){
+      var  timer= '<?=$_SESSION["time"]?>'; 
+      setTimeout(function(){
           
-    //             $.ajax({
-    //                 type: 'POST',
-    //                 url: 'exam_end.php'
-    //             });},60000*timer);
+                $.ajax({
+                    type: 'POST',
+                    url: 'exam_end.php'
+                });
+                
+                document.getElementById("man").style.display="none";
+                document.getElementById("finish").style.display="block";
+                window.location.href="index.html";}
+
+                ,60000*timer);
+
+        setTimeout(function(){
+            $(document).ready(function(){
+                $(".sweet-alert").css({"visibility":"visible"});
+                // $(".sweet-alert").animate({"visibility":"hidden"},10000);
+            })
+        },60000*(timer-1));
     
       var  total_question= '<?=$_SESSION["no_question"]?>'; // need this thing god like power
+    //   console.log("Time hu mai:"+timer);
     
 </script>
 
@@ -68,7 +82,7 @@ if(!empty($_SESSION["username"]))
             display: flex;
             justify-content: center;
         }
-        
+
         @media print {
  
             html,
@@ -110,6 +124,9 @@ if(!empty($_SESSION["username"]))
         <!-- <hr> -->
         <div class="main" id="man">
             <div class="content col-8">
+                <div class="sweet-alert" style="background-color: tomato; color:white; padding-left:10px; visibility:hidden;">
+                    Only 5 mins left!
+                </div>
                 <form action="correct_answer.php" method ="POST" class="form-group">
                     <h1>Question Area</h1>
                     <hr>
