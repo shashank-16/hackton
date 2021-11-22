@@ -1,6 +1,5 @@
 <script>
      var number= <?=$_POST['count'];?>;
-     console.log("thee"+number);
 </script>
 <?php 
 session_start();

@@ -8,19 +8,24 @@ if(!empty($_SESSION["username"]))
 ?>
 
 <script>
-      var warning=4; // data will come from html side not from php 
+      var warning=20; // data will come from html side not from php 
        let where = 1;
 
 
-    //   var  timer= '<?=$_SESSION["time"]?>'; 
-    //   setTimeout(function(){
+      var  timer= '<?=$_SESSION["time"]?>'; 
+    
+      setTimeout(function(){
           
-    //             $.ajax({
-    //                 type: 'POST',
-    //                 url: 'exam_end.php'
-    //             });},60000*timer);
+                $.ajax({
+                    type: 'POST',
+                    url: 'exam_end.php'
+                }),  document.getElementById("man").style.display="none";
+                    document.getElementById("finish").style.display="block";
+
+                    window.location.href="index.html";},60000*timer); //timer function for paper
     
       var  total_question= '<?=$_SESSION["no_question"]?>'; // need this thing god like power
+      
     
 </script>
 
@@ -41,7 +46,7 @@ if(!empty($_SESSION["username"]))
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet">
-
+<!-- <script type ="text/javascript" src =main.js > </script> -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
     <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Font+Name"> -->
@@ -120,14 +125,17 @@ if(!empty($_SESSION["username"]))
 
 
             <div class="proter-region">
-                <div class="video">
-                    <p>VIDEO-VIEW</p>
-                    
+                <div class="video" >
+                    <?php include 'video.php';
+               ?>
+
+               <br>
+               <br>
+               <br>
                     <p id ="counter"></p>
                     <br>
                 </div>
                 <hr>
-
 
                 <div class="number-of-question" style="width: 300px;">
                     <div id="menu-outer">

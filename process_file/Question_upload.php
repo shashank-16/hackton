@@ -210,12 +210,18 @@ if(isset($_POST["submit"]))
     // $c = $_POST['paperdata'];
     // print_r($c);
     
+    function confirmation_paper($data)
+    { 
+        // header("Location:confirmation_paper.php"); // redirecting page but later it will be ajax ------------------------------------------>
+        // insertData($data);
+    }
+
+    
     function insertData($data)
     {
         
         include 'connective.php';
-        // print_r($data);
-        $Question = $data['question'];
+        $Question = mysqli_real_escape_string( $connection,$data['question']);
         $option_1 = $data['option_1'];
         $option_2 = $data['option_2'];
         $option_3 = $data['option_3'];
@@ -225,8 +231,7 @@ if(isset($_POST["submit"]))
 
         $optionsheet="optionsheet_".$_SESSION["table_name"];
         $test="test_".$_SESSION["table_name"];
-
-
+ 
 
         $sql="INSERT INTO `$optionsheet`(`question_id`,`option1`,`option2`,`option3`,`option4`) 
         values('{$Question}','{$option_1}','{$option_2}','{$option_3}','{$option_4}')";
@@ -240,8 +245,9 @@ if(isset($_POST["submit"]))
         $sql2="INSERT INTO `$test`(question,answer) VALUE('{$Question}','{$Answer}')";
         mysqli_query($connection,$sql2) or die("answer nhi gya");
         // header("Location: after_login.php");
-        }
-        array_map("insertData", $_POST['paperdata']);
+    }
+
+        array_map("confirmation_paper", $_POST['paperdata']);
 }
 
 

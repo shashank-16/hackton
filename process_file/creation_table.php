@@ -9,7 +9,7 @@ if(isset($_POST['submit']))
 {
 
 $_SESSION["number_question"]= $_POST["no_of_question"]; 
-$time=2; // change time from here -----------------------------------------------------------------__>>>
+$time=$_POST['time']; // change time from here -----------------------------------------------------------------__>>>
 
 $number_of_question=$_POST['no_of_question']; // session or form 
 

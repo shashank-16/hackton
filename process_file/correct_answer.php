@@ -53,6 +53,7 @@ if(mysqli_num_rows($correct_query)>0)
 }
 
 else{
+   
     $checking_sql_NULL= "SELECT * FROM $table_name where `Username_test`='{$_SESSION["username"]}' and  $current_quesition IS NULL ";
     $checking_sql_true= "SELECT * FROM $table_name where `Username_test`='{$_SESSION["username"]}' and  $current_quesition=true "; // if answrer is false and option is true then socre-- and option to false
 
@@ -70,9 +71,16 @@ else{
             
     }
      if(mysqli_num_rows($checking_query_NULL)>0)
-    {
-        $NULL="UPDATE `$table_name` SET `$current_quesition` =NULL  WHERE `Username_test`='{$_SESSION["username"]}'";
-        $NULL_query=mysqli_query($connection,$NULL) or die(1000);
+    {//
+        if(empty($answer)==1)
+        {
+            $NULL="UPDATE `$table_name` SET `$current_quesition` = NULL  WHERE `Username_test`='{$_SESSION["username"]}'";
+            $NULL_query=mysqli_query($connection,$NULL) or die(1000);
+        }
+        else{
+            $NULL_false="UPDATE `$table_name` SET `$current_quesition` = false  WHERE `Username_test`='{$_SESSION["username"]}'";
+            mysqli_query($connection,$NULL_false);
+        }
 
     }
 }

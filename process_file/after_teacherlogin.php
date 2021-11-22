@@ -72,6 +72,12 @@ session_start();
 
                 </div>
 
+                <div class="fields">
+                    <label for="time" class="inputs">Duration for Paper:</label>
+                    <input type="number" name="time" class="form-control" autocomplete="Duration" placeholder="Duration of paper">
+
+                </div>
+
                 <div class="button-sub">
                     <button type="submit" id="sub" name="submit" class="btn btn-lg btn-success">Go For Upload Question</button>
 
@@ -125,7 +131,7 @@ session_start();
                     if (isset($_POST["show"])) {
 
                         $subject_choosen = $_POST["subject"];
-                        $sql_show_record = "SELECT `user_name`,`$subject_choosen` FROM exam_record";
+                        $sql_show_record = "SELECT `user_name`,`$subject_choosen` FROM exam_record"; //join concept i do this 
                         $query_show_record = mysqli_query($connection, $sql_show_record) or die("exam record error");
 
                         if (mysqli_num_rows($query_show_record) > 0) {
