@@ -8,17 +8,25 @@ if(!empty($_SESSION["username"]))
 ?>
 
 <script>
+<<<<<<< HEAD
       var warning=20; // data will come from html side not from php 
+=======
+      var warning=0; // data will come from html side not from php 
+>>>>>>> 9e0f887002cfc863db403ac75f04f707a718c76a
        let where = 1;
 
 
       var  timer= '<?=$_SESSION["time"]?>'; 
+<<<<<<< HEAD
     
+=======
+>>>>>>> 9e0f887002cfc863db403ac75f04f707a718c76a
       setTimeout(function(){
           
                 $.ajax({
                     type: 'POST',
                     url: 'exam_end.php'
+<<<<<<< HEAD
                 }),  document.getElementById("man").style.display="none";
                     document.getElementById("finish").style.display="block";
 
@@ -26,6 +34,25 @@ if(!empty($_SESSION["username"]))
     
       var  total_question= '<?=$_SESSION["no_question"]?>'; // need this thing god like power
       
+=======
+                });
+                
+                document.getElementById("man").style.display="none";
+                document.getElementById("finish").style.display="block";
+                window.location.href="index.html";}
+
+                ,60000*timer);
+
+        setTimeout(function(){
+            $(document).ready(function(){
+                $(".sweet-alert").css({"visibility":"visible"});
+                // $(".sweet-alert").animate({"visibility":"hidden"},10000);
+            })
+        },60000*(timer-1));
+    
+      var  total_question= '<?=$_SESSION["no_question"]?>'; // need this thing god like power
+    //   console.log("Time hu mai:"+timer);
+>>>>>>> 9e0f887002cfc863db403ac75f04f707a718c76a
     
 </script>
 
@@ -73,6 +100,14 @@ if(!empty($_SESSION["username"]))
             display: flex;
             justify-content: center;
         }
+
+        @media print {
+ 
+            html,
+            body {
+                display: none;
+            }
+        }
     </style>
 </head> 
 
@@ -107,6 +142,9 @@ if(!empty($_SESSION["username"]))
         <!-- <hr> -->
         <div class="main" id="man">
             <div class="content col-8">
+                <div class="sweet-alert" style="background-color: tomato; color:white; padding-left:10px; visibility:hidden;">
+                    Only 5 mins left!
+                </div>
                 <form action="correct_answer.php" method ="POST" class="form-group">
                     <h1>Question Area</h1>
                     <hr>
@@ -120,11 +158,16 @@ if(!empty($_SESSION["username"]))
                     </div>
                     
                 </form>
+                <div class="warn" style="height: 200px; width: 500px; visibility: hidden; margin: auto; position: sticky;">
+                    <h1 style="color: red;">Don't do this again! Otherwise your Exam will submit AutoMatically</h1>
+                </div>
+                
 
             </div>
 
 
             <div class="proter-region">
+<<<<<<< HEAD
                 <div class="video" >
                     <?php include 'video.php';
                ?>
@@ -138,6 +181,17 @@ if(!empty($_SESSION["username"]))
                 <hr>
 
                 <div class="number-of-question" style="width: 300px;">
+=======
+                <div class="video">
+                    <p>VIDEO-VIEW</p>
+                    <p style="border: 5px solid #87CEEB;" id ="counter"></p>
+                    <!-- <br> -->
+                </div>
+                <hr>
+
+
+                <div class="number-of-question" style="width: 300px; margin-top: 50px;">
+>>>>>>> 9e0f887002cfc863db403ac75f04f707a718c76a
                     <div id="menu-outer">
                         <div id="tt" class="table" style="display: flex; flex-grow: initial; justify-content: space-sround">
                             <ul id="horizontal-list" style="margin: 8px; margin-bottom: 10px">
@@ -191,7 +245,7 @@ if(!empty($_SESSION["username"]))
             var expires = "";
             if (days) {
                 var date = new Date();
-                date.setTime(date.getTime() + (days+60*60*90));
+                date.setTime(date.getTime() + (days+60*60*60*24));
                 expires = "; expires=" + date.toUTCString();
             }
             document.cookie = name + "=" + (value || "")  + expires + "; path=/";
@@ -218,49 +272,50 @@ if(!empty($_SESSION["username"]))
 
 
             $.ajax({
-                        url: "Question-Render.php",
-                        type: "POST",
-                        data: {
-                            count: where
-                        },
-                        success: function(data) {
-                            $(".question-box").html(data);
-                        }
-                    });
-                    $.ajax({
-                        url: "option-Render.php",
-                        type: "POST",
-                        data: {
-                            count: where
-                        },
-                        success: function(data) {
-                            $(".options").html(data);
-                            var ans1 = getCookie(where);
-                            var ans2 = getCookie(where);
-                            var ans3 = getCookie(where);
-                            var ans4 = getCookie(where);
+                url: "Question-Render.php",
+                type: "POST",
+                data: {
+                count: where
+                },
+                success: function(data) {
+                    $(".question-box").html(data);
+                }
+            });
+                    
+            $.ajax({
+                url: "option-Render.php",
+                type: "POST",
+                data: {
+                    count: where
+                },
+                success: function(data) {
+                    $(".options").html(data);
+                    var ans1 = getCookie(where);
+                    var ans2 = getCookie(where);
+                    var ans3 = getCookie(where);
+                    var ans4 = getCookie(where);
                             
                             
-                            if(ans1 || ans2 || ans3 || ans4){
-                                if(ans1=='opt-1'){
-                                    document.getElementById("opt-1").checked = true;
-                                    console.log(ans1);
-                                }
-                                if(ans2=='opt-2'){
-                                    document.getElementById("opt-2").checked = true;
-                                    console.log(ans2);
-                                }
-                                if(ans3=='opt-3'){
-                                    document.getElementById("opt-3").checked = true;
-                                    console.log(ans3);
-                                }
-                                if(ans4=='opt-4'){
-                                    document.getElementById("opt-4").checked = true;
-                                    console.log(ans4);
-                                }
+                        if(ans1 || ans2 || ans3 || ans4){
+                            if(ans1=='opt-1'){
+                                document.getElementById("opt-1").checked = true;
+                                console.log(ans1);
+                            }
+                            if(ans2=='opt-2'){
+                                document.getElementById("opt-2").checked = true;
+                                console.log(ans2);
+                            }
+                            if(ans3=='opt-3'){
+                                document.getElementById("opt-3").checked = true;
+                                console.log(ans3);
+                            }
+                            if(ans4=='opt-4'){
+                                document.getElementById("opt-4").checked = true;
+                                console.log(ans4);
                             }
                         }
-                    });  
+                }
+            });  
         });
 
        
@@ -275,7 +330,7 @@ if(!empty($_SESSION["username"]))
                 var key2 = sessionStorage.getItem("option-2")
                 var key3 = sessionStorage.getItem("option-3")
                 var key4 = sessionStorage.getItem("option-4")
-                console.log("key1: " + key1)
+
                 if ($key == key1-32) {
                     // console.log();
 
@@ -283,7 +338,7 @@ if(!empty($_SESSION["username"]))
                     document.getElementById("opt-1").checked = true;
                     $op1=$('input[name="select"]:checked').val();
                     console.log($op1);
-                    setCookie(where,"opt-1",2);
+                    setCookie(where,"opt-1",1);
                     document.getElementById("opt-2").checked = false;
                     document.getElementById("opt-3").checked = false;
                     document.getElementById("opt-4").checked = false;
@@ -299,7 +354,7 @@ if(!empty($_SESSION["username"]))
                     document.getElementById("opt-3").checked = false;
                     document.getElementById("opt-4").checked = false;
                     $op2=$('input[name="select"]:checked').val();
-                    setCookie(where,"opt-2",2);
+                    setCookie(where,"opt-2",1);
                     console.log($op2);
                     console.log("option-b selected");
                 }
@@ -314,7 +369,7 @@ if(!empty($_SESSION["username"]))
                     document.getElementById("opt-4").checked = false;
                     $op3=$('input[name="select"]:checked').val();
                     console.log($op3);
-                    setCookie(where,"opt-3",2);
+                    setCookie(where,"opt-3",1);
                     console.log("option-c selected");
                 }
 
@@ -327,7 +382,7 @@ if(!empty($_SESSION["username"]))
                     document.getElementById("opt-2").checked = false;
                     $op4=$('input[name="select"]:checked').val();
                     console.log($op4);
-                    setCookie(where,"opt-4",2);
+                    setCookie(where,"opt-4",1);
                     console.log("option-d selected");
                 }
               
@@ -431,13 +486,8 @@ if(!empty($_SESSION["username"]))
                             }
                         }
                     });
-                    
-                    
-
 
                     getCookie();
-
-                    
            
                 }
 
@@ -515,9 +565,12 @@ if(!empty($_SESSION["username"]))
 
 
                 //keys locked
-                else if(e.keycode ==44) //screen shot 
+
+                else if(e.metaKey && e.shiftKey && e.keyCode===83)
                 {
+                    console.log("win");
                     return false;
+                    console.log("not");
                 }
 
                 else if(e.keyCode==38 || e.keyCode==40){ //arrow button;
@@ -556,12 +609,21 @@ if(!empty($_SESSION["username"]))
                     alert("You are violating the protocol!");
                     return false;
                 }
-                else if (e.metaKey && e.shiftKey && e.keyCode === 83){      //window + shift + s 
-                e.preventDefault();
+
+                // Prevent Ctrl+a = disable select all
+                // Prevent Ctrl+u = disable view page source
+                // Prevent Ctrl+s = disable save
+                if (e.ctrlKey && (e.keyCode === 85 || e.keyCode === 83 || e.keyCode ===65 )) {
+                return false;
+                }
+                // Prevent Ctrl+Shift+I = disabled debugger console using keys open
+                else if (e.ctrlKey && e.shiftKey && e.keyCode === 73)
+                {
+                return false;
                 }
 
                 else if(e.keyCode==13){     // Enter key
-                    return true;
+                    return false;
                 }
 
                 else
@@ -572,6 +634,38 @@ if(!empty($_SESSION["username"]))
             })
 
         })
+    </script>
+
+    <script>
+        document.addEventListener("keyup", function (e) {
+            var keyCode = e.keyCode ? e.keyCode : e.which;
+                    if (keyCode == 44) {
+                        stopPrntScr();
+                    }
+                });
+        function stopPrntScr() {
+
+            var inpFld = document.createElement("input");
+            inpFld.setAttribute("value", ".");
+            inpFld.setAttribute("width", "0");
+            inpFld.style.height = "0px";
+            inpFld.style.width = "0px";
+            inpFld.style.border = "0px";
+            document.body.appendChild(inpFld);
+            inpFld.select();
+            document.execCommand("copy");
+            inpFld.remove(inpFld);
+        }
+       function AccessClipboardData() {
+            try {
+                window.clipboardData.setData('text', "Access   Restricted");
+            } catch (err) {
+            }
+        }
+        setInterval("AccessClipboardData()", 100);
+
+        
+       
     </script>
 
     <script type="text/javascript">
@@ -634,9 +728,9 @@ if(!empty($_SESSION["username"]))
         });
         $(window).on('blur', function () {
 
-            warning--;
+            warning++;
             alert("This is your"+" "+warning +" "+"Warning")
-            if(warning==0){
+            if(warning==5){
                 alert("Test is finished");
                 $.ajax({
                     type: 'POST',
@@ -650,7 +744,14 @@ if(!empty($_SESSION["username"]))
       </script>
 
       <script>
-       
+            $(document).ready(function(){
+                $("#bdy").mouseleave(function(){
+                    $(".warn").css({"visibility":"visible"});
+                })
+                $("#bdy").mouseenter(function(){
+                    $(".warn").css({"visibility":"hidden"});
+                })
+            })
       </script>
 </body>
 <?php

@@ -120,6 +120,7 @@ session_start();
 
                            Subject : <?php  echo ($row["subject"]); 
                            $_SESSION["time"]=$row["duration"];
+                            
                            
                            require 'connective.php';
                            $subject=$row["subject"];
