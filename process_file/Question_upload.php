@@ -16,6 +16,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Question  Upload</title>
 
+    <!-- <link rel= "stylesheet" href ="after_login.css">  -->
+
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet" />
 
@@ -164,7 +166,7 @@
             <div class="Question form-group">
                 <h1><?php echo ("Question:".$i+1) ;?></h1>
                 <hr style="border: 2px solid black !important;">
-                <textarea name="paperdata[<?php echo $i ?>][question]" style="border: 2px solid black;
+                <textarea name="paperdata[<?php echo $i ?>][option_0]" style="border: 2px solid black;
                 margin-top: 50px;" id="question"></textarea>
                 <ul>
                     <label for="option-1">Options</label>
@@ -176,7 +178,7 @@
                     <br>
                     <li><input type="text" name="paperdata[<?php echo $i ?>][option_4]" id="" placeholder="Option-4"></li>
                     <label for="Answer">Answer</label>
-                    <li><input type="text" name="paperdata[<?php echo $i ?>][answer]" id="" placeholder="Corect Answer"></li>
+                    <li><input type="text" name="paperdata[<?php echo $i ?>][option_5]" id="" placeholder="Corect Answer"></li>
                 </ul>
                 
             </div>
@@ -207,14 +209,55 @@
 if(isset($_POST["submit"]))
 {
     
-    // $c = $_POST['paperdata'];
-    // print_r($c);
-    
-    function confirmation_paper($data)
+    function confirmation_paper($data,$count)
     { 
-        // header("Location:confirmation_paper.php"); // redirecting page but later it will be ajax ------------------------------------------>
-        // insertData($data);
+        print_r($data,$count);
+        
+        ?>
+        
+
+        <div class = "record custom-table">
+                
+                <table>
+                    
+                    <tr>
+                        <th>question-sheet</th>
+                        <th>option-sheet1</th>
+                        <th>option-sheet2</th>
+                        <th>option-sheet3</th>
+                        <th>option-sheet4</th>
+                        <th>answer-sheet</th>
+
+                    </tr>
+                    <?php
+                        //multiassoc 
+                    
+                        for($i=0;$i<$count;$i++)
+                        {
+                            echo "<tr>";
+                            for($y=0;$y<6;$y++)
+                            {
+                                echo"<td>";
+                                echo $data[$i]['option_'.$y];
+                                echo"</td>"; 
+                            }
+                            echo"</tr>";
+                            echo"<br>";
+                        }
+              
+                    ?>    
+        
+
+                    </table>
+
+                    </div>
+        
+        
+                <!-- // insertData($data); -->
+        
+        <?php
     }
+
 
     
     function insertData($data)
@@ -247,7 +290,8 @@ if(isset($_POST["submit"]))
         // header("Location: after_login.php");
     }
 
-        array_map("confirmation_paper", $_POST['paperdata']);
+        // array_map("confirmation_paper", $_POST['paperdata'],$count);
+        confirmation_paper($_POST['paperdata'],$count);
 }
 
 

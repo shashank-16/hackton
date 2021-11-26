@@ -47,6 +47,12 @@
 
 <script type = "text/javascript">
     const  conn = new WebSocket('ws://localhost:8897');
-   
-    
+    // conn.onopen = function(e)
+    // {
+    //         console.log("connection is ");
+    //     };
+    //     conn.onmessage= function(e)
+    //     {
+    //             console.log(e.data);
+    //         };
             </script>

@@ -1,7 +1,17 @@
 <?php
-session_start();
-$question=$_GET["question"];
-print_r($question);
+// session_start();
+// $question=$_GET["question"];
+// print_r($question);
+$paper=array();
+
+    // [0]=>array(
+    //     [0]=>'shahsank',
+    //     [1]=>'shahsank',
+    //     [2]=>'shahsank'
+
+
+
+print_r($paper);
 ?>
 <head>
     <link rel= "stylesheet" href ="after_login.css">
