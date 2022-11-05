@@ -4,8 +4,10 @@ session_start();
         include 'connective.php';
 
         $optionsheet="optionsheet_".$_SESSION["table_name"];
-      
-        // wait for second
+        echo($_SESSION["table_name"]);
+
+        // $optionsheet="optionsheet_maths";
+        // wait for second  
         
         
         $count=$_POST['count'];

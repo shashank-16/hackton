@@ -8,40 +8,37 @@ if(!empty($_SESSION["username"]))
 ?>
 
 <script>
-<<<<<<< HEAD
-      var warning=20; // data will come from html side not from php 
-=======
+    //   var warning=20; // data will come from html side not from php 
       var warning=0; // data will come from html side not from php 
->>>>>>> 9e0f887002cfc863db403ac75f04f707a718c76a
+// >>>>>>> 9e0f887002cfc863db403ac75f04f707a718c76a
        let where = 1;
 
 
       var  timer= '<?=$_SESSION["time"]?>'; 
-<<<<<<< HEAD
+// <<<<<<< HEAD
     
-=======
->>>>>>> 9e0f887002cfc863db403ac75f04f707a718c76a
+// =======
+// >>>>>>> 9e0f887002cfc863db403ac75f04f707a718c76a
       setTimeout(function(){
           
                 $.ajax({
                     type: 'POST',
                     url: 'exam_end.php'
-<<<<<<< HEAD
+
                 }),  document.getElementById("man").style.display="none";
                     document.getElementById("finish").style.display="block";
 
                     window.location.href="index.html";},60000*timer); //timer function for paper
     
-      var  total_question= '<?=$_SESSION["no_question"]?>'; // need this thing god like power
-      
-=======
-                });
+                var  total_question= '<?=$_SESSION["no_question"]?>'; // need this thing god like power
+// =======
+                // });
                 
-                document.getElementById("man").style.display="none";
-                document.getElementById("finish").style.display="block";
-                window.location.href="index.html";}
+                // document.getElementById("man").style.display="none";
+                // document.getElementById("finish").style.display="block";
+                // window.location.href="index.html";}
 
-                ,60000*timer);
+                // ,60000*timer);
 
         setTimeout(function(){
             $(document).ready(function(){
@@ -52,7 +49,7 @@ if(!empty($_SESSION["username"]))
     
       var  total_question= '<?=$_SESSION["no_question"]?>'; // need this thing god like power
     //   console.log("Time hu mai:"+timer);
->>>>>>> 9e0f887002cfc863db403ac75f04f707a718c76a
+
     
 </script>
 
@@ -167,31 +164,25 @@ if(!empty($_SESSION["username"]))
 
 
             <div class="proter-region">
-<<<<<<< HEAD
-                <div class="video" >
-                    <?php include 'video.php';
-               ?>
 
+                <div class="video" >
+                    <?php include 'video.php';?>
                <br>
                <br>
                <br>
-                    <p id ="counter"></p>
+                    <p id ="counter" style="border: 3px solid red;" ></p>
                     <br>
                 </div>
                 <hr>
 
                 <div class="number-of-question" style="width: 300px;">
-=======
-                <div class="video">
-                    <p>VIDEO-VIEW</p>
-                    <p style="border: 5px solid #87CEEB;" id ="counter"></p>
-                    <!-- <br> -->
-                </div>
+
+                </div> 
                 <hr>
 
 
                 <div class="number-of-question" style="width: 300px; margin-top: 50px;">
->>>>>>> 9e0f887002cfc863db403ac75f04f707a718c76a
+<!-- >>>>>>> 9e0f887002cfc863db403ac75f04f707a718c76a -->
                     <div id="menu-outer">
                         <div id="tt" class="table" style="display: flex; flex-grow: initial; justify-content: space-sround">
                             <ul id="horizontal-list" style="margin: 8px; margin-bottom: 10px">
