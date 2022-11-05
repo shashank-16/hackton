@@ -16,8 +16,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Question  Upload</title>
 
-    <!-- <link rel= "stylesheet" href ="after_login.css">  -->
-
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet" />
 
@@ -159,14 +157,16 @@
 
         for($i=0;$i<$count ; $i++)
         {
+            $a=1
+            
 
         ?>
 
 
             <div class="Question form-group">
-                <h1><?php echo ("Question:".$i+1) ;?></h1>
+    
                 <hr style="border: 2px solid black !important;">
-                <textarea name="paperdata[<?php echo $i ?>][option_0]" style="border: 2px solid black;
+                <textarea name="paperdata[<?php echo $i ?>][question]" style="border: 2px solid black;
                 margin-top: 50px;" id="question"></textarea>
                 <ul>
                     <label for="option-1">Options</label>
@@ -178,7 +178,7 @@
                     <br>
                     <li><input type="text" name="paperdata[<?php echo $i ?>][option_4]" id="" placeholder="Option-4"></li>
                     <label for="Answer">Answer</label>
-                    <li><input type="text" name="paperdata[<?php echo $i ?>][option_5]" id="" placeholder="Corect Answer"></li>
+                    <li><input type="text" name="paperdata[<?php echo $i ?>][answer]" id="" placeholder="Corect Answer"></li>
                 </ul>
                 
             </div>
@@ -209,62 +209,15 @@
 if(isset($_POST["submit"]))
 {
     
-    function confirmation_paper($data,$count)
-    { 
-        print_r($data,$count);
-        
-        ?>
-        
-
-        <div class = "record custom-table">
-                
-                <table>
-                    
-                    <tr>
-                        <th>question-sheet</th>
-                        <th>option-sheet1</th>
-                        <th>option-sheet2</th>
-                        <th>option-sheet3</th>
-                        <th>option-sheet4</th>
-                        <th>answer-sheet</th>
-
-                    </tr>
-                    <?php
-                        //multiassoc 
-                    
-                        for($i=0;$i<$count;$i++)
-                        {
-                            echo "<tr>";
-                            for($y=0;$y<6;$y++)
-                            {
-                                echo"<td>";
-                                echo $data[$i]['option_'.$y];
-                                echo"</td>"; 
-                            }
-                            echo"</tr>";
-                            echo"<br>";
-                        }
-              
-                    ?>    
-        
-
-                    </table>
-
-                    </div>
-        
-        
-                <!-- // insertData($data); -->
-        
-        <?php
-    }
-
-
+    // $c = $_POST['paperdata'];
+    // print_r($c);
     
     function insertData($data)
     {
         
         include 'connective.php';
-        $Question = mysqli_real_escape_string( $connection,$data['question']);
+        // print_r($data);
+        $Question = $data['question'];
         $option_1 = $data['option_1'];
         $option_2 = $data['option_2'];
         $option_3 = $data['option_3'];
@@ -274,7 +227,8 @@ if(isset($_POST["submit"]))
 
         $optionsheet="optionsheet_".$_SESSION["table_name"];
         $test="test_".$_SESSION["table_name"];
- 
+
+
 
         $sql="INSERT INTO `$optionsheet`(`question_id`,`option1`,`option2`,`option3`,`option4`) 
         values('{$Question}','{$option_1}','{$option_2}','{$option_3}','{$option_4}')";
@@ -288,10 +242,8 @@ if(isset($_POST["submit"]))
         $sql2="INSERT INTO `$test`(question,answer) VALUE('{$Question}','{$Answer}')";
         mysqli_query($connection,$sql2) or die("answer nhi gya");
         // header("Location: after_login.php");
-    }
-
-        // array_map("confirmation_paper", $_POST['paperdata'],$count);
-        confirmation_paper($_POST['paperdata'],$count);
+        }
+        array_map("insertData", $_POST['paperdata']);
 }
 
 
