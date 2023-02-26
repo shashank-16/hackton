@@ -4,13 +4,22 @@
 
 body{
     /* background-color: rgba(0,0,0,1); */
-    background-image: url('Green-india.png');
+    background-color: #FFDEE9;
+    background-image: linear-gradient(0deg, #FFDEE9 0%, #B5FFFC 100%);
     background-repeat: no-repeat;
     background-size: cover;
     background-size: auto;
     margin:0;
     padding:0;
     box-sizing: border-box;
+}
+
+
+nav{
+    width: 100vw !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 
@@ -26,6 +35,7 @@ a{
     /* padding:100px; */
     display:flex;
     flex-wrap:wrap;
+    justify-content: space-between;
 }
 .sub-div{
     border:3px solid rgb(0, 0, 0);
@@ -36,9 +46,9 @@ a{
     
 }
 
-.remove{
+/* .remove{
     position: absolute;
-}
+} */
 
 .sub-name{
     width:100%;
@@ -60,14 +70,13 @@ a{
     margin:25px
 }
 
-.instruction p{
-    font-size: 30px;
-}
 
-
-.instruction ul li{
+.instruction li{
     color: red;
-    font-size: 20px;
+    font-size: 21px;
+    font-weight: 600;
+    margin: 0.5rem ;
+    margin-left: 2rem;
 }
 
 .blurr{
@@ -90,7 +99,7 @@ a{
 
 
  
- .file::before {
+ /* .file::before {
      content:"";
      position: absolute;
      width: 290px;;
@@ -102,9 +111,9 @@ a{
      border-radius: 6px;
      z-index: 5;
      box-shadow: 3px -3px 5px rgba(0,0,0,0.5);
- }
+ } */
  
- .file::after {
+ /* .file::after {
      content:"";
      position: absolute;
      width:120px;
@@ -116,7 +125,7 @@ a{
      z-index:-1;
      border-top-left-radius: 6px;
      border-top-right-radius: 6px;
- }
+ } */
 
  /* Profile-card */
 
@@ -142,8 +151,9 @@ a{
 }
 
 .profile-card{
+    /* display: none; */
     /* visibility: hidden; */
-    right: -420px;
+    left: -420px;
     height: fit-content;
     width: fit-content;
     width: 300px;
@@ -201,4 +211,12 @@ a{
 #logout{
     min-width: 100px;
     min-height: 40px;
+}
+
+
+@media screen and (max-width:500px) {
+    .main{
+        flex-direction: column;
+        margin-left:0
+    }
 }

@@ -47,21 +47,22 @@ if (mysqli_num_rows($inst_name) > 0) {
                 color: black;
             }
 
-            .navbar{
+            .navbar {
                 color: white;
                 display: flex;
                 align-items: center;
                 position: fixed;
                 top: 0;
                 width: 100vw;
-                background-color: rgba(0, 0, 0,0.7);
+                background-color: rgba(0, 0, 0, 0.7);
                 padding: 1rem;
             }
-            .navbar ul{
+
+            .navbar ul {
                 margin-bottom: 0;
             }
-            
-            
+
+
             .navbar ul li {
                 list-style: none;
                 display: inline-block;
@@ -69,19 +70,19 @@ if (mysqli_num_rows($inst_name) > 0) {
                 cursor: pointer;
             }
 
-            .navbar ul li:hover{
+            .navbar ul li:hover {
                 transform: scale(1.2);
             }
-            
+
             .navbar ul li a {
                 color: white;
             }
 
-            .paper-area{
+            .paper-area {
                 margin-top: 5%;
                 border-radius: 1.5rem;
-                background: rgb(0,212,255);
-                background: linear-gradient(90deg, rgba(0,212,255,1) 8%, rgba(9,9,121,1) 51%, rgba(2,0,36,1) 79%);
+                background: rgb(0, 212, 255);
+                background: linear-gradient(90deg, rgba(0, 212, 255, 1) 8%, rgba(9, 9, 121, 1) 51%, rgba(2, 0, 36, 1) 79%);
             }
 
             h1 {
@@ -109,10 +110,11 @@ if (mysqli_num_rows($inst_name) > 0) {
             }
 
             .Question ul li {
-                list-style: none;   
+                list-style: none;
             }
-            .Question ul li input{
-                width: 50%;  
+
+            .Question ul li input {
+                width: 50%;
             }
 
 
@@ -122,10 +124,10 @@ if (mysqli_num_rows($inst_name) > 0) {
                 margin-bottom: 2rem;
             }
 
-            .warn{
-                display: flex; 
-                justify-content:center;
-                flex-direction:column;
+            .warn {
+                display: flex;
+                justify-content: center;
+                flex-direction: column;
                 background-color: rgb(0, 0, 0, 30%);
                 color: white;
                 margin: 1rem 0;
@@ -134,15 +136,16 @@ if (mysqli_num_rows($inst_name) > 0) {
 
             @media screen and (max-width="350px") {
                 .navbar ul li {
-                list-style: none;
-                /* display: inline-block; */
-                margin: 0 1rem;
-                font-size: 1rem;
+                    list-style: none;
+                    /* display: inline-block; */
+                    margin: 0 1rem;
+                    font-size: 1rem;
                 }
-                .Question ul{
+
+                .Question ul {
                     margin-left: 0;
                 }
-            }   
+            }
         </style>
 
 
@@ -210,20 +213,21 @@ if (mysqli_num_rows($inst_name) > 0) {
 
                     <div class="Question form-group">
                         <hr style="border: 2px solid white !important;">
-                        <textarea class="form-control" name="paperdata[<?php echo $i ?>][question]" style="border: 2px solid black;margin-top: 50px;" id="question" placeholder="Insert Question Here..."></textarea>
+                        <textarea class="form-control questionInput" name="paperdata[<?php echo $i ?>][question]" style="border: 2px solid black;margin-top: 50px;" id="question" placeholder="Insert Question Here..."></textarea>
                         <ul>
                             <label for="option-1">Options</label>
-                            <li><input class="form-control" type="text" name="paperdata[<?php echo $i ?>][option_1]" id="" placeholder="Option-1"></li>
+                            <li><input class="form-control eventinput" type="text" name="paperdata[<?php echo $i ?>][option_1]" id="optionone" placeholder="Option-1"></li>
                             <br>
-                            <li><input class="form-control" type="text" name="paperdata[<?php echo $i ?>][option_2]" id="" placeholder="Option-2"></li>
+                            <li><input class="form-control eventinput" type="text" name="paperdata[<?php echo $i ?>][option_2]" id="" placeholder="Option-2"></li>
                             <br>
-                            <li><input class="form-control" type="text" name="paperdata[<?php echo $i ?>][option_3]" id="" placeholder="Option-3"></li>
+                            <li><input class="form-control eventinput" type="text" name="paperdata[<?php echo $i ?>][option_3]" id="" placeholder="Option-3"></li>
                             <br>
-                            <li><input class="form-control" type="text" name="paperdata[<?php echo $i ?>][option_4]" id="" placeholder="Option-4"></li>
+                            <li><input class="form-control eventinput" type="text" name="paperdata[<?php echo $i ?>][option_4]" id="" placeholder="Option-4"></li>
                             <label for="Answer">Answer</label>
-                            <li><input class="form-control" type="text" name="paperdata[<?php echo $i ?>][answer]" id="" placeholder="Corect Answer"></li>
+                            <li><input class="form-control ans_data" type="text" name="paperdata[<?php echo $i ?>][answer]" id="" placeholder="Corect Answer"></li>
                         </ul>
                     </div>
+
 
                 <?php
                 }
@@ -242,37 +246,51 @@ if (mysqli_num_rows($inst_name) > 0) {
 
         <!-- Question Table for Review=============================================>  for Take a loook before Upload the Question paper -->
 
+
         <table class="table" id="datatable">
-        <thead>
-          <tr>
-            <th>Id</th>
-            <th>Question</th>
-            <th>Option 1</th>
-            <th>Option 2</th>
-            <th>Option 3</th>
-            <th>Option 4</th>
-            <th>Answer</th>
-          </tr>
-        </thead>
-        <tbody>
-          <!-- {tableData.map((data, index) => {
-            return ( -->
-              <tr key={index} id={`row${index+1}`}>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <!-- <td><button id={`row${index+1}-btn`} className="btn btn-danger" onClick={(e)=>{
-                    let tempid = e.target.id.split("-")[0];
-                    console.log(tempid);
-                    document.getElementById(tempid).remove();
-                }}>Delete</button></td> -->
-              </tr>
-            <!-- );
-          })} -->
-        </tbody>
-      </table>
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Question</th>
+                    <th>Option 1</th>
+                    <th>Option 2</th>
+                    <th>Option 3</th>
+                    <th>Option 4</th>
+                    <th>Answer</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="row_id"></td>
+                    <td class="preview_field" id="preview_0_question"></td>
+                    <td class="preview_field" id="preview_0_option_1"></td>
+                    <td class="preview_field" id="preview_0_option_2"></td>
+                    <td class="preview_field" id="preview_0_option_3"></td>
+                    <td class="preview_field" id="preview_0_option_4"></td>
+                    <td class="preview_field" id="preview_0_answer"></td>
+                </tr>
+                <tr>
+                    <td class="row_id"></td>
+                    <td class="preview_field" id="preview_1_question"></td>
+                    <td class="preview_field" id="preview_1_option_1"></td>
+                    <td class="preview_field" id="preview_1_option_2"></td>
+                    <td class="preview_field" id="preview_1_option_3"></td>
+                    <td class="preview_field" id="preview_1_option_4"></td>
+                    <td class="preview_field" id="preview_1_answer"></td>
+                </tr>
+                <tr>
+                    <td class="row_id"></td>
+                    <td class="preview_field" id="preview_2_question"></td>
+                    <td class="preview_field" id="preview_2_option_1"></td>
+                    <td class="preview_field" id="preview_2_option_2"></td>
+                    <td class="preview_field" id="preview_2_option_3"></td>
+                    <td class="preview_field" id="preview_2_option_4"></td>
+                    <td class="preview_field" id="preview_2_answer"></td>
+                </tr>
+
+            </tbody>
+        </table>
+
     </body>
 
     </html>
@@ -323,3 +341,57 @@ if (mysqli_num_rows($inst_name) > 0) {
 
 
     ?>
+
+
+
+
+
+    <script>
+
+        // Question========================>>
+
+
+        var y = document.getElementsByClassName('questionInput');
+        for (let i = 0; i < y.length; i++) {
+            y[i].addEventListener('change', (e) => {
+
+                var q_name = e.target.name.replace('paperdata[', '').split(']');  //paperdata[0][question]  => 0][question] => 0,[question => 0, question
+                q_name[1] = q_name[1].replace('[', '') //0====>question
+
+                document.getElementById('preview_'+ q_name[0] + '_'+q_name[1]).innerHTML=e.target.value
+            })
+        }
+
+
+        // input==========================>>
+
+
+        var x = document.getElementsByClassName('eventinput');
+        for (let i = 0; i < x.length; i++) {
+            x[i].addEventListener("change", (e) => {
+
+                var op_name = e.target.name.replace('paperdata[', '').split(']');
+                op_name[1] = op_name[1].replace('[', '')
+                console.log(op_name[0]+"=================>"+op_name[1])
+                document.getElementById('preview_'+ op_name[0] + '_'+op_name[1]).innerHTML=e.target.value
+                
+
+            });
+        }
+
+        // answer==============================>
+
+        var z = document.getElementsByClassName('ans_data');
+        for (let i = 0; i < z.length; i++) {
+            z[i].addEventListener("change", (e) => {
+
+                var ans_name = e.target.name.replace('paperdata[', '').split(']');
+                ans_name[1] = ans_name[1].replace('[', '')
+                console.log(ans_name[0]+"===========>"+ans_name[1]);
+                document.getElementById('preview_'+ ans_name[0] + '_'+ans_name[1]).innerHTML=e.target.value
+            });
+        }
+
+
+
+    </script>

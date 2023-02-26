@@ -66,7 +66,8 @@ else{
 
         body{
             /* background-color: rgba(0, 0, 0,0.9); */
-            background-image: url('backkk.jpg');
+            background-color: #FFDEE9;
+            background-image: linear-gradient(0deg, #FFDEE9 0%, #B5FFFC 100%);
             background-repeat: no-repeat;
             background-size: cover;
             color: white;
@@ -74,6 +75,7 @@ else{
 
 
         .container{
+            color: #111111;
             display: block;
         }
         h1{
@@ -83,18 +85,17 @@ else{
         }
         .main{
             color: black;
-            /* height: 500px;
-            width: 500px; */
+            display: flex;
+            flex-direction: column;
             border: 1px solid black;
             border-radius: 10px;
             margin: auto;
             box-shadow: -1px -1px 10px white;
-            background-color: whitesmoke ;
+            background-color: whitesmoke;
         }
 
 
         input{
-            width: 100%;
             padding-left: 30px;
             border-radius: 20px !important;
             background: #111111 !important;
@@ -111,15 +112,17 @@ else{
             padding: 15px;
         }
 
+        ul li{
+            color: red;
+            font-weight: 600;
+        }
         @media screen and (max-width: 1200px) {
             label{
                 font-size: 16px;
             }
         }
 
-        ul li{
-            color: red;
-        }
+        
     </style>
 </head>
 <body>
@@ -128,35 +131,38 @@ else{
         <h1>
             All The Very Best For Your Exam!
         </h1>
+        
         <ul>
             <li>Do Not choose any special character.</li>
             <li>Choose only Alphabets.</li>
             <li>You can choose only once for this exam.</li>
             <li>You can't <strong>Alter</strong> it, once you lock.</li>
+            <li>Remember that you will not allowed to use mouse in next step. Do not Try to move your mouse.</li>
         </ul>
+        
         <div id="head">
                     <p>Enter your own Choice Key for Selection of Option.</p>
                 </div>
-        <div class="main col-4 col-lg-3 col-sm-3 form-group">
+        <div class="main form-group">
             <!-- <form action="" class="form-group"> -->
 
                 <label for="option">
-                <b>Option-1</b>
+                <b>Key for Option-1</b>
                 <input id="option-1" class="form-control" type="text" name="opt-key-1" autofocus maxlength="1" ></label>
                 <span id="op1"></span>
 
                 <label for="option">
-                <b>Option-2</b>
+                <b>Key for Option-2</b>
                 <input id="option-2" class="form-control" type="text" name="opt-key-2" maxlength="1"></label>
                 <span id="op2"></span>
 
                 <label for="option">
-                <b>Option-3</b>
+                <b>Key for Option-3</b>
                 <input id="option-3" class="form-control" type="text" name="opt-key-3" maxlength="1"></label>
                 <span id="op3"></span>
                 
                 <label for="option">
-                <b>Option-4</b>
+                <b>Key for Option-4</b>
                 <input id="option-4" class="form-control" type="text" name="opt-key-4" maxlength="1"></label>
                 <span id="op4"></span>
                 <br>
