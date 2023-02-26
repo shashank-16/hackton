@@ -6,124 +6,110 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CheatMe</title>
-    
-    <link rel="stylesheet" href="f-page.css">
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="index1.css">
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
         integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 
-        <script>
-            var canvas = document.createElement('canvas');
-            var gl = canvas.getContext('webgl');
-            var debugInfo = gl.getExtension('WEBGL_debug_renderer_info');
-            var vendor = gl.getParameter(debugInfo.UNMASKED_VENDOR_WEBGL);
-            var renderer = gl.getParameter(debugInfo.UNMASKED_RENDERER_WEBGL);
-            var width = screen.width;
-            var height = screen.height;
-            var color_depth = screen.colorDepth;
-            
-            // console.log('<p><strong>Renderer:</strong> '+renderer.toLowerCase()+'</p>');
-            var detect=renderer.toLowerCase();
-    
-            const render = ["generic renderer", "llvmpipe (llvm 11.0.0, 256 bits)","llvmpipe"];
-            var result=render.includes(detect);
-            
-    
-            
-            </script>
-             <script defer="" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon="{&quot;rayId&quot;:&quot;6a4e7a4f6db52e7d&quot;,&quot;token&quot;:&quot;20bbc1a5db504592b44ff5662b975c56&quot;,&quot;version&quot;:&quot;2021.10.0&quot;,&quot;si&quot;:100}"></script>
+    <script>
+        var canvas = document.createElement('canvas');
+        var gl = canvas.getContext('webgl');
+        var debugInfo = gl.getExtension('WEBGL_debug_renderer_info');
+        var vendor = gl.getParameter(debugInfo.UNMASKED_VENDOR_WEBGL);
+        var renderer = gl.getParameter(debugInfo.UNMASKED_RENDERER_WEBGL);
+        var width = screen.width;
+        var height = screen.height;
+        var color_depth = screen.colorDepth;
+
+        // console.log('<p><strong>Renderer:</strong> '+renderer.toLowerCase()+'</p>');
+        var detect = renderer.toLowerCase();
+
+        const render = ["generic renderer", "llvmpipe (llvm 11.0.0, 256 bits)", "llvmpipe"];
+        var result = render.includes(detect);
+
+
+
+    </script>
+    <script defer="" src="https://static.cloudflareinsights.com/beacon.min.js"
+        data-cf-beacon="{&quot;rayId&quot;:&quot;6a4e7a4f6db52e7d&quot;,&quot;token&quot;:&quot;20bbc1a5db504592b44ff5662b975c56&quot;,&quot;version&quot;:&quot;2021.10.0&quot;,&quot;si&quot;:100}"></script>
 </head>
 
-<body id="bdy">
-    <div class="row">
-        <div class="col-1 side-nav-bar" >
-            <div id="togg">
-                <span class="colaps">
-                    <i class="fa fa-bars" aria-hidden="true"></i>
-                </span>
+<body>
+    <div class="home-main">
+
+        <div class="top-nav">
+            <a href="index.html">
+                <img src="logo.png" alt="webnart logo">
+            </a>
+            <div class="home-buttons">
+                <a href="Login.php">
+                    <li>Login</li>
+                </a>
+                <a href="signup.php">
+                    <li>SignUp</li>
+                </a>
             </div>
-            <span class="Explore">Explore</span>
-            <span class="dot">
+        </div>
+
+        <div class="side-nav">
+            <!-- <div class="social"> -->
                 <a href="https://en-gb.facebook.com/login.php">
-                    <i id="fb" class="fa fa-facebook" aria-hidden="true"></i>
+                <li>
+                        <i id="fb" class="fa fa-facebook" aria-hidden="true"></i>
+                    </li>
                 </a>
-            </span>
-            <span class="dot">
                 <a href="https://twitter.com/login">
-                    <i class="fa fa-twitter" aria-hidden="true"></i>
+                <li>
+                        <i class="fa fa-twitter" aria-hidden="true"></i>
+                    </li>
                 </a>
-            </span>
-            <span class="dot">
                 <a href="https://www.instagram.com/">
-                    <i class="fa fa-instagram" aria-hidden="true"></i>
+                    <li>
+                        <i class="fa fa-instagram" aria-hidden="true"></i>
+                    </li>
                 </a>
-            </span>
-            <hr style="color: white; width: 50%; height: 3px; margin-left: 28px;">
-            <span class="dot">
-                <a href="#"><i class="fa fa-share-alt" aria-hidden="true"></i></a>
-            </span>
-            <span class="dot">
-                <a href="#"><i class="fa fa-question-circle" aria-hidden="true"></i></a>
-            </span>
-        </div>
-
-
-
-
-        <div class="col-10 offset-2 head">
-
-            <div class="p-4 m-3" style="text-align: right;">
-                <a href="Login.php" style="text-decoration: none; color: white;"><span class="px-4 py-1" id="signup">Login</span></a>
-                <a href="signup.php" style="text-decoration: none; color: white;"><span class="px-4 py-1" id="signup">SignUp</span></a>
-            </div>
-            <h2 id="wel">Welcome To</h2>
-            <br>
-            <!-- <div class="webnart"> -->
-                <h1 id="webnart">CheatMe</h1>
             <!-- </div> -->
-            <pre>
-<h2>
-Let's Do Exam
-And Make Future Secure
-</h2>
-            </pre>
-            
-            <div class="" style="font-size:20px; color: white; font-family: Cursive;">
-                <h1>CheatMe Examination Web-Portal.</h2>
-            </div>
-            <br>
-            <h1 style="font-family: cursive; color: white;">
-                Webnart Parent of This Web-Portal
-            </h2>
-            <br>
-            <!-- <span id="letsgo" class="px-4">Let's Go</span> -->
-            <br><br><br>
-            <hr style="color: white; width: 90%;">
         </div>
+        <div class="home-center">
 
+            <div class="main-content">
+                
+                <div id="head">
+                    <h1>Cheat Me</h1>
+                    <h6>By Webnart</h6>
+                    <p>Let's Create Together</p>
+                </div>
+
+                <div id="name">
+                    <h1>Online Intelligent Examination System</h1>
+                </div>
+                <div id="slogan">
+                    <h2>Your test is for you, and it will improve your skills.</h2>
+                </div>
+            
+            </div>
+        </div>
     </div>
+
+</body>
     <script>
 
-        if(result)
-        {
-            document.getElementById("bdy").style.display="none";
+        if (result) {
+            document.getElementById("bdy").style.display = "none";
             alert("Please Get out from Vm!");
         }
 
-        $(document).ready(function(){  
-            $("#bdy").bind("contextmenu", function(e) {  
-                return false;  
-            });  
+        $(document).ready(function () {
+            $("#bdy").bind("contextmenu", function (e) {
+                return false;
+            });
         }); 
     </script>
-    
-</body>
 
 </html>
