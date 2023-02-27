@@ -8,7 +8,7 @@
 
 body{
     overflow: hidden;
-    background-image: url(backdrop.png);
+    background-image: url(./Assets/backdrop.png);
     background-size: cover;
     background-position: fixed;
     min-height: 100vh;

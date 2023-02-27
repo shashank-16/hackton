@@ -59,7 +59,7 @@
             <div class="container Teachers">
                 <div class="avatar">
                     <!-- <a href="https://codepen.io/MarioDesigns/"> -->
-                    <img src="avtart.png" alt="Avtar" />
+                    <img src="./Assets/avtart.png" alt="Avtar" />
                     <!-- </a> -->
                 </div>
                 <div class="content">
@@ -71,7 +71,7 @@
             <div class="container candidates">
                 <div class="avatar">
                     <!-- <a href="https://codepen.io/MarioDesigns/"> -->
-                    <img src="avtart.png" alt="Avtar" />
+                    <img src="./Assets/avtart.png" alt="Avtar" />
                     <!-- </a> -->
                 </div>
                 <div class="content">

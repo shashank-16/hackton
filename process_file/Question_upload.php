@@ -35,8 +35,9 @@ if (mysqli_num_rows($inst_name) > 0) {
                 margin: 0%;
                 padding: 0%;
                 box-shadow: none;
-                /* background-image: url('Green-india.png'); */
-                background: url(./uploadpaperbg.jpg);
+                background-color: #A9C9FF;
+                background-image: linear-gradient(180deg, #A9C9FF 0%, #FFBBEC 100%);
+
                 background-repeat: no-repeat;
                 background-size: cover;
                 background-position: center;
@@ -81,8 +82,6 @@ if (mysqli_num_rows($inst_name) > 0) {
             .paper-area {
                 margin-top: 5%;
                 border-radius: 1.5rem;
-                background: rgb(0, 212, 255);
-                background: linear-gradient(90deg, rgba(0, 212, 255, 1) 8%, rgba(9, 9, 121, 1) 51%, rgba(2, 0, 36, 1) 79%);
             }
 
             h1 {
@@ -212,6 +211,7 @@ if (mysqli_num_rows($inst_name) > 0) {
 
 
                     <div class="Question form-group">
+                        <h2>Question: <?php echo $i+1 ?></h2>
                         <hr style="border: 2px solid white !important;">
                         <textarea class="form-control questionInput" name="paperdata[<?php echo $i ?>][question]" style="border: 2px solid black;margin-top: 50px;" id="question" placeholder="Insert Question Here..."></textarea>
                         <ul>

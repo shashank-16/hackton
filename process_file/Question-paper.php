@@ -10,15 +10,11 @@ if(!empty($_SESSION["username"]))
 <script>
     //   var warning=20; // data will come from html side not from php 
       var warning=0; // data will come from html side not from php 
-// >>>>>>> 9e0f887002cfc863db403ac75f04f707a718c76a
        let where = 1;
 
 
       var  timer= '<?=$_SESSION["time"]?>'; 
-// <<<<<<< HEAD
-    
-// =======
-// >>>>>>> 9e0f887002cfc863db403ac75f04f707a718c76a
+
       setTimeout(function(){
           
                 $.ajax({
@@ -109,7 +105,6 @@ if(!empty($_SESSION["username"]))
 </head> 
 
 <body id="bdy" onmouseleave="mouseLeave()" style="visibility: visible;">
-    <div class="">
     <nav>
         <div class="navbar" style="color: white;">
             <ul>
@@ -136,53 +131,43 @@ if(!empty($_SESSION["username"]))
             </ul>
         </div>
     </nav>
-        <!-- <hr> -->
+
+    
         <div class="main" id="man">
             <div class="content col-8">
                 <div class="sweet-alert" style="background-color: tomato; color:white; padding-left:10px; visibility:hidden;">
                     Only 5 mins left!
                 </div>
                 <form action="correct_answer.php" method ="POST" class="form-group">
-                    <h1>Question Area</h1>
+                    <h2 id="question_id"></h2>
                     <hr>
                     <div class="question">
                         <div class="question-box">
 
                         </div>
-                        <ul class="options">
+                        <div class="options">
        
-                        </ul>
+                        </div>
                     </div>
                     
                 </form>
-                <div class="warn" style="height: 200px; width: 500px; visibility: hidden; margin: auto; position: sticky;">
+                <!-- <div class="warn" style="height: 200px; width: 500px; visibility: hidden; margin: auto; position: sticky;">
                     <h1 style="color: red;">Don't do this again! Otherwise your Exam will submit AutoMatically</h1>
-                </div>
+                </div> -->
                 
 
             </div>
 
 
-            <div class="proter-region">
+            <div class="proctor-region">
 
                 <div class="video" >
                     <?php include 'video.php';?>
-               <br>
-               <br>
-               <br>
                     <p id ="counter" style="border: 3px solid red;" ></p>
-                    <br>
                 </div>
-                <hr>
-
-                <div class="number-of-question" style="width: 300px;">
-
-                </div> 
-                <hr>
-
-
+                
                 <div class="number-of-question" style="width: 300px; margin-top: 50px;">
-<!-- >>>>>>> 9e0f887002cfc863db403ac75f04f707a718c76a -->
+
                     <div id="menu-outer">
                         <div id="tt" class="table" style="display: flex; flex-grow: initial; justify-content: space-sround">
                             <ul id="horizontal-list" style="margin: 8px; margin-bottom: 10px">
@@ -208,11 +193,13 @@ if(!empty($_SESSION["username"]))
                         </div>
                     </div>
                 </div>
-                
+                <hr>
 
+                <div class="number-of-question" style="width: 300px;">
+
+                </div> 
             </div>
         </div>
-    </div>
     <hr>
     <div class="container" id="finish" style="display: none;">
         <div class="f">
@@ -222,7 +209,7 @@ if(!empty($_SESSION["username"]))
             <p>
                 Exam-Sumitted Sucessfully!
             </p>
-            <div class="done"><img src="completed-task.png" width="200px" height="200px"></div>
+            <div class="done"><img src="./Assets/completed-task.png" width="200px" height="200px"></div>
         </div>
     </div>
 
@@ -589,7 +576,7 @@ if(!empty($_SESSION["username"]))
                 }
                 else if(e.keyCode==122 || e.keyCode==123){      //F11 or F12
                     console.log("f11 || f12");
-                    return false;
+                    return true;
                 }
                 else if(e.keyCode==27){     // for escape
                     console.log("i will not, I am escape!");
@@ -711,30 +698,30 @@ if(!empty($_SESSION["username"]))
     <script>
         
       
-        $(window).on('focus', function () {
-            function mouseLeave() {
-            alert("warning! Don't Do this again");
-        }
+        // $(window).on('focus', function () {
+        //     function mouseLeave() {
+        //     alert("warning! Don't Do this again");
+        // }
 
-        });
-        $(window).on('blur', function () {
+        // });
+        // $(window).on('blur', function () {
 
-            warning++;
-            alert("This is your"+" "+warning +" "+"Warning")
-            if(warning==5){
-                alert("Test is finished");
-                $.ajax({
-                    type: 'POST',
-                    url: 'exam_end.php'
-                });
-                document.getElementById("man").style.display="none";
-                document.getElementById("finish").style.display="block";
-                setTimeout(function(){ window.location.href="index.html";},10000);
-            }
-        });
+        //     warning++;
+        //     alert("This is your"+" "+warning +" "+"Warning")
+        //     if(warning==5){
+        //         alert("Test is finished");
+        //         $.ajax({
+        //             type: 'POST',
+        //             url: 'exam_end.php'
+        //         });
+        //         document.getElementById("man").style.display="none";
+        //         document.getElementById("finish").style.display="block";
+        //         setTimeout(function(){ window.location.href="index.html";},10000);
+        //     }
+        // });
       </script>
 
-      <script>
+      <!-- <script>
             $(document).ready(function(){
                 $("#bdy").mouseleave(function(){
                     $(".warn").css({"visibility":"visible"});
@@ -743,7 +730,7 @@ if(!empty($_SESSION["username"]))
                     $(".warn").css({"visibility":"hidden"});
                 })
             })
-      </script>
+      </script> -->
 </body>
 <?php
 }
