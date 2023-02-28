@@ -18,15 +18,8 @@
 </head>
 <body>
    
-    <div class="main">
-        <div class="control">
-            <!-- <video id="remotevideo" class="h-full object-cover" style="width:300px;" autoplay playinline> -->
-            <!-- </video> -->
-            <video id="localvideo" style="width: 270px;margin-top:-20px" autoplay playinline>
-            </video>
-
-        </div>
-
+    <div class="">
+            <video id="localvideo" autoplay playinline></video>
     </div>
 
 </body>
@@ -40,6 +33,13 @@
         box-sizing: border-box;
     }
     
+#localvideo{
+    margin-top: -2rem;
+    width: 300px;
+    height: 300px;
+    border-radius: 2rem;
+}
+
 </style>
 <script type="text/javascript"  src =main.js> </script>
 <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
@@ -47,6 +47,4 @@
 
 <script type = "text/javascript">
     const  conn = new WebSocket('ws://localhost:8897');
-   
-    
-            </script>
+</script>

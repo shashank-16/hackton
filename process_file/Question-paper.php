@@ -70,38 +70,8 @@ if(!empty($_SESSION["username"]))
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
     <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Font+Name"> -->
-    <link rel="stylesheet" href="Question-paper..css" />
+    <link rel="stylesheet" href="Question_paper.css" />
 
-
-    <style>
-        
-        .f{
-            height: 400px;
-            width: 600px;
-            margin: auto;
-            border: 2px solid red;
-            box-shadow: 1px -1px 8px 2px grey;
-            border-radius: 10px;
-            display: block;
-        }
-        .f p{
-            font-size: 30px;
-            text-align: center;
-        }
-
-        .done{
-            display: flex;
-            justify-content: center;
-        }
-
-        @media print {
- 
-            html,
-            body {
-                display: none;
-            }
-        }
-    </style>
 </head> 
 
 <body id="bdy" onmouseleave="mouseLeave()" style="visibility: visible;">
@@ -132,7 +102,6 @@ if(!empty($_SESSION["username"]))
         </div>
     </nav>
 
-    
         <div class="main" id="man">
             <div class="content col-8">
                 <div class="sweet-alert" style="background-color: tomato; color:white; padding-left:10px; visibility:hidden;">
@@ -145,8 +114,34 @@ if(!empty($_SESSION["username"]))
                         <div class="question-box">
 
                         </div>
-                        <div class="options">
-       
+                        <div id='option_and_key'>
+                            <div class="options" id="option_area"></div>
+                            <div class="selected_key">
+                                <div id="key_wrapper">
+                                    <div>
+                                        <ul>
+                                            <li>Key</li><hr>
+                                            <li>char-1</li>
+                                            <li>char-2</li>
+                                            <li>char-3</li>
+                                            <li>char-4</li>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <ul>
+                                            <li>For</li><hr>
+                                            <li>option-1</li>
+                                            <li>option-2</li>
+                                            <li>option-3</li>
+                                            <li>option-4</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div id="pre_nxt_btn">
+                                    <li><span><i class="fa fa-caret-left"></i></span>  Previous</li>
+                                    <li> Next  <span><i class="fa fa-caret-right"></i></span></li>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     
@@ -163,37 +158,39 @@ if(!empty($_SESSION["username"]))
 
                 <div class="video" >
                     <?php include 'video.php';?>
-                    <p id ="counter" style="border: 3px solid red;" ></p>
                 </div>
                 
-                <div class="number-of-question" style="width: 300px; margin-top: 50px;">
+                <div class="number-of-question" style="width: 300px; margin-top: 1rem;">
+                    <div id="count_and_button">
+                        <h3 id ="counter"></h3>
+                        <button class="btn btn-warning">Mark</button>
+                        <button class="btn" style="background-color: #ff8200;">UnMark</button>
+                    </div>
 
                     <div id="menu-outer">
                         <div id="tt" class="table" style="display: flex; flex-grow: initial; justify-content: space-sround">
                             <ul id="horizontal-list" style="margin: 8px; margin-bottom: 10px">
-                                <!-- Question panel -->
-                                
-                                    <script>
-                                        var cont = document.getElementById('tt');
-                                        var ul = document.createElement('ul');
-                                        ul.setAttribute('style', 'padding: 0; margin: 0;');
-                                        ul.setAttribute('id', 'theList');
-                                        
-                                        for (i = 1; i <= total_question; i++) {
-                                            var li = document.createElement('li');
-                                            li.innerHTML = i;
-                                            li.setAttribute('style', 'display: inline-block; margin:8px; padding:9px; background-color:red; color:white;');
-                                            li.setAttribute('id','thelist'+i);
-                                            ul.appendChild(li);
-                                        }
+                                <!-- Question panel =====================>-->
+                                <script>
+                                    var cont = document.getElementById('tt');
+                                    var ul = document.createElement('ul');
+                                    ul.setAttribute('style', 'padding: 0; margin: 0;');
+                                    ul.setAttribute('id', 'theList');
+                                    
+                                    for (i = 1; i <= total_question; i++) {
+                                        var li = document.createElement('li');
+                                        li.innerHTML = i;
+                                        li.setAttribute('style', 'display: inline-block; margin:8px; padding:9px; background-color:red; color:white;');
+                                        li.setAttribute('id','thelist'+i);
+                                        ul.appendChild(li);
+                                    }
 
-                                        cont.appendChild(ul);
-                                    </script>
+                                    cont.appendChild(ul);
+                                </script>
                             </ul>
                         </div>
                     </div>
                 </div>
-                <hr>
 
                 <div class="number-of-question" style="width: 300px;">
 

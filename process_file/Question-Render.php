@@ -17,7 +17,7 @@
 
        while ($rowforjoin = mysqli_fetch_assoc($result)) {
     ?>
-        <textarea disabled style="height: 100%; width:100%; border:0px solid green; border-radius: 8px; resize: none;" name ="question" id= "questions"><?php echo  $rowforjoin['question_id'] ?></textarea> 
+        <textarea disabled name ="question" id= "questions"><?php echo  $rowforjoin['question_id'] ?></textarea> 
     
     <?php }
    }
@@ -26,5 +26,16 @@
        header("Location :Login.php");
    }
    ?>
+
+   <style>
+    #questions{
+        height: 100%; 
+        width:100%; 
+        border:0px solid green; 
+        border-radius: 8px; 
+        resize: none; 
+        padding:1rem
+    }
+   </style>
 
 

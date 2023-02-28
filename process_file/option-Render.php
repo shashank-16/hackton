@@ -21,12 +21,12 @@ session_start();
 
         ?>
 
-        <ul class="options">
-       
-        <li style="list-style: none;"><label for="option1"><input type="radio" id="opt-1" name="select" class="option-1" value="<?php echo  $rowforjoin['option1'] ?>"><?php echo  $rowforjoin['option1'] ?></label></li>
-        <li style="list-style: none;"><label for="option1"><input type="radio" id="opt-2" name="select" class="option-1" value="<?php echo  $rowforjoin['option2'] ?>"><?php echo  $rowforjoin['option2'] ?></label></li>
-        <li style="list-style: none;"><label for="option1"><input type="radio" id="opt-3" name="select" class="option-1" value="<?php echo  $rowforjoin['option3'] ?>"><?php echo  $rowforjoin['option3'] ?></label></li>
-        <li style="list-style: none;"><label for="option1"><input type="radio" id="opt-4" name="select" class="option-1" value="<?php echo  $rowforjoin['option4'] ?>"><?php echo  $rowforjoin['option4'] ?></label></li>
+        <ul class="options" id="option_list">
+            
+            <li><label for="opt-1"><input type="radio" id="opt-1" name="select" class="option-1" value="<?php echo  $rowforjoin['option1'] ?>"><?php echo  $rowforjoin['option1'] ?></label></li>
+            <li><label for="opt-2"><input type="radio" id="opt-2" name="select" class="option-1" value="<?php echo  $rowforjoin['option2'] ?>"><?php echo  $rowforjoin['option2'] ?></label></li>
+            <li><label for="opt-3"><input type="radio" id="opt-3" name="select" class="option-1" value="<?php echo  $rowforjoin['option3'] ?>"><?php echo  $rowforjoin['option3'] ?></label></li>
+            <li><label for="opt-4"><input type="radio" id="opt-4" name="select" class="option-1" value="<?php echo  $rowforjoin['option4'] ?>"><?php echo  $rowforjoin['option4'] ?></label></li>
 
         </ul>
 
@@ -38,3 +38,25 @@ session_start();
         header("Location :Login.php");
     }
 ?>
+
+
+
+<style>
+
+    #option_list{
+        margin: 0;
+    }
+    #option_list li{
+        background-color: rgba(255, 255, 255, 0.5);
+        border: 1px solid black;
+        border-radius: 22px;
+        padding: 10px 1rem;
+        margin: 1rem 0;
+        list-style: none;
+        align-items: center;
+    }
+
+    #option_list li label input{
+        margin-right: 1rem;
+    }
+</style>
