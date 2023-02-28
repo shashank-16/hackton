@@ -116,6 +116,10 @@
                             <input type="text" name="L_name" class="form-control" autocomplete="Last-name" placeholder="Last Name" required>
                         </div>
                     </div>
+                    <!-- <div class="eppb">
+                            <label for="institute" class="inputs">Institute Name: <span style="color:red">*</span> </label>
+                            <input type="text" name="Institute_Name" style="outline: none;" class="form-control" autocomplete="Institute Name" placeholder="Institute Name">
+                        </div> -->
                     <div class="eppb">
                         <label for="Email">Email <span style="color:red">*</span> </label>
                         <input type="email" class="form-control" id="Usermail" name="Email" autocomplete="Email" required placeholder="Email" required>
