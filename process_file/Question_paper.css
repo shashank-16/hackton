@@ -2,6 +2,7 @@
   margin: 0%;
   padding: 0%;
   box-sizing: border-box;
+  overflow-y: hidden;
   /* cursor: none; */
 }
 
@@ -45,10 +46,22 @@
 
 
 body {
-  min-height: 100vh;
+  height: 100%;
   background-color: #faaca8;
   background-image: linear-gradient(120deg, #faaca8 0%, #ddd6f3 100%);
+  /* background-repeat: no-repeat; */
+  background-size: cover;
+  position: relative;
 }
+
+
+body::backdrop {
+  background-color: #faaca8;
+  background-image: linear-gradient(120deg, #faaca8 0%, #ddd6f3 100%);
+  /* background-color: rgba(255,255,255,0); */
+}
+
+
 a {
   text-decoration: none;
   color: white;
@@ -56,38 +69,47 @@ a {
 
 nav {
   background-color: rgba(0, 0, 0, 0.6);
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  border-radius: 20px;
-  margin: 0 1rem;
+  border-radius: 1rem;
+  margin: 1rem;
   width: 98%;
   position: fixed;
   top: 0%;
 }
 
+.navbar{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+}
+
+.navbar ul{
+  display: flex;
+  align-items: center;
+  margin: 0%;
+}
+
 .navbar ul li {
   list-style: none;
-  display: inline-block;
   margin: 0px 20px 0 20px;
-  font-size: 30px;
+  font-size: 1.2rem;
 }
-.navbar ul li a:hover {
-  color: seashell;
-}
+
 
 .main {
   display: flex;
   padding: 20px;
   height: 100%;
-  padding-top: 2rem;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
 }
 
 .question-box {
   border: 2px solid rgb(3, 167, 3);
   border-radius: 8px;
-  height: 250px;
-  margin: 1rem;
+  height: 230px;
+  margin: 4rem 1rem 1rem 1rem;
 }
 
 .question-box > p {
@@ -99,7 +121,7 @@ nav {
 }
 
 .proctor-region {
-  margin-top: 4rem;
+  margin-top: 4%;
   height: 90%;
   background-color: #fed2aa;
   /* border: 2px solid red; */
@@ -109,7 +131,7 @@ nav {
 }
 
 .video {
-  height: 35%;
+  height: 33%;
   width: 300px;
   border: 2px solid white;
   border-radius: 6px;
@@ -167,6 +189,7 @@ ul#horizontal-list li {
 #option_and_key {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 .selected_key {
   width: calc(50% - 30px);
@@ -174,7 +197,7 @@ ul#horizontal-list li {
   background-image: linear-gradient(120deg, #faaca8 0%, #ddd6f3 100%);
   border-radius: 22px;
   margin: auto;
-  padding: 1rem;
+  padding: 5px;
   list-style: none;
 }
 
@@ -192,7 +215,7 @@ ul#horizontal-list li {
 }
 
 #key_wrapper li {
-  margin: 1rem 0;
+  margin: 12px 0;
   background-color: rgba(255, 255, 255, 0.5);
   padding: 0.2rem 1rem;
   list-style: none;
@@ -210,4 +233,23 @@ ul#horizontal-list li {
 }
 #pre_nxt_btn span {
   font-size: 1rem;
+}
+
+
+
+/* High-fi Structur setting----------- */
+
+/* :not(:root):fullscreen::backdrop {
+  position: fixed;
+  inset: 0px;
+  background-color: #faaca8 !important;
+  background-image: linear-gradient(120deg, #faaca8 0%, #ddd6f3 100%) !important;
+} */
+
+
+
+/* Mark and Unmark classes==============>question mark for review */
+
+.mark{
+  background-color: rgb(255, 217, 29);
 }

@@ -75,9 +75,41 @@ if (!empty($_SESSION["username"])) {
 
     </head>
 
-    <body id="bdy" onmouseleave="mouseLeave()" style="visibility: visible;">
+    <script>
+
+        
+        const fullScn=()=>{
+            function requestFullScreen(element) {
+                // Supports most browsers and their versions.
+                var requestMethod = element.requestFullScreen || element.webkitRequestFullScreen || element.mozRequestFullScreen || element.msRequestFullScreen;
+
+                if (requestMethod) { // Native full screen.
+                    requestMethod.call(element);
+                } else 
+                if (typeof window.ActiveXObject !== "undefined") { // Older IE.
+                    var wscript = new ActiveXObject("WScript.Shell");
+                    if (wscript !== null) {
+                        wscript.SendKeys("{F11}");
+                    }
+                }
+            }
+            
+            var elem = document.body; // Make the body go full screen.
+            requestFullScreen(elem);
+        }
+
+        const mark=()=>{
+            $(document).click
+            document.getElementById('thelist'+where).style.backgroundColor="rgb(255, 217, 29)"
+
+        }
+    </script>
+
+    <!-- onmouseleave="mouseLeave()"   need to paste in Body left of style -->
+
+    <body id="bdy"  style="visibility: visible;">
         <nav>
-            <div class="navbar" style="color: white;">
+            <div class="navbar">
                 <ul>
                     <?php
                     require 'connective.php';
@@ -92,6 +124,9 @@ if (!empty($_SESSION["username"])) {
                             <li>Subject Name: <?php echo ($_SESSION["table_name"]) ?></li>
                 </ul>
                 <ul>
+                    <div class="sweet-alert" style="background-color: tomato; color:white; padding: 10px;">
+                        Only 5 mins left!
+                    </div>
                     <li><?php echo $rowler["user_name"]; ?></li>
                     <li> <?php echo $rowler["student_Id"]; ?> </li>
                     <li><span style="font-size: 40px;" class="material-icons orange600">face</span></li>
@@ -105,28 +140,27 @@ if (!empty($_SESSION["username"])) {
 
         <div class="main" id="man">
             <div class="content col-8">
-                <div class="sweet-alert" style="background-color: tomato; color:white; padding-left:10px; visibility:hidden;">
-                    Only 5 mins left!
-                </div>
+                
                 <form action="correct_answer.php" method="POST" class="form-group">
-                    <h2 id="question_id"></h2>
-                    <hr>
+                    <!-- <h2 id="question_id"></h2> -->
+                    <!-- <hr> -->
                     <div class="question">
                         <div class="question-box">
 
                         </div>
                         <div id='option_and_key'>
-                            <div class="options" id="option_area"></div>
+                            <div class="options" id="option_area">
+                            </div>
                             <div class="selected_key">
                                 <div id="key_wrapper">
                                     <div>
                                         <ul>
                                             <li>Key</li>
                                             <hr>
-                                            <li>char-1</li>
-                                            <li>char-2</li>
-                                            <li>char-3</li>
-                                            <li>char-4</li>
+                                            <li id="key-id1">key1</li>
+                                            <li id="key-id2">key2</li>
+                                            <li id="key-id3">key3</li>
+                                            <li id="key-id4">key4</li>
                                         </ul>
                                     </div>
                                     <div>
@@ -153,6 +187,15 @@ if (!empty($_SESSION["username"])) {
                     <h1 style="color: red;">Don't do this again! Otherwise your Exam will submit AutoMatically</h1>
                 </div> -->
 
+                    <script>
+                        
+                        document.getElementById('key-id1').innerHTML=String.fromCharCode(sessionStorage.getItem("option-1"));
+                        document.getElementById('key-id2').innerHTML=String.fromCharCode(sessionStorage.getItem("option-2"));
+                        document.getElementById('key-id3').innerHTML=String.fromCharCode(sessionStorage.getItem("option-3"));
+                        document.getElementById('key-id4').innerHTML=String.fromCharCode(sessionStorage.getItem("option-4"));
+                    </script>
+
+
 
             </div>
 
@@ -166,7 +209,7 @@ if (!empty($_SESSION["username"])) {
                 <div class="number-of-question" style="width: 300px; margin-top: 1rem;">
                     <div id="count_and_button">
                         <h3 id="counter"></h3>
-                        <button class="btn btn-warning">Mark</button>
+                        <button class="btn btn-warning" onclick="mark()">Mark</button>
                         <button class="btn" style="background-color: #ff8200;">UnMark</button>
                     </div>
 
@@ -657,19 +700,20 @@ if (!empty($_SESSION["username"])) {
         </script>
 
         <script>
-            function toggleFullScreen() {
-                console.log("full");
-                if (!document.fullscreenElement) {
-                    document.documentElement.requestFullscreen();
-                } else {
-                    if (document.exitFullscreen) {
-                        document.exitFullscreen();
-                    }
-                }
-            }
-            window.addEventListener("load", () => {
-                toggleFullScreen();
-            })
+            // function toggleFullScreen() {
+            //     console.log("full");
+            //     if (!document.fullscreenElement) {
+            //         document.documentElement.requestFullscreen()
+            //     } else {
+            //         // if (document.exitFullscreen) {
+            //             document.documentElement.requestFullscreen()
+            //             // document.exitFullscreen();
+            //         // }
+            //     }
+            // }
+            // window.addEventListener("load", () => {
+            //     requestFullscreen();
+            // })
         </script>
         <script>
             // $(window).on('focus', function () {
